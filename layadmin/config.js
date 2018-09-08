@@ -31,8 +31,8 @@ layui.define(function (exports) {
         },
         //request 基础URL
         //requestUrl:'http://192.168.0.0/',
-        requestUrl:'/layuiAdmin/',
-        //requestUrl:'/',
+        //requestUrl:'/layuiAdmin/',
+        requestUrl:'/',
         //图片基础URL
         imageUrl:'http://192.168.3.191/',
         //独立页面路由，可随意添加（无需写参数） 前面不能带 /
