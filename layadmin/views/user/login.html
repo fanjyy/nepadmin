@@ -167,10 +167,7 @@ layui.use(['admin','helper','util','qrcode','form'],function(admin,helper,util,q
             if(currentLoginType == 'phonecode' && (isNaN(value) || value.length != 4))  return '手机验证码错误'
         }
     })
-    form.val('login-form',{
-        username:'13309091212',
-        pass:'123123'
-    })
+    
     viewSendsmsBtn.click(function(){
         var self = $(this);
         if(self.hasClass(btnDisabledCls)) return;
