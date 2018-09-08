@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>蜗牛健康</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="layui/css/layui.css?t=20180530-2" media="all">
+</head>
+<body>
+    <div id="app"></div>
+    <script src="layui/layui.js"></script>
+    <script>
+        layui.config({
+            //指定 admin 项目路径
+            base: './layadmin/',
+            version: Date.parse(new Date()),
+            debug: true
+        }).use('index', function () {
+            //console.log('onready');
+        });
+    </script>
+</body>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="layadmin/ie8hack/html5shiv.min.js"></script>
+<script src="layadmin/ie8hack/respond.min.js"></script>
+<script src="layadmin/ie8hack/placeholders.min.js"></script>
+<![endif]-->
+</html>

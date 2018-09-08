@@ -1,0 +1,219 @@
+<title>登录</title>
+<script type="text/html" template>
+    <link rel="stylesheet" href="{{layui.admin.csshref()}}">
+</script>
+
+<div id="VIEW-login">
+    <div class="layadmin-header"></div>
+    <div class="layadmin-wrap">
+        <div class="layui-container">
+            <div class="layui-row">
+                <div class="layui-col-xs12 layui-col-lg4 layui-col-lg-offset4">
+                    <div class="layui-form" lay-filter="login-form">
+                        <ul class="login-type-tab">
+                            <li login-type="password" class="active">密码登录</li>
+                            <li login-type="phonecode">手机码登录</li>
+                            <li login-type="qrcode" class="layui-right layui-hide-xs" style="padding-right: 0;" lay-tips="扫码登录" ><span class="layui-icon qrcode-icon">&#xe929;</span></li>
+                        </ul>
+                        <div class="qrcode-block">
+                            <div class="qrcode qrcode-image">
+                                <i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>
+                            </div>
+                            <p class="p1">1秒即登录，方便又安全</p>
+                            <p class="p2">使用 蜗牛健康手机版 扫码登录</p>
+                        </div>
+                        <div class="normal-login-form">
+                            <div class="layui-form-item">
+                                <label class="layui-icon label-icon layui-icon-username"></label>
+                                <input type="text" name="username" lay-verify="phone" lay-verType="tips" placeholder="手机号码" maxlength="11" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-item password-block">
+                                <label class="layui-icon label-icon layui-icon-password"></label>
+                                <input type="text" name="pass" lay-verify="password" lay-verType="tips" placeholder="密码" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-item verify-block">
+                                <div class="layui-row">
+                                    <div class="layui-col-xs7">
+                                        <label class="layui-icon label-icon layui-icon-vercode"></label>
+                                        <input type="text" maxlength="4" name="verifyCode" lay-verify="imgCode" lay-verType="tips" placeholder="图形验证码" class="layui-input" autocomplete="off">
+                                    </div>
+                                    <div class="layui-col-xs5">
+                                        <img class="codeimg" src="https://www.oschina.net/action/user/captcha" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item phonecode-block">
+                                <label class="layui-icon label-icon layui-icon-cellphone"></label>
+                                <input type="text" name="smsCode" maxlength="4" lay-verify="smsCode" lay-verType="tips" placeholder="手机验证码" class="layui-input" autocomplete="off">
+                                <button class="layui-btn layui-btn-danger layui-btn-sm sendsms layui-btn-disabled">获取验证码</button>
+                            </div>
+                            <div class="layui-form-item">
+                                <input type="checkbox" name="autoLogin" title="下次自动登录" lay-skin="primary" checked>
+                            </div>
+                            <div class="layui-form-item">
+                                <button class="layui-btn layui-btn-normal layui-btn-fluid" lay-submit lay-filter="login-submit">
+                                    <i style="display: none" class="layui-icon layui-icon-loading layui-icon layui-anim layui-anim-rotate layui-anim-loop"></i>
+                                    立即登录
+                                </button>
+                            </div>
+                            <div class="layui-form-item">
+                                <a class="layui-right" lay-href="/user/forget">注册账号</a>
+                                <a class="layui-right" style="margin-right:10px;" lay-href="/user/forget">忘记密码？</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+layui.use(['admin','helper','util','qrcode','form'],function(admin,helper,util,qrcode,form){
+    var $ = layui.jquery;
+    var view = $('#VIEW-login');
+    var viewQrcode = view.find(".qrcode-image");
+    var viewImgVerify = view.find(".codeimg");
+    var viewImgVerifyBlock = view.find('.verify-block');
+    var viewImgVerifyInput = viewImgVerifyBlock.find('[name=verifyCode]');
+    var viewSendsmsBtn = view.find('.sendsms');
+    var viewPhoneInput = view.find('[name=username]');
+    var viewTabBtn = view.find('.login-type-tab li');
+
+    var currentLoginType = 'password';
+    var QRExists = false;
+    var btnDisabledCls = 'layui-btn-disabled';
+    var smsCountdown = false;
+
+
+    form.render();
+    viewTabBtn.click(function(){
+        var type = $(this).attr('login-type');
+        $(this).addClass('active').siblings().removeClass('active');
+        loginType[type]();
+    })
+
+    if(currentLoginType !== 'password'){
+        viewTabBtn.each(function(i){
+            var elem = viewTabBtn.eq(i);
+            if(elem.attr('login-type') === currentLoginType) elem.click();
+        })
+    }
+
+    viewPhoneInput.on('keyup',checkSendsmsStatus)
+    viewImgVerifyInput.on('keyup',checkSendsmsStatus)
+
+
+    function createQrcode(){
+        if(QRExists == false){
+            setTimeout(function(){
+                helper.qrcode(viewQrcode,'http://www.layui.com');
+                viewQrcode.find('.layui-icon').hide();
+                QRExists = true;
+            },500)
+        }
+    }
+    function checkSendsmsStatus(){
+        if(currentLoginType != 'phonecode') return;
+        var reg = layui.form.config.verify.phone[0];
+        if(smsCountdown == false && reg.test(viewPhoneInput.val()) && viewImgVerifyInput.val().length == 4){
+            viewSendsmsBtn.removeClass(btnDisabledCls);
+        }else{
+            viewSendsmsBtn.addClass(btnDisabledCls);
+        }
+    }
+
+    var loginType = {
+        normalInput:view.find('.normal-login-form'),
+        elem:{
+            password:view.find('.password-block'),
+            phonecode:view.find('.phonecode-block'),
+            qrcode:view.find('.qrcode-block')
+        },
+        password:function(){
+            viewImgVerifyBlock.hide();
+            this.tabs('password');
+        },
+        phonecode:function(){
+            viewImgVerifyBlock.show();
+            this.tabs('phonecode');
+            checkSendsmsStatus();
+        },
+        qrcode:function(){
+            createQrcode();
+            this.normalInput.hide();
+            this.elem.qrcode.show();
+            currentLoginType = 'qrcode';
+        },
+        tabs:function(name){
+            this.normalInput.show();
+            layui.each(this.elem,function(key,elem){
+                elem.css('display',name == key ? 'block' : 'none');
+            })
+            currentLoginType = name;
+        }
+    }
+
+
+    form.verify({
+        password:function(value,el){
+            if(currentLoginType == 'password' && value.length < 6) return '登录密码不能少于 6 位';
+        },
+        imgCode:function(value){
+            if(currentLoginType == 'phonecode' && value.length != 4) return '图形验证码错误';
+        },
+        smsCode:function(value){
+            if(currentLoginType == 'phonecode' && (isNaN(value) || value.length != 4))  return '手机验证码错误'
+        }
+    })
+    form.val('login-form',{
+        username:'13309091212',
+        pass:'123123'
+    })
+    viewSendsmsBtn.click(function(){
+        var self = $(this);
+        if(self.hasClass(btnDisabledCls)) return;
+        self.addClass(btnDisabledCls);
+
+        var defHtml = self.html();
+        var startTime = new Date().getTime();
+        var endTime = startTime + 59000;
+        
+        smsCountdown = true;
+        util.countdown(endTime,startTime,function(date,time,timer){
+            var second = date[3];
+            self.html(second + ' 秒');
+            if(second <= 0){
+                self.removeClass(btnDisabledCls).html(defHtml);
+                smsCountdown = false;
+                clearInterval(timer);
+            }
+        });
+
+
+    })
+    
+    //提交登录表单
+    form.on('submit(login-submit)',function(data){
+        var loading = $(this).find('.layui-icon');
+        if(loading.is(":visible")) return;
+        loading.show();
+        
+        admin.get({
+            api:'login',
+            data:data.field,
+            success:function(res){
+                admin.login(res.data.token,{ user:res.data.user },data.field.autoLogin != 'on');
+                console.log(res);
+                admin.navigate('/');
+            },
+            complete:function(){
+                loading.hide();
+            }
+        });
+        return false;
+    })
+
+})
+</script>

@@ -1,0 +1,112 @@
+<div class="layui-layout layui-layout-admin">
+    
+    <div class="layui-header" id="app-header">
+        <script type="text/html" template lay-done="layui.element.render('nav','layadmin-header')">
+        <ul class="layui-nav layui-layout-left" lay-filter="layadmin-header-left">
+            <li class="layui-nav-item" lay-unselect>
+                <a layadmin-event="flexible" title="侧边伸缩">
+                    <i class="layui-icon layui-icon-shrink-right"></i>
+                </a>
+            </li>
+            <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                <a layadmin-event="prev" title="返回上一页">
+                    <i class="layui-icon layui-icon-prev"></i>
+                </a>
+            </li>
+            <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                <a layadmin-event="refresh" title="刷新">
+                    <i class="layui-icon layui-icon-refresh-3"></i>
+                </a>
+            </li>
+            <!--
+            <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                <a href="https://www.layui.com/" target="_blank" title="Layui">
+                    <i class="layui-icon layui-icon-website"></i>
+                </a>
+            </li>
+            -->
+            <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                <input type="text" placeholder="搜索签约居民..." autocomplete="off" class="layui-input layui-search-input" layadmin-event="serach">
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right" lay-filter="layadmin-header">
+
+            <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                <a layadmin-event="fullscreen" title="切换全屏">
+                    <i class="layui-icon layui-icon-screen-full"></i>
+                </a>
+            </li>
+            <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                <a title="APP 下载" lay-popup="{url:'popup/phone_qrcode','offset':'rt',area:['400px','100%'],anim:5}">
+                    <i class="layui-icon layui-icon-cellphone"></i>
+                </a>
+            </li>
+            <li class="layui-nav-item" lay-unselect>
+                <a lay-href="app/message/" layadmin-event="message" title="消息提醒">
+                    <i class="layui-icon layui-icon-notice"></i>
+                    <span class="layui-badge-dot message-dot"></span>
+                </a>
+            </li>
+            <li class="layui-nav-item" lay-unselect>
+                <a class="layui-hide-xs">
+                    早上好，{{ layui.admin.data()['user'].username  }}
+                    <i class="layui-icon layui-icon-triangle-d"></i>
+                </a>
+                <a class="layui-hide-sm layui-show-xs-inline-block">
+                    <i class="layui-icon layui-icon-username"></i>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a>个人信息</a></dd>
+                    <dd><a>工作履历</a></dd>
+                    <hr/>
+                    <dd><a>test 1</a></dd>
+                    <dd><a>test 2</a></dd>
+                    <dd><a>test 3</a></dd>
+                    <hr/>
+                    <dd><a href="javascript:void(0);" layadmin-event="logout">退出登录</a></dd>
+                </dl>
+            </li>
+        </ul>
+        </script>
+    </div>
+ 
+    <!-- 侧边菜单 -->
+    <div class="layui-side" id="app-sidebar">
+        <div class="layui-side-scroll">
+            <div class="layui-logo"><b>Layui</b> Admin</div>
+            <script type="text/html" template lay-api="getMenu" lay-done="layui.element.render('nav','layadmin-sidebar')">
+            <ul class="layui-nav layui-nav-tree" lay-filter="layadmin-sidebar" lay-shrink="all">
+                {{#
+                    function __createSlidebar(data,index){
+                        if(!data || data.length == 0) return '';
+                        var html = '<dl class="layui-nav-child">';
+                        layui.each(data,function(i,child){
+                            html += '<dd><a style="padding-left:'+(index == 0 ? 50 : 50 + index * 20)+'px" target="'+(child.target||'')+'" lay-href="'+ (child.href||'') +'">' + child.title + '</a>';
+                            if(child.childs) html += __createSlidebar(child.childs,index+1);
+                            html += '</dd>';
+                        });
+                        html = html +'</dl>';
+                        return html;
+                    }
+                    layui.each(d,function(i,child){
+                }}
+                <li class="layui-nav-item">
+                    <a lay-href="{{child.href||''}}" target="{{child.target||''}}" title="{{child.title}}"><i class="layui-icon {{child.icon}}"></i>{{child.title}}</a>
+                    {{ __createSlidebar(child.childs,0) }}
+                </li>
+                {{# }) }}
+            </ul>
+            </script>
+        </div>
+        
+    </div>
+
+
+
+    <!-- 主体内容 -->
+    <div class="layui-body" id="app-body"></div>
+
+    <!-- 辅助元素，一般用于移动设备下遮罩 -->
+    <div class="layadmin-body-shade" layadmin-event="shade"></div>
+
+</div>
