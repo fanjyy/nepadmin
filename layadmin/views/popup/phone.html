@@ -21,7 +21,6 @@ layui.use(['admin','table','helper','qrcode'], function(admin,table,helper){
     var $ = layui.jquery;
     var view = $('#VIEW-popup-phone-qrcode');
     var viewQrcode = view.find('.qrcode');
-    alert(location.href);
     helper.qrcode(viewQrcode,location.href);
 })
 </script>
