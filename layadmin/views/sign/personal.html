@@ -1,0 +1,169 @@
+<title>个人面签</title>
+<div class="layui-breadcrumb layadmin-breadcrumb" lay-filter="layadmin-breadcrumb">
+    <a lay-href="/">首页</a>
+    <a>签约</a>
+    <a><cite>个人面签</cite></a>
+</div>
+<div class="layui-fluid" id="VIEW-sign-personal">
+    <div class="layui-card">
+        <form class="layui-form layui-label-block-xs" lay-filter="sign-personal-form" style="padding:30px" onsubmit="return false">
+            <div class="layui-form-item">
+                <label class="layui-form-label">签约服务</label>
+                <div class="layui-input-block" style="max-width:400px">
+                    <script type="text/html" template lay-api="getSpkgList" lay-done="layui.form.render('select','sign-personal-form')">
+                        <select name="spkgId" lay-verify="spkgId" >
+                            <option value="0">请选择签约服务包</option>
+                            {{#  layui.each(d, function(index, item){ }}
+                                <option value="{{item.id}}">{{item.title}}</option>
+                            {{# }); }}
+                        </select>
+                    </script>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">签约凭证</label>
+                <div class="layui-input-block">
+                    <div style="margin-bottom: 10px">
+                        <button type="button" class="layui-btn layui-btn-sm layui-btn-primary upload-front"><i class="layui-icon">&#xe64a;</i> 身份证正面照片</button>
+                    </div>
+                    <div>
+                        <button type="button" class="layui-btn layui-btn-sm layui-btn-primary upload-back"><i class="layui-icon">&#xe64a;</i> 身份证反面照片</button>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">真实姓名</label>
+                <div class="layui-input-inline">
+                    <input name="name" maxlength="5" placeholder="请输入姓名" lay-verify="name" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机号码</label>
+                <div class="layui-input-inline">
+                    <input name="phoneNum" maxlength="11" placeholder="请输入签约人手机号" lay-verify="phone" autocomplete="off" class="layui-input" type="tel">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">身份证号</label>
+                <div class="layui-input-inline">
+                    <input name="idCard" maxlength="18" placeholder="请输入签约人身份证号" lay-verify="identity" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">联系人姓名</label>
+                <div class="layui-input-inline">
+                    <input name="contactName" lay-verify="contactName" maxlength="5" placeholder="紧急联系人姓名"   autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">联系人手机</label>
+                <div class="layui-input-inline">
+                    <input name="contactPhone" lay-verify="contactPhone" maxlength="11" placeholder="紧急联系人手机号" lay-verify="contactPhone" autocomplete="off" class="layui-input" type="tel">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="sign-personal-submit">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script>
+layui.use(['admin','helper','form','upload'], function(){
+    var $ = layui.jquery;
+    var admin = layui.admin;
+    var helper = layui.helper;
+    var form = layui.form;
+
+    var view = $('#VIEW-sign-personal');
+    var viewUploadFrontBtn = view.find('.upload-front');
+    var viewUploadBackBtn = view.find('.upload-back');
+
+    var user = admin.data()['user'];
+    var uploadData = {userId:user.userId}
+    var uploadFront = '';
+    var uploadBack = '';
+
+    helper.upload({
+        elem:viewUploadFrontBtn,
+        data:uploadData,
+        done:function(file){
+            uploadFront = file.path
+        }
+    })
+    helper.upload({
+        elem:viewUploadBackBtn,
+        data:uploadData,
+        done:function(file){
+            uploadBack = file.path
+        }
+    })
+
+    form.verify({
+        spkgId:function(val){
+            if(val == '0' || val == '') return '请选择签约服务';
+        },
+        name:function(val,el){
+            if(val.length < 2) return '姓名不少于 2 个字';
+        },
+        identity:function(val){
+            if(!helper.isIdcard(val)) return '请输入正确的身份证号码';
+        },
+        contactName:function(val){
+            if(val.length != 0 && val.length < 2) return '姓名不少于 2 个字';
+        },
+        contactPhone:function(val){
+            var reg = form.config.verify.phone[0];
+            if(val.length != 0 && reg.test(val) == false) return '请输入正确的手机号码';
+        }
+    })
+
+    form.on('submit(sign-personal-submit)',function(data){
+        if(uploadFront == ''){
+            layer.msg('请上传 身份证正面 照片');
+            return false;
+        }
+        if(uploadBack == ''){
+            layer.msg('请上传 身份证反面 照片');
+            return false;
+        }
+        data.field.front = uploadFront;
+        data.field.back = uploadBack;
+        
+        admin.post({
+            api:'signPersonal',
+            data:data.field,
+            success:function(res){
+                switch(res.status){
+                    case 0:
+                        admin.modal.success('已成功添加签约！');
+                        break;
+                    case 3:
+                        layer.msg('数据填写错误');
+                        break;
+                    case 11:
+                        layer.msg('该身份证已和此服务包有签约关系');
+                        break;
+                    case 25:
+                        layer.msg('居民年龄和服务包最小年龄不匹配');
+                        break;
+                    case 26:
+                        layer.msg('居民年龄和服务包最大年龄不匹配');
+                        break;
+                    case 26:
+                        layer.msg('居民性别和服务包要求性别不匹配');
+                        break;
+                    case 105:
+                        layer.msg('服务包已失效，请确认您的服务包处于 “上架中”');
+                        break;
+                }
+            }
+        })
+        return false;
+    })
+})
+</script>

@@ -20,6 +20,10 @@
 		"icon": "layui-icon-chart",
 		"href":"chart/index"
 	},{
+		"title": "表格编辑验证",
+		"icon": "layui-icon-chart",
+		"href":"table/editcheck"
+	},{
 		"title": "Layui",
 		"icon": "layui-icon-website",
 		"target":"__blank",

@@ -1,0 +1,39 @@
+<title>图表</title>
+<div class="layui-breadcrumb layadmin-breadcrumb" lay-filter="layadmin-breadcrumb">
+    <a lay-href="/">首页</a>
+    <a><cite>开始使用</cite></a>
+</div>
+<div class="layui-fluid" id="VIEW-table-editcheck">
+    <table lay-filter="table-editcheck">
+        <thead>
+            <tr>
+                <th lay-data="{field:'phone',edit:'text'}">手机号码</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>13100000000</td>
+            </tr>
+            <tr>
+                <td>13100000001</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    layui.use(['table'], function (table) {
+        //转换静态表格
+        table.init('table-editcheck', {
+            page:false
+        });
+
+        table.on('edit(table-editcheck)', function(obj){
+
+            if(!/(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(obj.value)){
+                layer.msg('请输入正确的手机号码');
+                obj.prev();
+            }
+
+        });
+    });
+</script>
