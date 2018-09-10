@@ -4,10 +4,12 @@
 </script>
 
 <div id="VIEW-login">
-    <div class="layadmin-header"></div>
-    <div class="layadmin-wrap">
+    <div class="login-wrap">
         <div class="layui-container">
             <div class="layui-row">
+                <div class="layui-col-xs12 layui-col-lg4 layui-col-lg-offset4 layui-center">
+                    <div class="layui-logo"><span>Lay<b>ui</b>Admin</span></div>
+                </div>
                 <div class="layui-col-xs12 layui-col-lg4 layui-col-lg-offset4">
                     <div class="layui-form" lay-filter="login-form">
                         <ul class="login-type-tab">
@@ -91,6 +93,7 @@ layui.use(['admin','helper','util','qrcode','form'],function(admin,helper,util,q
     viewTabBtn.click(function(){
         var type = $(this).attr('login-type');
         $(this).addClass('active').siblings().removeClass('active');
+        layer.closeAll();
         loginType[type]();
     })
 

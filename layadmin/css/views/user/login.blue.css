@@ -1,33 +1,14 @@
 #VIEW-login{
     height: 100%;
-    background:#252834;
-    background:#252834;
+    background:#2096ff url(../../../images/login-bg.png?123) center;
+    background-size:auto 100%;
 }
-#VIEW-login .layui-logo{
-    user-select: none;
-    overflow: hidden;
-    position: static;
-    font-size: 30px;
-    color:#d6e0f6;
+#VIEW-login .layadmin-header{
+    background: #f9f9f9;
+    height: 0px;
     width: 100%;
-    padding:0;
-    line-height: 120px;
-    height: 120px;
-    color:#5a8bff;
-    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-    transition: height .8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-#VIEW-login .layui-logo span{
-    font-weight: normal;
-    color:#fff;
-    border-bottom: 1px solid #5a8bff;
-}
-#VIEW-login .layui-logo span b{
-    color:#5a8bff;
-}
-
-
-#VIEW-login .login-wrap{
+#VIEW-login .layadmin-wrap{
     padding-top:120px;
 }
 
@@ -35,8 +16,8 @@
     background: #fff;
     padding:40px;
     padding-bottom:20px;
-    border-radius: 0px;
-    box-shadow: 0 0 30px #000;
+    border-radius: 5px;
+    box-shadow: 0 0 30px #2988e3;
     position: relative;
 }
 #VIEW-login .layui-form-item{
