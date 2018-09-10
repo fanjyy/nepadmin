@@ -106,10 +106,10 @@
                     <h3 class="layui-c-gray">增加弹出层</h3><hr>
                     <p style="margin-bottom: 10px">admin.modal.info / warn / success / error()，使用 layer.alert() 实现，参数与官网一致。</p>
                     <div class="layui-btn-container">
-                        <button class="modal-test layui-btn layui-btn-normal" type="info">信息</button>
-                        <button class="modal-test layui-btn layui-btn-warm" type="warn">警告</button>
-                        <button class="modal-test layui-btn" type="success">成功</button>
-                        <button class="modal-test layui-btn layui-btn-danger" type="error">错误</button>
+                        <button class="modal-test layui-btn layui-btn-normal" data-type="info">信息</button>
+                        <button class="modal-test layui-btn layui-btn-warm" data-type="warn">警告</button>
+                        <button class="modal-test layui-btn" data-type="success">成功</button>
+                        <button class="modal-test layui-btn layui-btn-danger" data-type="error">错误</button>
                     </div>
                     
                 </div>
@@ -160,7 +160,7 @@ admin.routeLeave(function(route,nextPath,next){
         var view = $('#VIEW-module-admin');
         
         view.find('.modal-test').click(function(){
-            var type = $(this).attr('type');
+            var type = $(this).attr('data-type');
             var txt = $(this).html();
             admin.modal[type]('你好，我是' + txt + '框！');
         })

@@ -12,7 +12,7 @@ layui.extend({
     var conf = layui.conf;
     var view = layui.view;
     var $ = layui.jquery;
-    
+
     layui.extend(conf.extend);
     var self = {}
     var windowWidth = $(window).width();
@@ -103,7 +103,6 @@ layui.extend({
                 //加载layout文件
                 view.renderLayout(function(){
                     //重新渲染导航
-                    layui.element.render('nav','layadmin-header');
                     layui.element.render('nav','layadmin-sidebar');
                     //加载视图文件
                     view.render(url);

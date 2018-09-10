@@ -1,7 +1,4 @@
-body,
-html,
-#app,
-#app-body{
+body,html,#app{
     height: 100%;
     background: #f3f3f3;
 }
@@ -29,46 +26,20 @@ a{
 #app-sidebar{
     top:0;
     z-index:1001;
-}
-#app-sidebar,
-#app-sidebar .layui-side-scroll,
-#app-sidebar .layui-nav-tree{
-    width: 240px;
-}
-#app-body,
-#app-header .layui-layout-left{
-    left:240px;
+    width: 200px;
 }
 
 #app-sidebar .layui-logo{
-    overflow: hidden;
     position: static;
-    font-size: 30px;
+    font-size: 16px;
     color:#d6e0f6;
-    width: 100%;
+    width: 200px;
     padding:0;
-    line-height: 120px;
-    height: 120px;
-    color:#5a8bff;
-    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-    transition: height .8s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-#app-sidebar .layui-logo span{
-    font-weight: normal;
-    color:#fff;
-    border-bottom: 1px solid #5a8bff;
+    background: #5a8bff;
 }
 
 
-#app-sidebar .layui-logo span b{
-    color:#5a8bff;
-}
-
-#app-sidebar .layui-logo i{
-    font-style: normal;
-    border-bottom: 1px solid #aaa;
-}
-
+#app-sidebar .layui-logo,
 #app-header,
 #app-header .layui-nav .layui-nav-item{
     line-height: 50px;
@@ -79,25 +50,19 @@ a{
     font-size: 12px !important;
 }
 
-#app-sidebar{
-    background-image: -webkit-radial-gradient(25% 25%, red, blue);
-}
-#app-sidebar{
-    background: #252834;
-}
+#app-sidebar,
 #app-sidebar .layui-nav{
-    background: transparent;
+    background: #344058;
 }
 #app-sidebar .layui-nav .layui-nav-item a:hover{
     background: transparent;
 }
 #app-sidebar .layui-nav-tree .layui-nav-bar{
     background: #5a8bff;
-    background: linear-gradient( #5a8bff 10%, #547ee0 85%);
-    width: 3px;
+    width: 1px;
 }
 #app-sidebar .layui-nav-itemed .layui-nav-child{
-    background-color: #252834 !important;
+    background-color: #263147 !important;
 }
 #app-sidebar .layui-nav-itemed .layui-nav-child a{
     font-size: 12px;
@@ -107,7 +72,7 @@ a{
 #app-sidebar .layui-nav-tree .layui-nav-child dd.layui-this a, 
 #app-sidebar .layui-nav-tree .layui-this, 
 #app-sidebar .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover{
-    background: #1c1f27;
+    background: #5a8bff;
     color:#fff;
 }
 
@@ -129,21 +94,6 @@ a{
     display: inline-block;
     width: 25px;
     margin-right: 8px;
-}
-#app-sidebar .layui-nav .layui-nav-item a{
-    user-select: none;
-    font-size: 16px;
-    line-height: 64px;
-    height: 64px;
-}
-#app-sidebar .layui-nav .layui-nav-item dd a{
-    line-height: 54px;
-    height: 54px;
-    font-size: 14px;
-}
-
-#app-sidebar .layui-nav .layui-nav-item a .layui-icon{
-    font-size: 18px;
 }
 
 #app-header{
@@ -182,7 +132,6 @@ a{
     top:40%;
     right: 0;
 }
-
 .layui-badge{
 }
 .layui-bg-green{
@@ -274,6 +223,9 @@ a{
 /*
     修改 app-body 的样式
 */
+#app-body{
+    
+}
 #app-body > .layui-fluid{
 }
 #app-body > .layui-fluid > .layui-table-view,
@@ -289,22 +241,19 @@ a{
     width: 52px;
 }
 .layadmin-sidebar-shrink #app-sidebar .layui-nav-itemed{
-    background-color: #1c1f27 !important;
+    background-color: #263147 !important;
 }
 .layadmin-sidebar-shrink #app-sidebar .layui-nav-item .layui-nav-child{
     display: none;
 }
-.layadmin-sidebar-shrink #app-sidebar .layui-logo{
-    height: 0px;
-}
-
-.layadmin-sidebar-shrink #app-body,
+.layadmin-sidebar-shrink .layui-body,
 .layadmin-sidebar-shrink #app-header .layui-layout-left{
     left:56px;
 }
 .layadmin-sidebar-shrink #app-header .layui-icon-shrink-right:before{
     content: '\e66b';
 }
+
 /*
 覆盖 layui 本来的样式
 */
@@ -381,7 +330,7 @@ textarea::-webkit-input-placeholder{
     background-color: #fff;
 }
 .layui-btn-primary:hover{
-    border-color:#aaa;
+    border-color:#aeb5c3;
 }
 .layui-btn-warm{
     background-color:#FFB800;
@@ -401,7 +350,7 @@ textarea::-webkit-input-placeholder{
 }
 .layui-layer-prompt .layui-layer-btn a,
 .layui-layer-admin-modal .layui-layer-btn a{
-    border-radius: 3px;
+    border-radius: 6px;
     height: 32px;
     line-height: 32px;
 }
@@ -417,7 +366,7 @@ textarea::-webkit-input-placeholder{
 
 .layui-layer-admin-modal,
 .layui-layer-admin-page{
-    border-radius: 3px;
+    border-radius: 6px;
 }
 .layui-layer-admin-page .layui-layer-setwin .layui-layer-close2{
     font-family: layui-icon;

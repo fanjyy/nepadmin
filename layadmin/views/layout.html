@@ -2,12 +2,13 @@
     
     <div class="layui-header" id="app-header">
         <script type="text/html" template lay-done="layui.element.render('nav','layadmin-header')">
-        <ul class="layui-nav layui-layout-left" lay-filter="layadmin-header-left">
+        <ul class="layui-nav layui-layout-left" lay-filter="layadmin-header">
             <li class="layui-nav-item" lay-unselect>
                 <a layadmin-event="flexible" title="侧边伸缩">
                     <i class="layui-icon layui-icon-shrink-right"></i>
                 </a>
             </li>
+            <!--
             <li class="layui-nav-item layui-hide-xs" lay-unselect>
                 <a layadmin-event="prev" title="返回上一页">
                     <i class="layui-icon layui-icon-prev"></i>
@@ -18,7 +19,6 @@
                     <i class="layui-icon layui-icon-refresh-3"></i>
                 </a>
             </li>
-            <!--
             <li class="layui-nav-item layui-hide-xs" lay-unselect>
                 <a href="https://www.layui.com/" target="_blank" title="Layui">
                     <i class="layui-icon layui-icon-website"></i>
@@ -26,7 +26,7 @@
             </li>
             -->
             <li class="layui-nav-item layui-hide-xs" lay-unselect>
-                <input type="text" placeholder="搜索..." autocomplete="off" class="layui-input layui-search-input" layadmin-event="serach">
+                <input type="text" placeholder="Search / 搜索 ..." autocomplete="off" class="layui-input layui-search-input" layadmin-event="serach">
             </li>
         </ul>
         <ul class="layui-nav layui-layout-right" lay-filter="layadmin-header">
@@ -49,7 +49,7 @@
             </li>
             <li class="layui-nav-item" lay-unselect>
                 <a class="layui-hide-xs">
-                    早上好，{{ layui.admin.data()['user'].username  }}
+                    欢迎回来，{{ layui.admin.data()['user'].username  }}
                     <i class="layui-icon layui-icon-triangle-d"></i>
                 </a>
                 <a class="layui-hide-sm layui-show-xs-inline-block">
@@ -57,11 +57,7 @@
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a>个人信息</a></dd>
-                    <dd><a>工作履历</a></dd>
-                    <hr/>
-                    <dd><a>test 1</a></dd>
-                    <dd><a>test 2</a></dd>
-                    <dd><a>test 3</a></dd>
+                    <dd><a>认证信息</a></dd>
                     <hr/>
                     <dd><a href="javascript:void(0);" layadmin-event="logout">退出登录</a></dd>
                 </dl>
@@ -73,7 +69,7 @@
     <!-- 侧边菜单 -->
     <div class="layui-side" id="app-sidebar">
         <div class="layui-side-scroll">
-            <div class="layui-logo"><b>Layui</b> Admin</div>
+            <div class="layui-logo"><span>Lay<b>ui</b>Admin</span></div>
             <script type="text/html" template lay-api="getMenu" lay-done="layui.element.render('nav','layadmin-sidebar')">
             <ul class="layui-nav layui-nav-tree" lay-filter="layadmin-sidebar" lay-shrink="all">
                 {{#

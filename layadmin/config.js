@@ -11,6 +11,8 @@ layui.define(function (exports) {
         css: layui.cache.base + "css/",
         //视图所在目录
         views: layui.cache.base + 'views/',
+        //显示页面加载条
+        viewLoadBar:false,
         //公用加载的样式
         style: [
             layui.cache.base + "css/admin.css"

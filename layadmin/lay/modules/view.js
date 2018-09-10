@@ -1,8 +1,12 @@
 //视图路由
-layui.define(['jquery','laytpl','element','form'],function(exports){
+layui.extend({
+    loadBar:'lay/modules/loadBar'
+}).define(['jquery','laytpl','element','form','loadBar'],function(exports){
     var $ = layui.jquery;
     var laytpl = layui.laytpl;
     var conf = layui.conf;
+    var loadBar = layui.loadBar;
+
     var self = {
         ie8:navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE8.0" ? true : false,
         container:$('#'+conf.container),
@@ -83,6 +87,7 @@ layui.define(['jquery','laytpl','element','form'],function(exports){
         return str;
     }
     self.loadHtml = function(url,callback){
+        loadBar.start();
         var queryIndex = url.indexOf('?');
         if(queryIndex !== -1) url = url.slice(0,queryIndex);
 
@@ -94,9 +99,11 @@ layui.define(['jquery','laytpl','element','form'],function(exports){
             dataType:'html',
             success:function(html){
                 callback(html);
+                loadBar.finish();
             },
             error:function(res){
                 self.log("请求视图文件异常\n文件路径："+ url +"\n状态：" + res.status);
+                loadBar.error();
             }
         })
     }
