@@ -11,6 +11,7 @@ layui.extend({
     POPUP_DATA = {}
     var conf = layui.conf;
     var view = layui.view;
+    var element = layui.element;
     var $ = layui.jquery;
 
     layui.extend(conf.extend);
@@ -99,17 +100,22 @@ layui.extend({
         }
         
         if($.inArray(url,conf.indPage) === -1){
+            var loadRenderPage = function(url){
+                view.render(url,function(params){
+                    
+                });
+            }
             if(view.containerBody == null){
                 //加载layout文件
                 view.renderLayout(function(){
                     //重新渲染导航
-                    layui.element.render('nav','layadmin-sidebar');
+                    element.render('nav','layadmin-sidebar');
                     //加载视图文件
-                    view.render(url);
+                    loadRenderPage(url);
                 });
             }else{
                 //layout文件加载，直接加载视图文件
-                view.render(url);
+                loadRenderPage(url);
             }
         }else{
             //加载单页面
@@ -218,7 +224,7 @@ layui.extend({
 
                 view.parse(layer);
                 //重新对面包屑进行渲染
-                layui.element.render('breadcrumb','layadmin-breadcrumb');
+                element.render('breadcrumb','layadmin-breadcrumb');
             }
 
             params = $.extend(defaultParams,params);
@@ -238,7 +244,7 @@ layui.extend({
         var device = layui.device();
         if(device.weixin || device.android || device.ios){
             //点击空白处关闭侧边栏
-            $(document).on('click','#app-body',function(){
+            $(document).on('click','#'+conf.containerBody,function(){
                 if(!view.container.hasClass(self.shrinkCls)){
                     self.flexible(false);
                 }

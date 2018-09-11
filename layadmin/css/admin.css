@@ -278,7 +278,9 @@ a{
 #app-body > .layui-fluid > .layui-card > .layui-table-view{
     margin:0;
 }
-
+#app-body .layadmin-body-tabs{
+    margin:0;
+}
 /*
     修改 侧边导航 收缩起来的样式
 */
