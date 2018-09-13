@@ -1,7 +1,8 @@
 //视图路由
 layui.extend({
-    loadBar:'lay/modules/loadBar'
-}).define(['jquery','laytpl','element','form','loadBar'],function(exports){
+    loadBar:'lay/modules/loadBar',
+    menu:'lay/modules/menu',
+}).define(['jquery','laytpl','element','form','loadBar','menu'],function(exports){
     var $ = layui.jquery;
     var laytpl = layui.laytpl;
     var conf = layui.conf;
@@ -10,7 +11,9 @@ layui.extend({
     var self = {
         ie8:navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE8.0" ? true : false,
         container:$('#'+conf.container),
-        containerBody:null
+        containerBody:null,
+        tabMenuTplId:'TPL-app-tabsmenu',
+        tabData:[]
     }
     /**
      * 字符串是否含有html标签的检测
@@ -107,35 +110,174 @@ layui.extend({
             }
         })
     }
+
+    self.fillHtml = function(url,htmlElem,modeName){
+        var title = htmlElem.find('title').text() || '';
+        if(title){
+            self.setTitle(title);
+            htmlElem.find('title').remove();
+        }
+        var container = self.containerBody || self.container;
+
+        container[modeName](htmlElem.html());
+
+        if(modeName == 'html'){
+            self.parse(container);
+        }
+        else if(modeName == 'prepend'){
+            self.parse(htmlElem);
+        }
+        //重新对面包屑进行渲染
+        layui.element.render('breadcrumb','layadmin-breadcrumb');
+
+        return {title:title,url:url,htmlElem:htmlElem};
+    }
+    //解析普通文件
     self.render = function(url,callback){
         if(!url || url == '/') url = conf.entry;
-
         self.loadHtml(url,function(html){
-
             var htmlElem = $("<div>" + html + "</div>");
-            var title = htmlElem.find('title').text() || '';
-            
-            if(title){
-                self.setTitle(title);
-                htmlElem.find('title').remove();
-            }
-
-            var container = self.containerBody || self.container;
-            container.html(htmlElem.html());
-            self.parse(container)
-            
-
-            //重新对面包屑进行渲染
-            layui.element.render('breadcrumb','layadmin-breadcrumb');
-
-            if($.isFunction(callback)){
-                callback({
-                    title: title,
-                    body: html
-                })
-            }
-
+            var params = self.fillHtml(url,htmlElem,'html');
+            if($.isFunction(callback)) callback(params);
         })
+    }
+
+    self.tab = {
+        minLeft:null,
+        maxLeft:null,
+        menu:'.layadmin-tabs-menu',
+        next:'.layadmin-tabs-next',
+        prev:'.layadmin-tabs-prev',
+        step:200,
+        init:function(){
+            var tab = this;
+
+            layui.menu.render({
+                elem:'.layadmin-tabs-down',
+                click:function(e){
+                    console.log(e);
+                },
+                options:[{
+                    name:'all',
+                    title:'关闭当前选项卡'
+                },{
+                    name:'current',
+                    title:'关闭所有选项卡'
+                }]
+            });
+
+
+            $(document).on('click','.layadmin-tabs-btn',function(e){
+                var url = $(this).attr('lay-url');
+                if($(e.target).hasClass('layadmin-tabs-close')){
+                    tab.del(url);
+                }else{
+                    var type = $(this).attr('data-type');
+                    if(type == 'page'){
+                        tab.change(url);
+                    }
+                    else if(type == 'prev' || type == 'next'){
+                        tab.menuElem = $(tab.menu);
+                        var menu = tab.menuElem;
+                        tab.minLeft = tab.minLeft || parseInt(menu.css('left'));
+                        tab.maxLeft = tab.maxLeft || $(tab.next).offset().left;
+                        
+                        var left = 0;
+                        if(type == 'prev'){
+                            left = parseInt(menu.css('left')) + tab.step;
+                            if(left >= tab.minLeft) left = tab.minLeft;
+                        }else{
+                            left = parseInt(menu.css('left')) - tab.step;
+                            var last = menu.find('li:last');
+                            if(last.offset().left + last.width() < tab.maxLeft) return
+                        }
+                        menu.css('left', left);
+                    }
+                    else if(type == 'down'){
+
+
+
+                    }
+                }
+            });
+
+        },
+        has:function(url){
+            var exists = false;
+            layui.each(self.tabData,function(i,data){
+                if(data.url == url) return exists = true;
+            })
+            return exists;
+        },
+        add:function(data){
+            if(!data.url || this.has(data.url)) return false;
+            self.tabData.push(data);
+            layui.admin.render(self.tabMenuTplId);
+            this.change(data.url);
+            return true;
+        },
+        del:function(url){
+            if(self.tabData.length > 1){
+
+                layui.each(self.tabData,function(i,data){
+                    if(data.url == url){
+                        self.tabData.splice(i,1);
+                        return true;
+                    }
+                })
+
+                var layUrl = '[lay-url="'+url+'"]';
+                var thisBody = $('#'+conf.containerBody + ' > .layadmin-tabs-item'+layUrl);
+                var thisMenu = $(this.menu).find(layUrl);
+
+                thisMenu.remove();
+                thisBody.remove();
+
+                if(thisMenu.hasClass('layadmin-tabs-active')){
+                    $(this.menu + ' li:last').click();
+                }
+            }
+        },
+        change:function(url){
+            if(this.has(url)){
+                var layUrl = '[lay-url="'+url+'"]';
+                var menu = $(this.menu);
+                var thisMenu = menu.find(layUrl);
+                thisMenu.addClass('layadmin-tabs-active').siblings().removeClass('layadmin-tabs-active');
+
+                this.minLeft = this.minLeft || parseInt(menu.css('left'));
+
+                var offsetLeft = thisMenu.offset().left;
+                if(offsetLeft - this.minLeft - $(this.next).width() < 0){
+                    $(this.prev).click();
+                }
+                else if(offsetLeft - this.minLeft > menu.width()*0.5){
+                    $(this.next).click();
+                }
+                
+                $('#'+conf.containerBody + ' > .layadmin-tabs-item'+layUrl).show().siblings().hide();
+                $(document).scrollTop(-100);
+                return true;
+            }
+            return false;
+        },
+        onChange:function(){
+
+        },
+    };
+
+    //加载 tab
+    self.renderTabs = function(url,callback){
+        var tab = self.tab;
+        if(!url || url == '/') url = conf.entry;
+        if(tab.change(url) === false){
+            self.loadHtml(url,function(html){
+                var htmlElem = $("<div><div class='layadmin-tabs-item' lay-url='"+url+"'>" + html + "</div></div>");;
+                var params = self.fillHtml(url,htmlElem,'prepend');
+                tab.add({url:url,title:params.title});
+                if($.isFunction(callback)) callback(params);
+            })
+        }
     }
     //加载layout文件
     self.renderLayout = function(callback,url){
@@ -143,6 +285,11 @@ layui.extend({
         self.containerBody = null;
         self.render(url,function(res){
             self.containerBody = $('#'+conf.containerBody);
+
+            if(conf.viewTabs == true){
+                self.containerBody.addClass('layadmin-tabs-body');
+            }
+
             layui.admin.appBody = self.containerBody;
             if($.isFunction(callback)) callback();
         });

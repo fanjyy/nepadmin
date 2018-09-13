@@ -197,18 +197,18 @@ layui.use(['admin','helper','util','qrcode','form'],function(admin,helper,util,q
     form.on('submit(login-submit)',function(data){
         var loading = $(this).find('.layui-icon');
         if(loading.is(":visible")) return;
-        loading.show();
         
+        loading.show();
+
         admin.get({
             api:'login',
             data:data.field,
             success:function(res){
                 admin.login(res.data.token,{ user:res.data.user },data.field.autoLogin != 'on');
-                console.log(res);
                 admin.navigate('/');
             },
             complete:function(){
-                loading.hide();
+                //loading.hide();
             }
         });
         return false;

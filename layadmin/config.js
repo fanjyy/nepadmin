@@ -51,8 +51,6 @@ layui.define(function (exports) {
         tokenName: 'token',
         //是否要检查登录状态， 使用tokenName进行登录验证，不通过的话会返回 loginPage 页面
         loginCheck:true,
-        //检查登录状态之后，是否在登录页URL 保存上一页的地址参数， 如果为 false 不保存
-        loginCheckName:false,
         //自定义响应字段
         response: {
             //数据状态的字段名称

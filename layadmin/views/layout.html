@@ -1,4 +1,4 @@
-<div class="layui-layout layui-layout-admin">
+<div class="layui-layout layui-layout-admin" >
     
     <div class="layui-header" id="app-header">
         <script type="text/html" template lay-done="layui.element.render('nav','layadmin-header')">
@@ -65,7 +65,26 @@
         </ul>
         </script>
     </div>
- 
+
+    <script type="text/html" id="TPL-app-tabsmenu" template>
+    {{# if(layui.conf.viewTabs == true){ }}
+    <div class="layadmin-tabs-wrap">
+        <span class="layadmin-tabs-btn layadmin-tabs-action layadmin-tabs-prev" data-type="prev">
+            <i class="layui-icon layui-icon-left"></i>
+        </span>
+        <span class="layadmin-tabs-btn layadmin-tabs-action layadmin-tabs-next" data-type="next">
+            <i class="layui-icon layui-icon-right"></i>
+        </span>
+        <span class="layadmin-tabs-btn layadmin-tabs-action layadmin-tabs-down" data-type="down">
+            <i class="layui-icon layui-icon-close"></i>
+        </span>
+        <ul class="layadmin-tabs-menu">
+            {{# layui.each(layui.admin.tabData,function(i,item){ }}<li data-type="page" class="layadmin-tabs-btn layadmin-tabs-active" lay-url="{{item.url}}"><i class="layadmin-tabs-ball"></i>{{ item.title }}<b class="layui-icon layui-icon-close layadmin-tabs-close"></b></li>{{# }) }}
+        </ul>
+    </div>
+    {{# } }}
+    </script>
+
     <!-- 侧边菜单 -->
     <div class="layui-side" id="app-sidebar">
         <div class="layui-side-scroll">

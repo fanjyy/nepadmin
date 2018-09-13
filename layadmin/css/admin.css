@@ -1,7 +1,7 @@
 body,
 html,
 #app,
-#app-body{
+.layui-body{
     height: 100%;
     background: #f3f3f3;
 }
@@ -35,8 +35,10 @@ a{
 #app-sidebar .layui-nav-tree{
     width: 240px;
 }
-#app-body,
-#app-header .layui-layout-left{
+.layui-body,
+#app-header .layui-layout-left,
+.layadmin-tabs-wrap .layadmin-tabs-menu,
+.layadmin-tabs-wrap .layadmin-tabs-action{
     left:240px;
 }
 
@@ -91,8 +93,9 @@ a{
 }
 #app-sidebar .layui-nav-tree .layui-nav-bar{
     background: #5a8bff;
-    background: linear-gradient( #5a8bff 10%, #547ee0 85%);
     width: 3px;
+    left:auto;
+    right: 0;
 }
 #app-sidebar .layui-nav-itemed .layui-nav-child{
     background-color: #252834 !important;
@@ -181,6 +184,112 @@ a{
     right: 0;
 }
 
+
+.layadmin-tabs-wrap{
+    z-index: 999;
+    position: fixed;
+    top:50px;
+    white-space:nowrap;
+    background: #fff;
+    padding:0 80px 0 30px;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 12px;
+    box-shadow:0 0 10px #eee;
+}
+.layadmin-tabs-wrap .layadmin-tabs-menu{
+    position: relative;
+    transition: left .3s;
+}
+.layadmin-tabs-wrap .layadmin-tabs-menu li,
+.layadmin-tabs-wrap .layadmin-tabs-action{
+    text-align: center;
+    border-right: 1px solid #f0f0f0;
+    background: #fff;
+    cursor: pointer;
+    height: 36px;
+    line-height: 36px;
+    transition: all .3s ease;
+}
+.layadmin-tabs-wrap .layadmin-tabs-action:hover{
+    background: #f9f9f9;
+}
+.layadmin-tabs-wrap .layadmin-tabs-menu li:hover{
+    color:#666;
+    background: #f6f6f6;
+}
+.layadmin-tabs-wrap .layadmin-tf6f6f6abs-menu li:hover .layadmin-tabs-ball{
+    background: #d6dee6;
+}
+.layadmin-tabs-wrap .layadmin-tabs-menu li{
+    display: inline-block;
+    padding-left:25px;
+    line-height: 38px;
+    color:#999;
+    user-select: none;
+}
+.layadmin-tabs-wrap .layadmin-tabs-ball{
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    background:#e8eaec;
+    vertical-align: middle;
+    margin-right: 6px;
+    position: relative;
+    top:-1px;
+    transition: background .3s ease;
+}
+.layadmin-tabs-wrap li.layadmin-tabs-active{
+    color: #333;
+}
+.layadmin-tabs-wrap li.layadmin-tabs-active:hover .layadmin-tabs-ball,
+.layadmin-tabs-wrap li.layadmin-tabs-active .layadmin-tabs-ball{
+    background:#5a8bff;
+}
+.layadmin-tabs-wrap .layadmin-tabs-close{
+    color: #e8eaec;
+    font-size: 10px;
+    margin-left: 10px;
+    height: 36px;
+    width: 30px;
+    display: inline-block;
+    transition: color .3s ease;
+}
+.layadmin-tabs-wrap .layadmin-tabs-close:hover{
+    color: #333;
+}
+
+.layadmin-tabs-wrap .layadmin-tabs-action{
+    display: inline-block;
+    position: absolute;
+    top:0;
+    left: 240px;
+    z-index:1;
+    width: 30px;
+    color: #d2d4d5;
+}
+.layadmin-tabs-wrap .layadmin-tabs-action:hover{
+    color:#333;
+}
+.layadmin-tabs-wrap .layadmin-tabs-next{
+    left:auto;
+    right: 31px;
+    border-left: 1px solid #f0f0f0;
+}
+.layadmin-tabs-wrap .layadmin-tabs-down{
+    left:auto;
+    right: 0;
+}
+.layadmin-tabs-wrap .layadmin-tabs-down{
+    
+}
+
+
+.layadmin-tabs-prev{
+}
+
+
 .layui-badge{
 }
 .layui-bg-green{
@@ -248,6 +357,10 @@ a{
     top:50px;
     bottom:0px;
 }
+.layui-layout-admin .layadmin-tabs-body{
+    top:86px;
+    float: left;
+}
 
 #app-sidebar,
 #app-header .layui-layout-left,
@@ -272,15 +385,16 @@ a{
 /*
     修改 app-body 的样式
 */
-#app-body > .layui-fluid{
+.layui-body > .layui-fluid{
 }
-#app-body > .layui-fluid > .layui-table-view,
-#app-body > .layui-fluid > .layui-card > .layui-table-view{
+.layui-body > .layui-fluid > .layui-table-view,
+.layui-body > .layui-fluid > .layui-card > .layui-table-view{
     margin:0;
 }
-#app-body .layadmin-body-tabs{
+.layui-body .layadmin-body-tabs{
     margin:0;
 }
+
 /*
     修改 侧边导航 收缩起来的样式
 */
@@ -298,8 +412,10 @@ a{
     height: 0px;
 }
 
-.layadmin-sidebar-shrink #app-body,
-.layadmin-sidebar-shrink #app-header .layui-layout-left{
+.layadmin-sidebar-shrink .layui-body,
+.layadmin-sidebar-shrink #app-header .layui-layout-left,
+.layadmin-sidebar-shrink .layadmin-tabs-wrap .layadmin-tabs-menu,
+.layadmin-sidebar-shrink .layadmin-tabs-wrap .layadmin-tabs-prev{
     left:56px;
 }
 .layadmin-sidebar-shrink #app-header .layui-icon-shrink-right:before{
@@ -625,4 +741,72 @@ textarea::-webkit-input-placeholder{
         display: none;
     }
     
+}
+
+/*箭头向上*/
+.layadmin-arrow-up{
+    width:0; 
+    height:0; 
+    border-left:8px solid transparent;
+    border-right:8px solid transparent;
+    border-bottom:8px solid #fff;
+}
+
+.layui-menu{
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:999;
+}
+
+.layui-menu .layadmin-arrow-up{
+    position: absolute;
+    top:-6px;
+    left:50%;
+    margin-left:-8px;
+}
+.layui-menu-right .layadmin-arrow-up{
+    left:auto;
+    right: 10px;
+}
+.layui-menu .layui-menu-select{
+    background: #fff;
+    color:#333;
+    border-radius: 3px;
+    border:1px solid #f1f1f1;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+}
+.layui-menu .layui-menu-option{
+    position: relative;
+    height: 38px;
+    line-height: 38px;
+    padding-left:15px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.layui-menu .layui-menu-option .layui-icon{
+    margin-right: 10px;
+    font-size: 14px;
+}
+.layui-menu .layui-menu-option .layui-menu-select{
+    position: absolute;
+    top:0;
+    display: none;
+}
+.layui-menu .layui-menu-option:hover{
+    background: #f6f9ff;
+    color: #5a8bff;
+}
+.layui-menu .layui-menu-option:hover > .layui-menu-select{
+    display: block;
+}
+.layui-menu .layui-icon-right{
+    float: right;
+    position: absolute;
+    right: 0;
+    top:0;
+    color: #aaa;
+}
+.layui-menu .layui-menu-title{
+    padding-right: 20px;
 }

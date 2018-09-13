@@ -19,6 +19,7 @@ layui.extend({
     var windowWidth = $(window).width();
     
     self.route = layui.router();
+    self.tabData = view.tabData;
     self.api = layui.api;
     self.ie8 = view.ie8;
     self.get  = view.request;
@@ -48,10 +49,7 @@ layui.extend({
         self.loginToken = null;
 
         var url = conf.loginPage;
-        if(conf.loginCheckName) url = url + '/'+conf.loginCheckName+'='+encodeURIComponent(location.href);
-        
         self.navigate(url);
-        //self.navigate(conf.loginPage+'/back_url='+location.href);
     }
     self.login = function(token,data,isSession){
         self.data({
@@ -101,20 +99,26 @@ layui.extend({
         
         if($.inArray(url,conf.indPage) === -1){
             var loadRenderPage = function(url){
-                view.render(url,function(params){
-                    
-                });
+                if(conf.viewTabs == true){
+                    view.renderTabs(url);
+                }else{
+                    view.render(url);
+                }
             }
             if(view.containerBody == null){
                 //加载layout文件
                 view.renderLayout(function(){
                     //重新渲染导航
                     element.render('nav','layadmin-sidebar');
+                    
+                    //綁定 tab 事件
+                    if(conf.viewTabs == true) view.tab.init();
+
                     //加载视图文件
                     loadRenderPage(url);
                 });
             }else{
-                //layout文件加载，直接加载视图文件
+                //layout文件已加载，加载视图文件
                 loadRenderPage(url);
             }
         }else{
@@ -286,7 +290,9 @@ layui.extend({
         }
     });
 
-    
+
+
+
     //回车提交 form 表单
     $(document).on('keydown',function(e) {
         var ev = document.all ? window.event : e;
