@@ -26,9 +26,9 @@ layui.define(function (exports) {
         //视图文件后缀名
         engine: '.html', 
         eventName:'nepadmin-event',
-        name: 'nep-admin',
+        name: 'nepadmin',
         //本地存储表名
-        tableName: 'nep-admin', 
+        tableName: 'nepadmin', 
         //作用于 table upload request 时带上的 headers
         requestHeaders:{
             'PP-User-Agent':'os=3;ver=0.0.1;ctype=2;imei='
