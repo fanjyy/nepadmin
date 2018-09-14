@@ -1,0 +1,101 @@
+<div class="layui-breadcrumb nepadmin-breadcrumb" lay-filter="nepadmin-breadcrumb">
+    <a lay-href="/">首页</a>
+    <a>签约</a>
+    <a><cite>在线签约</cite></a>
+</div>
+<div class="layui-fluid" id="VIEW-sign-online">
+    <div class="layui-card">
+
+        <div class="layui-card-body">
+            <div class="layui-form" lay-filter="sign-online-filter">
+                <div class="layui-row layui-col-space10">
+                    <div class="layui-col-md3 layui-col-xs12">
+                        <script type="text/html" template lay-api="getSpkgList" lay-done="layui.form.render('select','sign-online-filter')">
+                            <select name="spkgId">
+                                <option value="">按服务包</option>
+                                {{#  layui.each(d, function(index, item){ }}
+                                    <option value="{{item.id}}">{{item.title}}</option>
+                                {{# }); }}
+                            </select>
+                        </script>
+                    </div>
+                    <div class="layui-col-md6 layui-col-xs12 layui-relative">
+                        <input class="layui-input" type="text" name="code" placeholder="请输入名字或身份证号" autocomplete="off">
+                        <button lay-submit lay-filter="sign-online-filter-submit" class="layui-btn layui-btn-normal layui-absolute-right" style="top:5px"><i class="layui-icon">&#xe615;</i> 搜索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table lay-filter="sign-online-table"></table>
+    </div>
+</div>
+<script>
+layui.use(['admin','form','table','util','helper'], function(){
+    var table = layui.table;
+    var admin = layui.admin;
+    var form = layui.form;
+    var $ = layui.jquery;
+    var view = $('#VIEW-sign-online');
+    var tableFilter = 'sign-online-table';
+
+    var tableCls = table.render({
+        api: 'getSpkgApplications',
+        where:{
+            status:2
+        },
+        elem: '[lay-filter="'+tableFilter+'"]',
+        height:'full-175',
+        cols:[[
+            {field: 'name', title: '姓名', width:100,templet:'<span>{{ d.user.name }}</span>'},
+            {field: 'sex', align:'center', title: '性别', width:58, templet:'<span>{{# if(d.user.gender == 1){ }} <span class="layui-c-blue">男</span> {{# }else{ }} <span class="layui-c-red">女</span> {{# } }}</span>'},
+            {field: 'age', title: '年龄', width:66,templet:'<span>{{ layui.helper.getAge(d.user.birthDay) }} 岁</span>'},
+            {field: 'servicepack', title: '服务包名称',templet:'<span><span class="layui-color-cyan">{{d.spkg.title}}</span></span>'} ,
+            {field: 'time', title: '申请时间',width: 142,templet:'<p><span class="layui-color-gray" style="font-size:12px" title="{{d.applyTime}}">{{layui.util.timeAgo(d.applyTime)}}</span></p>'},
+            {field: 'action', title: '操作', width:130, templet:'<div><a lay-event="agree" class="layui-btn layui-btn-xs">同意</a><a lay-event="refuse" class="layui-btn layui-btn-primary layui-btn-xs">拒绝</a></div>'}
+        ]]
+    });
+
+    form.on('submit(sign-online-filter-submit)',function(data){
+        data.field.status = 2;
+        tableCls.reload({
+            where:data.field
+        });
+    })
+
+    table.on('tool('+tableFilter+')', function(e){
+        var ajaxData = { spkgApplyId:e.data.applId };
+        if(e.event == 'agree'){
+            admin.post({
+                api:'agreeApplication',
+                data:ajaxData,
+                success:function(res){
+                    if(res.status == 0){
+                        e.del();
+                        admin.modal.success('恭喜您！ 您已成功签约一位新患者<br/>为患者服务前请仔细阅读<a class="layui-c-blue" href="#">《服务包工作流程》</a>');
+                    }
+                }
+            })
+        }
+        else if(e.event == 'refuse'){
+            admin.modal.warning('签约申请拒绝之后不能恢复，您真的要这样做吗？',{
+                title:'拒绝签约',
+                btn: ['是的，我要拒绝','取消'],
+                yes:function(index){
+                    admin.post({
+                        api:'disagreeApplication',
+                        data:ajaxData,
+                        success:function(res){
+                            if(res.status == 0){
+                                e.del();
+                                layer.close(index);
+                            }
+                        }
+                    })
+                }
+            });
+        }
+    })
+    
+})
+</script>

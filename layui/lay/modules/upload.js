@@ -517,7 +517,7 @@ layui.define(['layer','view'],function(exports){
       options.elem.data('haveEvents', true);
     };
     
-    //layadmin 增加 createOptions 函数创建 options
+    //nepadmin 增加 createOptions 函数创建 options
     function createOptions(options){
         //if(!options.url && !options.api) options.api = 'upload';
         var error = options.error || '';
@@ -534,7 +534,7 @@ layui.define(['layer','view'],function(exports){
 
     //核心入口  
     upload.render = function(options){
-        //layadmin 增加 createOptions 函数创建 options
+        //nepadmin 增加 createOptions 函数创建 options
         options = createOptions(options);
 
       var inst = new Class(options);

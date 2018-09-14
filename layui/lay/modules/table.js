@@ -18,7 +18,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util','view','conf'], funct
     ,hint = layui.hint()
     ,device = layui.device()
 
-    //layadmin 增加扩展支持
+    //nepadmin 增加扩展支持
     ,view = layui.view
     ,conf = layui.conf
   
@@ -220,7 +220,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util','view','conf'], funct
       that.render();
     };
     
-    //layadmin 增加 createOptions 函数创建 options
+    //nepadmin 增加 createOptions 函数创建 options
     function createOptions(options){
         var req = view.createRequestParams(options);
         var def = $.extend({},conf.table);
@@ -519,7 +519,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util','view','conf'], funct
       var that = this;
       if(that.config.data && that.config.data.constructor === Array) delete that.config.data;
       that.config = $.extend({}, that.config, options);
-        //layadmin 增加 createOptions 函数创建 options
+        //nepadmin 增加 createOptions 函数创建 options
         that.config = createOptions(that.config);
       that.render();
     };
@@ -1392,7 +1392,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util','view','conf'], funct
         ,field = othis.parent().data('field')
         ,index = othis.parents('tr').eq(0).data('index')
 
-        //layadmin 记录上一次的VALUE
+        //nepadmin 记录上一次的VALUE
         ,cacheVal = table.cache[that.key][index][field]
         
         ,data = table.cache[that.key][index];
@@ -1400,7 +1400,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util','view','conf'], funct
         data[field] = value; //更新缓存中的值
         
         /*
-        layadmin 增加 edit 返回的参数 prev，实现回退
+        nepadmin 增加 edit 返回的参数 prev，实现回退
 
         layui.event.call(this, MOD_NAME, 'edit('+ filter +')', commonMember.call(this, {
           value: value
@@ -1745,7 +1745,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util','view','conf'], funct
    
     //核心入口
     table.render = function(options){
-        //layadmin 增加 createOptions 函数创建 options
+        //nepadmin 增加 createOptions 函数创建 options
         options = createOptions(options);
 
 

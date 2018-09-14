@@ -1,4 +1,4 @@
-# layuiAdmin
-Layui 单页面后台模版
+# nep-admin
+基于 layui 单页面后台模版
 
-### [在线预览](https://fanjyy.github.io/layuiAdmin/#/)
+### [在线预览](https://fanjyy.github.io/nep-admin/#/)
