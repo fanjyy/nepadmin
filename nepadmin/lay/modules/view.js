@@ -85,16 +85,17 @@ layui.extend({
     self.clear = function(){
         self.containerBody.html('');
     }
-    self.delHeadSymbol = function(symbol,str){
-        if(str.indexOf(symbol) === 0) return str.substring(1,str.length);
-        return str;
+    self.delHeadSymbol = function(str,symbol){
+        symbol = symbol || '\/';
+        if(symbol == '/') symbol = '\/';
+        return str.replace(new RegExp('(^'+symbol+'*)','g'), "");
     }
     self.loadHtml = function(url,callback){
         loadBar.start();
         var queryIndex = url.indexOf('?');
         if(queryIndex !== -1) url = url.slice(0,queryIndex);
 
-        url = self.delHeadSymbol('#',url);
+        url = self.delHeadSymbol(url,'#');
         url = (url.indexOf(conf.base) === 0 ? '' : conf.views) + url + conf.engine + '?v=' + layui.cache.version;
         $.ajax({
             url:url,

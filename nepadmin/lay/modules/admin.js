@@ -130,7 +130,7 @@ layui.extend({
     }
     //根据当前加载的URL高亮左侧导航
     self.sidebarFocus = function(url){
-        url = url || self.route.href == '/' ? self.route.href :view.delHeadSymbol('/',self.route.href);
+        url = url || self.route.href == '/' ? self.route.href :view.delHeadSymbol(self.route.href);
         var elem = $('#app-sidebar').find('[lay-href="'+url+'"]').eq(0);
         if(elem.length > 0){
             elem.parents('.layui-nav-item').addClass('layui-nav-itemed');
@@ -159,7 +159,7 @@ layui.extend({
         window.history.go(n);
     }
     self.navigate = function(url){
-        window.location.hash = '/' + view.delHeadSymbol('/',url);
+        window.location.hash = '/' + view.delHeadSymbol(url);
     }
     self.data = function(settings,storage){
         if(settings == undefined) return layui.data(conf.tableName);
@@ -225,6 +225,9 @@ layui.extend({
             layer.open($.extend(defaultParams,params));
             return;
         }
+
+        view.tab.del(url);
+
         view.loadHtml(conf.views + url,function(html){
             var htmlElem = $("<div>" + html + "</div>");
 
@@ -324,7 +327,7 @@ layui.extend({
             target == '__blank' ? window.open(href) : location.href = href;
         }
 
-        href = '#/'+view.delHeadSymbol('/',href);
+        href = '#/'+view.delHeadSymbol(href);
 
         function next(){
             target == '__blank' ? window.open(href) : location.href = href;

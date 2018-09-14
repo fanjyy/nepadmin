@@ -11,26 +11,26 @@
 		"notice":3,
 		"childs":[{
 			"title": "admin",
-			"href":"module/admin"
+			"href":"/module/admin"
 		},{
 			"title": "helper",
-			"href":"module/helper"
+			"href":"/module/helper"
 		},{
 			"title": "loadBar",
-			"href":"module/loadbar"
+			"href":"/module/loadbar"
 		}]
 	},{
 		"title": "图表",
 		"icon": "layui-icon-barchart",
-		"href":"chart/index"
+		"href":"/chart/index"
 	},{
 		"title": "表格编辑验证",
 		"icon": "layui-icon-table",
-		"href":"table/editcheck"
+		"href":"/table/editcheck"
 	},{
 		"title": "图标",
 		"icon": "layui-icon-star",
-		"href":"icon/index"
+		"href":"/icon/index"
 	},{
 		"title": "多级导航",
 		"icon": "layui-icon-apartment",
