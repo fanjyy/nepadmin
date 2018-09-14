@@ -146,8 +146,8 @@ layui.extend({
         step:200,
         init:function(){
             var tab = this;
-            var btnCls = tab.wrap + '.nepadmin-tabs-btn';
-
+            var btnCls = tab.wrap + ' .nepadmin-tabs-btn';
+            
             layui.dropdown.render({
                 elem:'.nepadmin-tabs-down',
                 click:function(name){
@@ -166,7 +166,6 @@ layui.extend({
                     title:'关闭所有选项卡'
                 }]
             });
-
 
             $(document).on('click',btnCls,function(e){
                 var url = $(this).attr('lay-url');

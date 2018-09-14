@@ -109,11 +109,13 @@ layui.extend({
                 //加载layout文件
                 view.renderLayout(function(){
                     //重新渲染导航
-                    element.render('nav','nepadmin-sidebar');                    
+                    element.render('nav','nepadmin-sidebar');
+
+                    //初始化 tab 选项卡
+                    if(conf.viewTabs == true) view.tab.init();
+
                     //加载视图文件
                     loadRenderPage(url,function(){
-                        //初始化 tab 选项卡
-                        if(conf.viewTabs == true) view.tab.init();
                     });
                 });
             }else{
