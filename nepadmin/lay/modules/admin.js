@@ -98,24 +98,23 @@ layui.extend({
         }
         
         if($.inArray(url,conf.indPage) === -1){
-            var loadRenderPage = function(url){
+            var loadRenderPage = function(url,callback){
                 if(conf.viewTabs == true){
-                    view.renderTabs(url);
+                    view.renderTabs(url,callback);
                 }else{
-                    view.render(url);
+                    view.render(url,callback);
                 }
             }
             if(view.containerBody == null){
                 //加载layout文件
                 view.renderLayout(function(){
                     //重新渲染导航
-                    element.render('nav','nepadmin-sidebar');
-                    
-                    //綁定 tab 事件
-                    if(conf.viewTabs == true) view.tab.init();
-
+                    element.render('nav','nepadmin-sidebar');                    
                     //加载视图文件
-                    loadRenderPage(url);
+                    loadRenderPage(url,function(){
+                        //初始化 tab 选项卡
+                        if(conf.viewTabs == true) view.tab.init();
+                    });
                 });
             }else{
                 //layout文件已加载，加载视图文件
@@ -124,6 +123,15 @@ layui.extend({
         }else{
             //加载单页面
             view.renderIndPage(url)
+        }
+    }
+    //根据当前加载的URL高亮左侧导航
+    self.sidebarFocus = function(url){
+        url = url || self.route.href == '/' ? self.route.href :view.delHeadSymbol('/',self.route.href);
+        var elem = $('#app-sidebar').find('[lay-href="'+url+'"]').eq(0);
+        if(elem.length > 0){
+            elem.parents('.layui-nav-item').addClass('layui-nav-itemed');
+            elem.click();
         }
     }
     self.flexible = function(open){

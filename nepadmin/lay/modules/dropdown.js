@@ -1,12 +1,12 @@
 layui.define(['jquery'],function(exports){
     var $ = layui.jquery;
-    var CLS_MENU = 'layui-menu';
-    var CLS_MENU_RIGHT = 'layui-menu-direright';
-    var CLS_SELECT = 'layui-menu-select';
-    var CLS_OPTION = 'layui-menu-option';
-    var CLS_TITLE = 'layui-menu-title';
+    var CLS_DROPDOWN = 'layui-dropdown';
+    var CLS_DROPDOWN_RIGHT = 'layui-dropdown-direright';
+    var CLS_SELECT = 'layui-dropdown-select';
+    var CLS_OPTION = 'layui-dropdown-option';
+    var CLS_TITLE = 'layui-dropdown-title';
     var CLS_ARROW = 'nepadmin-arrow-up'
-    var HTML_MENU = '<div class="'+CLS_MENU+'">奥术大师大所<div>';
+    var HTML_DROPDOWN = '<div class="'+CLS_DROPDOWN+'">奥术大师大所<div>';
     var DEPTH = 0;
 
     var Class = function(config){
@@ -17,7 +17,7 @@ layui.define(['jquery'],function(exports){
         width:150,
         trigger:'click'
     }
-    Class.prototype.menuElem = '';
+    Class.prototype.dropdownElem = '';
     Class.prototype.exists = false;
     Class.prototype.depth = 0;
     Class.prototype.render = function(config){
@@ -25,45 +25,45 @@ layui.define(['jquery'],function(exports){
         
         $(document).on('click',this.config.elem,function(){
 
-            if(self.menuElem == ''){
-                var menu = $(HTML_MENU);
-                menu.html(self.createOptionsHtml(config));
-                $('body').prepend(menu);
-                menu.on('click','.'+CLS_OPTION,function(e){
+            if(self.dropdownElem == ''){
+                var dropdown = $(HTML_DROPDOWN);
+                dropdown.html(self.createOptionsHtml(config));
+                $('body').prepend(dropdown);
+                dropdown.on('click','.'+CLS_OPTION,function(e){
                     if($.isFunction(config.click)){
                         config.click($(this).attr('lay-name'),$(this),e);
-                        menu.fadeOut();
+                        dropdown.fadeOut();
                     }
                 });
-                self.menuElem = menu;
-                self.menuSelect = menu.find('.'+CLS_SELECT);
+                self.dropdownElem = dropdown;
+                self.dropdownSelect = dropdown.find('.'+CLS_SELECT);
             }
 
-            var menu = self.menuElem;
+            var dropdown = self.dropdownElem;
             var top = $(this).offset().top + $(this).height() + 12;
             var left = $(this).offset().left;
-            menu.css({
+            dropdown.css({
                 'top':top,
                 'display':'none'
             });
             var offsetWidth = (self.depth + 1) * self.config.width;
 
-            if($(this).offset().left + offsetWidth > $(window).width()){
-                menu.addClass('layui-menu-right').css('left',left - menu.width() + $(this).width());
-                self.menuSelect.css({left:'auto',right:self.config.width});
+            if(left + offsetWidth > $(window).width()){
+                dropdown.addClass('layui-dropdown-right').css('left',left - dropdown.width() + $(this).width());
+                self.dropdownSelect.css({left:'auto',right:self.config.width});
             }else{
-                menu.removeClass('layui-menu-right').css('left',left);
-                self.menuSelect.css({right:'auto',left:self.config.width});
+                dropdown.removeClass('layui-dropdown-right').css('left',left);
+                self.dropdownSelect.css({right:'auto',left:self.config.width});
             }
 
             $(document).one('click',function(e){
-                var menuExists = $(e.target).parents('.layui-menu');
-                if(menuExists.length == 0){
-                    menu.fadeOut();
+                var dropdownExists = $(e.target).parents('.layui-dropdown');
+                if(dropdownExists.length == 0){
+                    dropdown.fadeOut();
                 }
             });
             
-            menu.fadeIn();
+            dropdown.fadeIn();
         })
     }
     Class.prototype.createOptionsHtml = function(data,depth){
@@ -91,5 +91,5 @@ layui.define(['jquery'],function(exports){
             new Class(config);
         }
     }
-    exports('menu',self);
+    exports('dropdown',self);
 })

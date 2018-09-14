@@ -66,31 +66,33 @@
         </script>
     </div>
 
-    <script type="text/html" id="TPL-app-tabsmenu" template>
-    {{# if(layui.conf.viewTabs == true){ }}
-    <div class="nepadmin-tabs-wrap">
-        <span class="nepadmin-tabs-btn nepadmin-tabs-action nepadmin-tabs-prev" data-type="prev">
-            <i class="layui-icon layui-icon-left"></i>
-        </span>
-        <span class="nepadmin-tabs-btn nepadmin-tabs-action nepadmin-tabs-next" data-type="next">
-            <i class="layui-icon layui-icon-right"></i>
-        </span>
-        <span class="nepadmin-tabs-btn nepadmin-tabs-action nepadmin-tabs-down" data-type="down">
-            <i class="layui-icon layui-icon-close"></i>
-        </span>
-        <ul class="nepadmin-tabs-menu">
-            {{# layui.each(layui.admin.tabData,function(i,item){ }}<li data-type="page" class="nepadmin-tabs-btn nepadmin-tabs-active" lay-url="{{item.url}}"><i class="nepadmin-tabs-ball"></i>{{ item.title }}<b class="layui-icon layui-icon-close nepadmin-tabs-close"></b></li>{{# }) }}
-        </ul>
+    <div class="nepadmin-tabs-hidden">
+        <script type="text/html" id="TPL-app-tabsmenu" template>
+        {{# if(layui.conf.viewTabs == true){ }}
+        <div class="nepadmin-tabs-wrap">
+            <span class="nepadmin-tabs-btn nepadmin-tabs-action nepadmin-tabs-prev" data-type="prev">
+                <i class="layui-icon layui-icon-left"></i>
+            </span>
+            <span class="nepadmin-tabs-btn nepadmin-tabs-action nepadmin-tabs-next" data-type="next">
+                <i class="layui-icon layui-icon-right"></i>
+            </span>
+            <span class="nepadmin-tabs-btn nepadmin-tabs-action nepadmin-tabs-down" data-type="down">
+                <i class="layui-icon layui-icon-close"></i>
+            </span>
+            <ul class="nepadmin-tabs-menu">
+                {{# layui.each(layui.admin.tabData,function(i,item){ }}<li data-type="page" class="nepadmin-tabs-btn nepadmin-tabs-active" lay-url="{{item.url}}"><i class="nepadmin-tabs-ball"></i>{{ item.title }}<b class="layui-icon layui-icon-close nepadmin-tabs-close"></b></li>{{# }) }}
+            </ul>
+        </div>
+        {{# } }}
+        </script>
     </div>
-    {{# } }}
-    </script>
 
     <!-- 侧边菜单 -->
     <div class="layui-side" id="app-sidebar">
         <div class="layui-side-scroll">
             <div class="layui-logo"><span>Lay<b>ui</b>Admin</span></div>
-            <script type="text/html" template lay-api="getMenu" lay-done="layui.element.render('nav','nepadmin-sidebar')">
-            <ul class="layui-nav layui-nav-tree" lay-filter="nepadmin-sidebar" lay-shrink="all">
+            <script type="text/html" template lay-api="getMenu" lay-done="layui.element.render('nav','nepadmin-sidebar');layui.admin.sidebarFocus()">
+            <ul class="layui-nav layui-nav-tree" lay-filter="nepadmin-sidebar" >
                 {{#
                     function __createSlidebar(data,index){
                         if(!data || data.length == 0) return '';
@@ -106,7 +108,7 @@
                     layui.each(d,function(i,child){
                 }}
                 <li class="layui-nav-item">
-                    <a lay-href="{{child.href||''}}" target="{{child.target||''}}" title="{{child.title}}"><i class="layui-icon {{child.icon}}"></i>{{child.title}}</a>
+                    <a lay-href="{{child.href||''}}" target="{{child.target||''}}" title="{{child.title}}"><i class="layui-icon {{child.icon}}"></i>{{child.title}} {{# if(child.notice){ }}<span class="layui-badge">{{ child.notice }}</span>{{# } }}</a>
                     {{ __createSlidebar(child.childs,0) }}
                 </li>
                 {{# }) }}

@@ -7,7 +7,8 @@
 		"href": "/"
 	},{
 		"title": "新增模块",
-		"icon": "layui-icon-component",
+		"icon": "layui-icon-experiment",
+		"notice":3,
 		"childs":[{
 			"title": "admin",
 			"href":"module/admin"
@@ -20,15 +21,15 @@
 		}]
 	},{
 		"title": "图表",
-		"icon": "layui-icon-chart",
+		"icon": "layui-icon-barchart",
 		"href":"chart/index"
 	},{
 		"title": "表格编辑验证",
-		"icon": "layui-icon-chart",
+		"icon": "layui-icon-table",
 		"href":"table/editcheck"
 	},{
 		"title": "多级导航",
-		"icon": "layui-icon-template-1",
+		"icon": "layui-icon-apartment",
 		"childs":[{
 			"title": "Dota2",
 			"childs":[{
@@ -59,8 +60,12 @@
 			"childs":[]
 		}]
 	},{
+		"title": "图标",
+		"icon": "layui-icon-star",
+		"href":"icon/index"
+	},{
 		"title": "Layui",
-		"icon": "layui-icon-website",
+		"icon": "layui-icon-fire",
 		"target":"__blank",
 		"href":"https://www.layui.com"
 	}]

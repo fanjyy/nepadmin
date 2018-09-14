@@ -1,8 +1,8 @@
 //视图路由
 layui.extend({
     loadBar:'lay/modules/loadBar',
-    menu:'lay/modules/menu',
-}).define(['jquery','laytpl','element','form','loadBar','menu'],function(exports){
+    dropdown:'lay/modules/dropdown',
+}).define(['jquery','laytpl','element','form','loadBar','dropdown'],function(exports){
     var $ = layui.jquery;
     var laytpl = layui.laytpl;
     var conf = layui.conf;
@@ -120,13 +120,7 @@ layui.extend({
         var container = self.containerBody || self.container;
 
         container[modeName](htmlElem.html());
-
-        if(modeName == 'html'){
-            self.parse(container);
-        }
-        else if(modeName == 'prepend'){
-            self.parse(htmlElem);
-        }
+        self.parse(container);
         //重新对面包屑进行渲染
         layui.element.render('breadcrumb','nepadmin-breadcrumb');
 
@@ -145,15 +139,16 @@ layui.extend({
     self.tab = {
         minLeft:null,
         maxLeft:null,
+        wrap:'.nepadmin-tabs-wrap',
         menu:'.nepadmin-tabs-menu',
         next:'.nepadmin-tabs-next',
         prev:'.nepadmin-tabs-prev',
         step:200,
         init:function(){
-            var btnCls = '.nepadmin-tabs-wrap .nepadmin-tabs-btn';
             var tab = this;
+            var btnCls = tab.wrap + '.nepadmin-tabs-btn';
 
-            layui.menu.render({
+            layui.dropdown.render({
                 elem:'.nepadmin-tabs-down',
                 click:function(name){
                     var elem = name == 'all' ? $(btnCls) : $(btnCls+'.nepadmin-tabs-active').siblings();
@@ -165,11 +160,7 @@ layui.extend({
                 },
                 options:[{
                     name:'other',
-                    title:'关闭其他选项卡',
-                    options:[{
-                        name:'other2',
-                        title:'关闭其他选项卡123',
-                    }]
+                    title:'关闭其他选项卡'
                 },{
                     name:'all',
                     title:'关闭所有选项卡'
@@ -201,15 +192,12 @@ layui.extend({
                             var last = menu.find('li:last');
                             if(last.offset().left + last.width() < tab.maxLeft) return
                         }
+                        
                         menu.css('left', left);
-                    }
-                    else if(type == 'down'){
-
-
-
                     }
                 }
             });
+            $('.nepadmin-tabs-hidden').addClass('layui-show');
 
         },
         has:function(url){
