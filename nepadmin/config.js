@@ -37,8 +37,6 @@ layui.define(function (exports) {
         //requestUrl:'http://192.168.0.0/',
 
         requestUrl:'./',
-
-        //requestUrl:'./',
         //图片基础URL
         imageUrl:'http://192.168.3.191/',
         //独立页面路由，可随意添加（无需写参数） 前面不能带 /

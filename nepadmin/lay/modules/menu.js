@@ -22,18 +22,6 @@ layui.define(['jquery'],function(exports){
     Class.prototype.depth = 0;
     Class.prototype.render = function(config){
         var self = this;
-        /*
-        var HTML_SELECT = '<div class="'+CLS_SELECT+'">';
-        layui.each(config.options,function(i,option){
-            HTML_SELECT += '<div lay-name='+option.name+' class="'+CLS_OPTION+' layui-elip"><span class="layui-icon '+option.icon+'"></span>'+option.title;
-            HTML_SELECT += createChildsHtml(option) + '</div>';
-        })
-        HTML_SELECT += '</div>';
-        */
-
-
-
-
         
         $(document).on('click',this.config.elem,function(){
 
@@ -44,25 +32,20 @@ layui.define(['jquery'],function(exports){
                 menu.on('click','.'+CLS_OPTION,function(e){
                     if($.isFunction(config.click)){
                         config.click($(this).attr('lay-name'),$(this),e);
+                        menu.fadeOut();
                     }
                 });
-
-                /**
-                $(document).one(function(e){
-                    var menu = $(e.target).parents('.layui-menu');
-                    if(menu.length == 0){
-                        $('.layui-menu').hide();
-                    }
-                })
-                 */
-
                 self.menuElem = menu;
                 self.menuSelect = menu.find('.'+CLS_SELECT);
             }
+
             var menu = self.menuElem;
             var top = $(this).offset().top + $(this).height() + 12;
             var left = $(this).offset().left;
-            menu.css('top',top);
+            menu.css({
+                'top':top,
+                'display':'none'
+            });
             var offsetWidth = (self.depth + 1) * self.config.width;
 
             if($(this).offset().left + offsetWidth > $(window).width()){
@@ -72,7 +55,15 @@ layui.define(['jquery'],function(exports){
                 menu.removeClass('layui-menu-right').css('left',left);
                 self.menuSelect.css({right:'auto',left:self.config.width});
             }
-            menu.show();
+
+            $(document).one('click',function(e){
+                var menuExists = $(e.target).parents('.layui-menu');
+                if(menuExists.length == 0){
+                    menu.fadeOut();
+                }
+            });
+            
+            menu.fadeIn();
         })
     }
     Class.prototype.createOptionsHtml = function(data,depth){

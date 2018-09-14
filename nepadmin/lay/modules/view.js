@@ -150,24 +150,34 @@ layui.extend({
         prev:'.nepadmin-tabs-prev',
         step:200,
         init:function(){
+            var btnCls = '.nepadmin-tabs-wrap .nepadmin-tabs-btn';
             var tab = this;
 
             layui.menu.render({
                 elem:'.nepadmin-tabs-down',
-                click:function(e){
-                    console.log(e);
+                click:function(name){
+                    var elem = name == 'all' ? $(btnCls) : $(btnCls+'.nepadmin-tabs-active').siblings();
+
+                    elem.each(function(){
+                        tab.del($(this).attr('lay-url'));
+                    })
+
                 },
                 options:[{
-                    name:'all',
-                    title:'关闭当前选项卡'
+                    name:'other',
+                    title:'关闭其他选项卡',
+                    options:[{
+                        name:'other2',
+                        title:'关闭其他选项卡123',
+                    }]
                 },{
-                    name:'current',
+                    name:'all',
                     title:'关闭所有选项卡'
                 }]
             });
 
 
-            $(document).on('click','.nepadmin-tabs-btn',function(e){
+            $(document).on('click',btnCls,function(e){
                 var url = $(this).attr('lay-url');
                 if($(e.target).hasClass('nepadmin-tabs-close')){
                     tab.del(url);
