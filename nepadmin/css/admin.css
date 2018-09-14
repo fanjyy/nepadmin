@@ -29,10 +29,15 @@ a{
 #app-sidebar{
     top:0;
     z-index:1001;
+    overflow: hidden;
+}
+#app-sidebar .layui-side-scroll{
+    padding-right: 17px;
 }
 #app-sidebar,
 #app-sidebar .layui-side-scroll,
-#app-sidebar .layui-nav-tree{
+#app-sidebar .layui-nav-tree,
+#app-sidebar .layui-logo{
     width: 240px;
 }
 .layui-body,
@@ -47,7 +52,6 @@ a{
     position: static;
     font-size: 30px;
     color:#d6e0f6;
-    width: 100%;
     padding:0;
     line-height: 120px;
     height: 120px;

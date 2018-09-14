@@ -28,6 +28,10 @@
 		"icon": "layui-icon-table",
 		"href":"table/editcheck"
 	},{
+		"title": "图标",
+		"icon": "layui-icon-star",
+		"href":"icon/index"
+	},{
 		"title": "多级导航",
 		"icon": "layui-icon-apartment",
 		"childs":[{
@@ -59,14 +63,5 @@
 			"title": "LOL",
 			"childs":[]
 		}]
-	},{
-		"title": "图标",
-		"icon": "layui-icon-star",
-		"href":"icon/index"
-	},{
-		"title": "Layui",
-		"icon": "layui-icon-fire",
-		"target":"__blank",
-		"href":"https://www.layui.com"
 	}]
 }
