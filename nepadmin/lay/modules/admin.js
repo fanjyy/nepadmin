@@ -112,10 +112,11 @@ layui.extend({
                     element.render('nav','nepadmin-sidebar');
 
                     //初始化 tab 选项卡
-                    if(conf.viewTabs == true) view.tab.init();
+                    
 
                     //加载视图文件
                     loadRenderPage(url,function(){
+                        if(conf.viewTabs == true) view.tab.init();
                     });
                 });
             }else{
