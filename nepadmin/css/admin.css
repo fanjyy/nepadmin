@@ -156,6 +156,9 @@ a{
     width: 100%;
     height: 50px;
 }
+#app-header .layui-nav{
+    padding:0;
+}
 #app-header .layui-nav .layui-nav-item a{
     color:#333;
 }
@@ -702,12 +705,13 @@ textarea::-webkit-input-placeholder{
 
 
     #app-header{
-        left:200px;
+        left:240px;
         transition: all .5s cubic-bezier(0.86, 0, 0.07, 1)
     }
     #app-header .layui-layout-left{
         left:0;
     }
+    #app-header
     
     
     .nepadmin-sidebar-shrink .layui-body,
@@ -715,7 +719,9 @@ textarea::-webkit-input-placeholder{
         left:0px;
     }
     .nepadmin-sidebar-shrink .layui-body,
-    .nepadmin-sidebar-shrink #app-header{
+    .nepadmin-sidebar-shrink #app-header,
+    .nepadmin-sidebar-shrink .nepadmin-tabs-wrap .nepadmin-tabs-menu,
+    .nepadmin-sidebar-shrink .nepadmin-tabs-wrap .nepadmin-tabs-prev{
         left:0px;
     }
 
