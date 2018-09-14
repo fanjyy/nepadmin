@@ -35,7 +35,7 @@ layui.define(function (exports) {
         },
         //request 基础URL
         //requestUrl:'http://192.168.0.0/',
-        requestUrl:'/nepadmin/',
+        requestUrl:'./nepadmin/',
         //requestUrl:'/',
         //图片基础URL
         imageUrl:'http://192.168.3.191/',
