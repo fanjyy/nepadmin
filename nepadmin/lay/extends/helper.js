@@ -27,6 +27,19 @@ layui.define(function(exports){
         if(admin.ie8) $(elem).find('table').css('margin',0);
         return qrcode;
     }
+    self.rand = function(minNum,maxNum){ 
+        switch(arguments.length){ 
+            case 1: 
+                return parseInt(Math.random()*minNum+1,10); 
+            break; 
+            case 2: 
+                return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
+            break; 
+                default: 
+                    return 0; 
+                break; 
+        } 
+    } 
     self.upload = function(options){
         if(!layui.upload) console.error('请先引入 upload 模块！');
         var defaultHtml = '';

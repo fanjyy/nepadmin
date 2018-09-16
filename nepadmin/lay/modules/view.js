@@ -30,7 +30,12 @@ layui.extend({
 
         var renderTemplate = function(template,data,callback){
             laytpl(template.html()).render(data, function(html){
-                html = $(self.checkHtml(html) ? html : '<span>'+html+'</span>');
+                try{
+                    html = $(self.checkHtml(html) ? html : '<span>'+html+'</span>');
+                }catch{
+                    html = $('<span>'+html+'</span>');
+                }
+
                 html.attr('is-template',true);
                 template.after(html);
                 if($.isFunction(callback)) callback(html);
@@ -86,6 +91,7 @@ layui.extend({
         self.containerBody.html('');
     }
     self.delHeadSymbol = function(str,symbol){
+        if(!str) return str;
         symbol = symbol || '\/';
         if(symbol == '/') symbol = '\/';
         return str.replace(new RegExp('(^'+symbol+'*)','g'), "");

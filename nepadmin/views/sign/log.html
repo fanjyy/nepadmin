@@ -68,11 +68,11 @@ layui.use(['table','util','helper','form'], function(){
         cols:[[
             {title: '姓名',field: 'name', width:100,templet:'<p><span title="{{d.user.name}}">{{d.user.name}}</span></p>'},
             {title: '年龄',field: 'age',width:66,templet:'<p>{{ helper.getAge(d.user.birthDay) }} 岁</p>'},
-            {title: '性别',field: 'sex',align:'center',width:58, templet:'<p>{{# if(d.user.gender == 1){ }} <span class="layui-c-blue">男</span> {{# }else{ }} <span class="layui-c-red">女</span> {{# } }}</p>'},
+            {title: '性别',field: 'sex',align:'center',width:58, templet:'<p>{{# if(d.user.gender == 1){ }} <span class="nepadmin-c-blue">男</span> {{# }else{ }} <span class="nepadmin-c-red">女</span> {{# } }}</p>'},
             {title: '住址',templet:'<p>{{ d.user.address || "" }}</p>'},
             {title: '签约服务包',width: 210,field: 'servicepack',templet:'<p>{{ d.spkg === null ? "" : d.spkg.title }}</p>'} ,
-            {title: '签约时间',width:108,templet:'<p><span class="layui-c-gray layui-font-12" title="{{d.signedTime}}">{{ helper.dateDay(d.signedTime) }}</span></p>'},
-            {title: '结束时间',width:108,templet:'<p><span class="layui-c-gray layui-font-12" title="{{d.serviceEndTime}}">{{ helper.dateDay(d.serviceEndTime) }}</span></p>'},
+            {title: '签约时间',width:108,templet:'<p><span class="nepadmin-c-gray layui-font-12" title="{{d.signedTime}}">{{ helper.dateDay(d.signedTime) }}</span></p>'},
+            {title: '结束时间',width:108,templet:'<p><span class="nepadmin-c-gray layui-font-12" title="{{d.serviceEndTime}}">{{ helper.dateDay(d.serviceEndTime) }}</span></p>'},
             {title: '操作',width:70,toolbar:'#TPL__signing-table-action'}
         ]]
     })

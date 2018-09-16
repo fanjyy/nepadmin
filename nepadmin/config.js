@@ -63,11 +63,13 @@ layui.define(function (exports) {
             },
             msgName: 'msg', //状态信息的字段名称
             dataName: 'data', //数据详情的字段名称
-            countName:'dataCount',  //数据条数的字段名称，用于 table 
+            countName:'count',  //数据条数的字段名称，用于 table 
         },
         //全局 table 配置，调用 admin.table()生成表格有效， 不能配置 url、headers、response
         table:{
             page:true,
+            skin: 'line',
+            even: true,
             //每页显示的条数
             limit:20,
             //是否显示加载条

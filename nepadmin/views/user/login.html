@@ -16,17 +16,17 @@
     padding:0;
     line-height: 120px;
     height: 120px;
-    color:#5a8bff;
+    color:#3491ff;
     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
     transition: height .8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 #VIEW-login .layui-logo span{
     font-weight: normal;
     color:#fff;
-    border-bottom: 1px solid #5a8bff;
+    border-bottom: 1px solid #3491ff;
 }
 #VIEW-login .layui-logo span b{
-    color:#5a8bff;
+    color:#3491ff;
 }
 
 
@@ -143,7 +143,7 @@
     <div class="login-wrap">
         <div class="layui-container">
             <div class="layui-row">
-                <div class="layui-col-xs12 layui-col-lg4 layui-col-lg-offset4 layui-center">
+                <div class="layui-col-xs12 layui-col-lg4 layui-col-lg-offset4 nepadmin-tc">
                     <div class="layui-logo"><span>Ne<b>pA</b>dmin</span></div>
                 </div>
                 <div class="layui-col-xs12 layui-col-lg4 layui-col-lg-offset4">
@@ -151,7 +151,7 @@
                         <ul class="login-type-tab">
                             <li login-type="password" class="active">密码登录</li>
                             <li login-type="phonecode">手机码登录</li>
-                            <li login-type="qrcode" class="layui-right layui-hide-xs" style="padding-right: 0;" lay-tips="扫码登录" ><span class="layui-icon layui-icon-qrcode qrcode-icon"></span></li>
+                            <li login-type="qrcode" class="nepadmin-fr layui-hide-xs" style="padding-right: 0;" lay-tips="扫码登录" ><span class="layui-icon layui-icon-qrcode qrcode-icon"></span></li>
                         </ul>
                         <div class="qrcode-block">
                             <div class="qrcode qrcode-image">
@@ -194,9 +194,10 @@
                                     立即登录
                                 </button>
                             </div>
-                            <div class="layui-form-item">
-                                <a class="layui-right" lay-href="/user/forget">注册账号</a>
-                                <a class="layui-right" style="margin-right:10px;" lay-href="/user/forget">忘记密码？</a>
+                            <div class="layui-form-item nepadmin-tr">
+                                <a lay-href="/user/forget">注册账号</a>
+                                &nbsp;&nbsp;
+                                <a style="margin-right:10px;" lay-href="/user/forget">忘记密码？</a>
                             </div>
                         </div>
                     </div>

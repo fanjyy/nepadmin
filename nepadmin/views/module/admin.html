@@ -11,7 +11,7 @@
         <div class="layui-col-lg12">
             <div class="layui-card">
                 <div class="layui-card-body">
-                    <h3 class="layui-c-gray">保存登录信息</h3><hr>
+                    <h3 class="nepadmin-c-gray">保存登录信息</h3><hr>
                     <p>admin.login(token,userInfo,notKeep)</p>
                     <table class="layui-table">
                         <colgroup>
@@ -53,20 +53,20 @@
             </div>
             <div class="layui-card">
                 <div class="layui-card-body">
-                    <h3 class="layui-c-gray">退出登录</h3><hr>
+                    <h3 class="nepadmin-c-gray">退出登录</h3><hr>
                     <p>使用 admin.logout() 清除当前的登录状态并跳转到登陆界面。</p>
                 </div>
             </div>
             <div class="layui-card">
                 <div class="layui-card-body">
-                    <h3 class="layui-c-gray">JS 跳转页面</h3><hr>
+                    <h3 class="nepadmin-c-gray">JS 跳转页面</h3><hr>
                     <p>admin.navigate('chart/index')</p>
                 </div>
             </div>
             
             <div class="layui-card">
                 <div class="layui-card-body">
-                    <h3 class="layui-c-gray">重载 Template</h3><hr>
+                    <h3 class="nepadmin-c-gray">重载 Template</h3><hr>
                     <p>使用 admin.render() 重新加载已生成的 template。</p>
                     <table class="layui-table">
                         <colgroup>
@@ -96,14 +96,14 @@
             </div>
             <div class="layui-card">
                 <div class="layui-card-body">
-                    <h3 class="layui-c-gray">网络请求</h3><hr>
+                    <h3 class="nepadmin-c-gray">网络请求</h3><hr>
                     <p>admin.get() / admin.psot()，使用该函数请求时会在headers中带上登录的 token 信息和 cofing.js 中的 requestHeaders</p>
                     <p>url 参数基础地址请在 config.js 中修改 requestUrl</p>
                 </div>
             </div>
             <div class="layui-card">
                 <div class="layui-card-body">
-                    <h3 class="layui-c-gray">增加弹出层</h3><hr>
+                    <h3 class="nepadmin-c-gray">增加弹出层</h3><hr>
                     <p style="margin-bottom: 10px">admin.modal.info / warn / success / error()，使用 layer.alert() 实现，参数与官网一致。</p>
                     <div class="layui-btn-container">
                         <button class="modal-test layui-btn layui-btn-normal" data-type="info">信息</button>
@@ -117,7 +117,7 @@
             <div class="layui-card">
                 <div class="layui-card-body">
 
-                    <h3 class="layui-c-gray">POPUP</h3><hr>
+                    <h3 class="nepadmin-c-gray">POPUP</h3><hr>
                     <p style="margin-bottom: 10px">使用 admin.popup() 打开任意网址，使用 layer.open() 实现，参数与官网一致。</p>
                     <button class="layui-btn layui-btn-primary" lay-popup="https://www.layui.com">第三方网页</button>
                     <button class="layui-btn layui-btn-primary" lay-popup="/chart/index">内部网页</button>
@@ -140,7 +140,7 @@ admin.popup({
             </div>
             <div class="layui-card">
                 <div class="layui-card-body">
-                    <h3 class="layui-c-gray">拦截跳转</h3><hr>
+                    <h3 class="nepadmin-c-gray">拦截跳转</h3><hr>
 
                     <pre class="layui-code">
 admin.routeLeave(function(route,nextPath,next){

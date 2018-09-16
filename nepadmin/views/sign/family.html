@@ -201,7 +201,7 @@ layui.use(['admin','table','helper','form','upload'], function(){
                         }
                         var content = '';
                         layui.each(res.data,function(id,code){
-                            content += '<p style="line-height:30px;border-bottom:1px solid #f6f6f6;padding:5px 10px;">身份证号码：' + id + '<span class="layui-c-red layui-right layui-font-12">' + err[code] + '</span>' +'</p>';
+                            content += '<p style="line-height:30px;border-bottom:1px solid #f6f6f6;padding:5px 10px;">身份证号码：' + id + '<span class="nepadmin-c-red layui-right layui-font-12">' + err[code] + '</span>' +'</p>';
                         })
                         admin.modal.warning(content,{title:'签约的时候遇到点问题'});
                 }

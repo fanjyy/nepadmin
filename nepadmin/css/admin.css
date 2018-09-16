@@ -13,14 +13,13 @@ a{
 ::-webkit-scrollbar{
     width: 5px;
     height: 5px;
-    background-color: #F5F5F5; 
+    background-color: #f4f4f4; 
 }
 ::-webkit-scrollbar-track {
     background-color: #f1f1f1; 
 }
 ::-webkit-scrollbar-thumb{
     border-radius: 20px;
-    background-color: #666; 
 }
 
 #app a{
@@ -55,19 +54,161 @@ a{
     padding:0;
     line-height: 120px;
     height: 120px;
-    color:#5a8bff;
     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
     transition: height .8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-#app-sidebar .layui-logo span{
-    font-weight: normal;
-    color:#fff;
-    border-bottom: 1px solid #5a8bff;
+
+/* 网站文字主色调 */
+body,
+html,
+#app-header .layui-nav .layui-nav-item a,
+.nepadmin-tabs-wrap .nepadmin-tabs-menu li:hover,
+.nepadmin-tabs-wrap .nepadmin-tabs-active,
+.nepadmin-tabs-wrap .nepadmin-tabs-close:hover,
+.nepadmin-tabs-wrap .nepadmin-tabs-action:hover,
+.nepadmin-grid:hover > p,
+.nepadmin-cell-arrow:before,
+.nepadmin-breadcrumb a:hover,
+.layui-layer-admin-page .layui-layer-setwin .layui-layer-close2:hover,
+.nepadmin-tabs-wrap .nepadmin-tabs-action:hover{
+    color:#171e2d !important;
 }
-#app-sidebar .layui-logo span b{
-    color:#5a8bff;
+.layui-table{
+    color: #595d68;
+}
+/* 让表格多行显示
+.layui-table .layui-table-cell{
+    height:auto;
+    overflow:visible;
+    text-overflow:inherit;
+    white-space:normal;
+}
+*/
+
+#app-header .layui-nav-bar,
+.layui-bg-black,
+::-webkit-scrollbar-thumb{
+    background-color: #171e2d!important;
 }
 
+
+/* 网站主色调 */
+.nepadmin-c-blue,
+#app-sidebar .layui-logo,
+#app-sidebar .layui-logo span b,
+.nepadmin-grid:hover .layui-icon,
+.nepadmin-cell-selected,
+.layui-laypage a:hover,
+.layui-laydate-footer span[lay-type=date],
+.layui-laydate .layui-laydate-footer span:hover,
+.layui-dropdown .layui-dropdown-option:hover{
+    color:#5a8bff !important;
+}
+.nepadmin-tabs-wrap li.nepadmin-tabs-active:hover .nepadmin-tabs-ball,
+.nepadmin-tabs-wrap li.nepadmin-tabs-active .nepadmin-tabs-ball,
+#app-sidebar .layui-nav-tree .layui-nav-bar,
+.layui-bg-blue,
+.layui-btn-normal,
+.layui-layer-prompt .layui-layer-btn a.layui-layer-btn0,
+.layui-layer-admin-modal .layui-layer-btn a.layui-layer-btn0,
+.layui-laypage .layui-laypage-curr .layui-laypage-em,
+.layui-laydate li.layui-this,
+.layui-laydate td.layui-this{
+    background-color: #5a8bff !important;
+}
+.nepadmin-br-blue,
+#app-sidebar .layui-logo span,
+.nepadmin-linecard,
+.layui-layer-prompt .layui-layer-btn a.layui-layer-btn0,
+.layui-layer-admin-modal .layui-layer-btn a.layui-layer-btn0,
+.layui-tab-brief>.layui-tab-more li.layui-this:after, 
+.layui-tab-brief>.layui-tab-title .layui-this:after{
+    border-color:#5a8bff !important;
+}
+
+
+/* 侧边导航的背景色 */
+#app-sidebar,
+#app-sidebar .layui-nav-itemed .layui-nav-child{
+    background-color: #252834 !important;
+}
+/* 侧边导航的选中色 */
+.nepadmin-sidebar-shrink #app-sidebar .layui-nav-itemed,
+#app-sidebar .layui-nav-tree .layui-nav-child dd.layui-this, 
+#app-sidebar .layui-nav-tree .layui-nav-child dd.layui-this a, 
+#app-sidebar .layui-nav-tree .layui-this, 
+#app-sidebar .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover{
+    background-color: #1c1f27 !important;
+}
+
+/* 网站白色调 */
+#app-sidebar .layui-logo span,
+#app-sidebar .layui-nav-tree .layui-nav-child dd.layui-this, 
+#app-sidebar .layui-nav-tree .layui-nav-child dd.layui-this a, 
+#app-sidebar .layui-nav-tree .layui-this, 
+#app-sidebar .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover,
+.layui-nav .layui-nav-child dd.layui-this, 
+.layui-nav .layui-nav-child dd.layui-this a, 
+.layui-nav .layui-this, 
+.layui-nav .layui-this>a, .layui-nav .layui-this>a:hover,
+.layui-layer-prompt .layui-layer-btn a.layui-layer-btn0,
+.layui-layer-admin-modal .layui-layer-btn a.layui-layer-btn0{
+    color:#fff!important;
+}
+#app-header,
+.nepadmin-tabs-wrap,
+.nepadmin-tabs-wrap .nepadmin-tabs-menu li,
+.nepadmin-tabs-wrap .nepadmin-tabs-action,
+.layui-form-checkbox, .layui-form-select dl dd.layui-disabled,
+.layui-btn-primary,
+.layui-layer-admin-page .layui-layer-setwin .layui-layer-close2,
+.layui-dropdown .layui-dropdown-select{
+    background-color: #fff !important;
+}
+
+/**修改 table 样式 */
+.layui-table thead tr, 
+.layui-table tbody tr:hover,
+.layui-table-click, 
+.layui-table-header, 
+.layui-table-hover, 
+.layui-table-mend, 
+.layui-table-patch, 
+.layui-table-tool{
+    background-color: #f9f9f9 !important;
+}
+
+.layui-table tbody tr:hover, 
+.layui-table thead tr, 
+.layui-table-click, 
+.layui-table-header, 
+.layui-table-hover, 
+.layui-table-mend, 
+.layui-table-patch, 
+.layui-table-tool, 
+.layui-table-total, 
+.layui-table-total tr, 
+.layui-table[lay-even] tr:nth-child(even){
+    background-color: #f9f9f9 !important;
+}
+.layui-table[lay-skin=line] td, .layui-table[lay-skin=line] th{
+    border-width: 0;
+}
+.nepadmin-table-full .layui-table, 
+.nepadmin-table-full .layui-table-view{
+    margin:0
+}
+.nepadmin-table-full .layui-table-view{
+    border-top:none;
+    border-bottom:none;
+}
+
+#app-sidebar .layui-logo span{
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    font-weight: normal;
+    
+}
 #app-sidebar .layui-logo i{
     font-style: normal;
     border-bottom: 1px solid #aaa;
@@ -83,12 +224,6 @@ a{
     font-size: 12px !important;
 }
 
-#app-sidebar{
-    background-image: -webkit-radial-gradient(25% 25%, red, blue);
-}
-#app-sidebar{
-    background: #252834;
-}
 #app-sidebar .layui-nav{
     background: transparent;
 }
@@ -96,24 +231,13 @@ a{
     background: transparent;
 }
 #app-sidebar .layui-nav-tree .layui-nav-bar{
-    background: #5a8bff;
     width: 3px;
     left:auto;
     right: 0;
 }
-#app-sidebar .layui-nav-itemed .layui-nav-child{
-    background-color: #252834 !important;
-}
 #app-sidebar .layui-nav-itemed .layui-nav-child a{
     font-size: 12px;
     padding-left:50px;
-}
-#app-sidebar .layui-nav-tree .layui-nav-child dd.layui-this, 
-#app-sidebar .layui-nav-tree .layui-nav-child dd.layui-this a, 
-#app-sidebar .layui-nav-tree .layui-this, 
-#app-sidebar .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover{
-    background: #1c1f27;
-    color:#fff;
 }
 
 #app-sidebar .layui-nav .layui-nav-mored,
@@ -124,7 +248,7 @@ a{
     border-width:4px;
 }
 #app-sidebar .layui-nav .layui-nav-item{
-    color:#b8bec9;
+    color:#aaadb2;
 }
 #app-sidebar .layui-nav-tree .layui-nav-item > a{
     height: 54px;
@@ -152,7 +276,6 @@ a{
 }
 
 #app-header{
-    background: #fff;
     border-bottom: 1px solid #f1f1f1;
     position: fixed;
     top: 0;
@@ -163,9 +286,6 @@ a{
 #app-header .layui-nav{
     padding:0;
 }
-#app-header .layui-nav .layui-nav-item a{
-    color:#333;
-}
 #app-header .layui-search-input{
     background: transparent;
     margin-top:5px;
@@ -174,7 +294,6 @@ a{
 
 #app-header .layui-nav-bar{
     height: 1px;
-    background: #333;
 }
 #app-header .layui-nav-child{
     border:none;
@@ -199,37 +318,31 @@ a{
     position: fixed;
     top:50px;
     white-space:nowrap;
-    background: #fff;
     padding:0 80px 0 30px;
     box-sizing: border-box;
     width: 100%;
     font-size: 12px;
-    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.05);
 }
 .nepadmin-tabs-wrap .nepadmin-tabs-menu{
     position: relative;
     transition: left .3s;
 }
+
 .nepadmin-tabs-wrap .nepadmin-tabs-menu li,
 .nepadmin-tabs-wrap .nepadmin-tabs-action{
     text-align: center;
-    border-right: 1px solid #f0f0f0;
-    background: #fff;
+    border-right: 1px solid #f1f1f1;
     cursor: pointer;
     height: 36px;
     line-height: 36px;
     transition: all .3s ease;
 }
-.nepadmin-tabs-wrap .nepadmin-tabs-action:hover{
-    background: #f9f9f9;
-}
+.nepadmin-tabs-wrap .nepadmin-tabs-action:hover,
 .nepadmin-tabs-wrap .nepadmin-tabs-menu li:hover{
-    color:#666;
-    background: #f6f6f6;
+    background: #f1f1f1 !important;
 }
-.nepadmin-tabs-wrap .nepadmin-tf6f6f6abs-menu li:hover .nepadmin-tabs-ball{
-    background: #d6dee6;
-}
+
 .nepadmin-tabs-wrap .nepadmin-tabs-menu li{
     display: inline-block;
     padding-left:25px;
@@ -242,31 +355,22 @@ a{
     height: 10px;
     width: 10px;
     border-radius: 100%;
-    background:#e8eaec;
+    background:#f1f1f1;
     vertical-align: middle;
     margin-right: 6px;
     position: relative;
     top:-1px;
     transition: background .3s ease;
 }
-.nepadmin-tabs-wrap li.nepadmin-tabs-active{
-    color: #333;
-}
-.nepadmin-tabs-wrap li.nepadmin-tabs-active:hover .nepadmin-tabs-ball,
-.nepadmin-tabs-wrap li.nepadmin-tabs-active .nepadmin-tabs-ball{
-    background:#5a8bff;
-}
+
 .nepadmin-tabs-wrap .nepadmin-tabs-close{
-    color: #e8eaec;
+    color: #f1f1f1;
     font-size: 10px;
     margin-left: 10px;
     height: 36px;
     width: 30px;
     display: inline-block;
     transition: color .3s ease;
-}
-.nepadmin-tabs-wrap .nepadmin-tabs-close:hover{
-    color: #333;
 }
 
 .nepadmin-tabs-wrap .nepadmin-tabs-action{
@@ -276,95 +380,382 @@ a{
     left: 240px;
     z-index:1;
     width: 30px;
-    color: #d2d4d5;
-}
-.nepadmin-tabs-wrap .nepadmin-tabs-action:hover{
-    color:#333;
+    color: #999;
 }
 .nepadmin-tabs-wrap .nepadmin-tabs-next{
     left:auto;
     right: 31px;
-    border-left: 1px solid #f0f0f0;
+    border-left: 1px solid #f1f1f1;
 }
 .nepadmin-tabs-wrap .nepadmin-tabs-down{
     left:auto;
     right: 0;
 }
-.nepadmin-tabs-wrap .nepadmin-tabs-down{
-    
+
+.nepadmin-lead{
+    font-weight:300;
+}
+.nepadmin-ignore{
+    font-size: 14px;
+    color:#999;
 }
 
-
-.nepadmin-tabs-prev{
+.nepadmin-pad20{
+    padding:20px;
+}
+.nepadmin-pad10{
+    padding:20px;
+}
+.nepadmin-pad5{
+    padding:20px;
+}
+.nepadmin-pad-tb20{
+    padding:20px 0;
+}
+.nepadmin-pad-tb10{
+    padding:10px 0;
+}
+.nepadmin-pad-tb5{
+    padding:5px 0;
+}
+.nepadmin-pad-r20{
+    padding-right:20px;
+}
+.nepadmin-pad-r10{
+    padding-right:10px;
+}
+.nepadmin-pad-r5{
+    padding-right:5px;
+}
+.nepadmin-pad-b20{
+    padding-bottom:20px;
+}
+.nepadmin-pad-b10{
+    padding-bottom:10px;
+}
+.nepadmin-pad-b5{
+    padding-bottom:5px;
+}
+.nepadmin-pad-t20{
+    padding-top:20px;
+}
+.nepadmin-pad-t10{
+    padding-top:10px;
+}
+.nepadmin-pad-t5{
+    padding-top:5px;
 }
 
+.nepadmin-mar20{
+    margin:20px;
+}
+.nepadmin-mar10{
+    margin:20px;
+}
+.nepadmin-mar5{
+    margin:20px;
+}
+.nepadmin-mar-tb20{
+    margin:20px 0;
+}
+.nepadmin-mar-tb10{
+    margin:10px 0;
+}
+.nepadmin-mar-tb5{
+    margin:5px 0;
+}
+.nepadmin-mar-r20{
+    margin-right:20px;
+}
+.nepadmin-mar-r10{
+    margin-right:10px;
+}
+.nepadmin-mar-r5{
+    margi-rightn:5px;
+}
+.nepadmin-mar-b20{
+    margin-bottom:20px;
+}
+.nepadmin-mar-b10{
+    margin-bottom:10px;
+}
+.nepadmin-mar-b5{
+    margi-bottomn:5px;
+}
+.nepadmin-mar-t20{
+    margin-top:20px;
+}
+.nepadmin-mar-t10{
+    margin-top:10px;
+}
+.nepadmin-mar-t5{
+    margi-topn:5px;
+}
 
-.layui-badge{
+.nepadmin-gray{
+    filter:grayscale(100%);
+}
+.layui-circle {
+    border-radius: 100% !important;
 }
 .layui-bg-green{
-    background-color:#1bdb9a !important
+    background-color:#00d57b !important
 }
-.layui-bg-blue{
-    background-color:#5a8bff !important
+.layui-bg-red{
+    background-color:#f25657 !important;
 }
-.layui-c-green{
-    color:#30d180 !important
+.layui-bg-orange{
+    background-color:#fab600 !important;
 }
-.layui-c-red{
-    color:#FF5722 !important
+.layui-bg-gray{
+    background-color:#aaadb2 !important;
 }
-.layui-c-blue{
-    color:#5a8bff !important
+
+.nepadmin-c-green{
+    color:#00d57b !important
 }
-.layui-c-gray{
-    color:#999 !important
+.nepadmin-c-orange{
+    color:#fab600 !important
 }
-.layui-bold{
-    font-weight: bold !important;
+.nepadmin-c-red{
+    color:#f25657 !important
 }
-.layui-left{
-    float: left;
+.nepadmin-c-gray{
+    color:#aaadb2 !important
 }
-.layui-relative{
+
+.nepadmin-br-green{
+    border-color:#00d57b !important
+}
+.nepadmin-br-orange{
+    border-color:#00d57b !important
+}
+.nepadmin-br-red{
+    border-color:#f25657 !important
+}
+.nepadmin-br-gray{
+    border-color:#aaadb2 !important
+}
+
+.nepadmin-rle{
     position: relative;
 }
-.layui-absolute-right{
+.nepadmin-aler{
     position: absolute;
     top:0;
     right: 0;
 }
-.layui-absolute-left{
+.nepadmin-alel{
     position: absolute;
     top:0;
     left: 0;
 }
-.layui-right{
+.nepadmin-fl{
+    float: left;
+}
+.nepadmin-fr{
     float: right;
 }
-.layui-center{
+.nepadmin-tc{
     text-align: center;
 }
-.layui-text-right{
+.nepadmin-tr{
     text-align: right
 }
-.layui-text-left{
+.nepadmin-tl{
     text-align: left
 }
-.layui-font-12{
+.nepadmin-font-12{
     font-size: 12px !important
 }
+.nepadmin-font-14{
+    font-size: 14px !important
+}
+.nepadmin-bold{
+    font-weight: bold !important;
+}
+
+.nepadmin-face{
+    position: relative;
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    overflow: hidden;
+}
+.nepadmin-face-lg{
+    height: 60px;
+    width: 60px;
+}
+.nepadmin-face-xs{
+    height: 20px;
+    width: 20px;
+}
+.nepadmin-face img{
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+.nepadmin-face .layui-badge-dot{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index:1;
+}
+.nepadmin-face,
+.nepadmin-face img{
+    border-radius: 5px;
+}
+
+.layui-card{
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.05);
+}
+.nepadmin-linecard{
+    margin-bottom: 15px;
+    border-radius: 2px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.05);
+    padding:15px 25px;
+    line-height:24px;
+    border-left-width:2px;
+    border-left-style:solid;
+    background: #fff;
+    transition: background .3s ease;
+}
+.nepadmin-linecard:hover{
+    background: #f8fafe;
+}
+.nepadmin-linecard.nepadmin-br-green:hover{
+    background: #f6fdfa;
+}
+.nepadmin-linecard.nepadmin-br-red:hover{
+    background: #fff8f6;
+}
+.nepadmin-linecard.nepadmin-br-gray:hover{
+    background: #f9f9f9;
+}
+
+.nepadmin-linecard:last-child{
+    margin-bottom:0;
+}
+.nepadmin-linecard-title{
+    padding-bottom: 12px;
+    font-size: 16px;
+}
+.nepadmin-linecard-text{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    padding-right: 5px;
+}
+
+.nepadmin-grid{
+    text-align: center;
+    /*
+    border-left: 1px solid #f1f1f1;
+    border-right: 1px solid #f1f1f1;
+    border-bottom: 1px solid #f1f1f1;
+    margin:0px 0px -1px -1px;
+    */
+    border-radius: 5px;
+    padding: 15px 0;
+    transition: background .3s ease;
+    cursor: pointer;
+}
+.nepadmin-grid > p{
+    color:#999;
+    font-size: 14px;
+}
+.nepadmin-grid > p,
+.nepadmin-grid .layui-icon{
+    transition: color .3s ease;
+}
+.nepadmin-grid .layui-icon{
+    font-size: 28px;
+    display: inline-block;
+    margin-bottom:10px;
+}
+
+.nepadmin-cell{
+    padding: 7px 16px;
+    clear: both;
+    font-size: 12px!important;
+    cursor: pointer;
+    position: relative;
+    transition: background .2s ease-in-out;
+}
+.nepadmin-cell .nepadmin-face{
+    float: left;
+    margin-right: 10px;
+    position: relative;
+    top:3px;
+}
+.nepadmin-cell .nepadmin-face-xs{
+    top:4px;
+}
+.nepadmin-cell-arrow:before{
+    font-family: "layui-icon","nep-icon" !important;
+    font-size: 12px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content:"\e859";
+    position: absolute;
+    right: 16px;
+    top:50%;
+    margin-top:-10px;
+    display: inline-block;
+    height: 20px;
+}
+.nepadmin-cell:hover{
+    background: #f1f1f1;
+}
+.nepadmin-cell-selected,
+.nepadmin-cell-selected:hover{
+    background: #f8fafe;
+}
+.nepadmin-cell-title{
+    line-height: 28px;
+    font-size: 14px;
+}
+.nepadmin-cell-label{
+    line-height: 1.2;
+    font-size: 12px;
+    color: #999;
+    padding-bottom: 4px;
+}
+.nepadmin-cell-title,
+.nepadmin-cell-label{
+    padding-right: 70px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.nepadmin-cell-extra{
+    position: absolute;
+    top: 50%;
+    margin-top:-8px;
+    right: 16px;
+    display: inline-block;
+    height: 16px;
+    color:#999;
+}
+.nepadmin-cell-arrow .nepadmin-cell-extra{
+    right: 32px;
+}
+.nepadmin-cell-disabled{
+
+}
+
 
 .layui-nav .layui-nav-child dd.layui-this, 
 .layui-nav .layui-nav-child dd.layui-this a, 
 .layui-nav .layui-this, 
 .layui-nav .layui-this>a, .layui-nav .layui-this>a:hover{
-    background: #f8f8f8;
-    color:#fff;
+    background: #f9f9f9;
 }
 
 .layui-layout-admin .layui-body{
     top:50px;
-    bottom:0px;
+    bottom:0;
+    padding-bottom: 15px;
 }
 .layui-layout-admin .nepadmin-tabs-body{
     top:86px;
@@ -386,9 +777,6 @@ a{
 }
 .nepadmin-breadcrumb>*{
     font-size: 12px;
-}
-.nepadmin-breadcrumb a:hover{
-    color:#333!important;
 }
 
 /*
@@ -412,9 +800,6 @@ a{
     left: 0;
     width: 52px;
 }
-.nepadmin-sidebar-shrink #app-sidebar .layui-nav-itemed{
-    background-color: #1c1f27 !important;
-}
 .nepadmin-sidebar-shrink #app-sidebar .layui-nav-item .layui-nav-child{
     display: none;
 }
@@ -432,9 +817,20 @@ a{
     content: '\e66b';
 }
 
-.layui-badge{
+/*
+.layui-badge,
+.layui-badge-rim{
     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-radius: 50px;
+    font-size: 14px;
+    padding:2px 12px;
+    position: relative;
+    top:-2px;
 }
+.layui-badge-rim{
+    top:-3px;
+}
+*/
 
 /*
 覆盖 layui 本来的样式
@@ -446,11 +842,11 @@ textarea::-webkit-input-placeholder{
 
 .layui-input:hover, 
 .layui-textarea:hover{
-    border-color: #dcdfe6 !important;
+    border-color: #eee !important;
 }
 .layui-input:focus, 
 .layui-textarea:focus{
-    border-color: #dcdfe6 !important;
+    border-color: #eee !important;
 }
 
 .layui-input, .layui-select, .layui-textarea{
@@ -463,21 +859,18 @@ textarea::-webkit-input-placeholder{
     border-color:transparent;
     border-color:#ccc\9;
 }
-.layui-form-select dl dd.layui-this{
-    background-color:#1bdb9a;
-}
-.layui-form-checkbox, .layui-form-select dl dd.layui-disabled{
-    background-color:#fff;
+.layui-form-select dl dd.layui-this,
+.layui-form-checked[lay-skin=primary] i{
+    background-color:#00d57b;
 }
 
 /* 修改多选框的颜颜色 */
 .layui-form-checked[lay-skin=primary] i{
-    border-color:#1bdb9a;
-    background-color:#1bdb9a;
+    border-color:#00d57b;
 }
 /** 修改单选框的颜色 */
 .layui-form-radio>i:hover, .layui-form-radioed>i{
-    color:#1bdb9a;
+    color:#00d57b;
 }
 .layui-form-radio .layui-anim-scaleSpring{
     -webkit-animation-name:none;
@@ -502,23 +895,20 @@ textarea::-webkit-input-placeholder{
 }
 /** 修改 button 背景色 */
 .layui-btn{
-    background-color:#1bdb9a;
-}
-.layui-btn-normal{
-    background-color:#5a8bff;
+    background-color:#00d57b;
 }
 .layui-btn-primary{
     border-color:#eee;
-    background-color: #fff;
 }
 .layui-btn-primary:hover{
     border-color:#aaa;
 }
 .layui-btn-warm{
-    background-color:#FFB800;
+    background-color:#fab600;
 }
-.layui-btn-danger{
-    background-color:#FF5722;
+.layui-btn-danger,
+.layui-badge, .layui-badge-dot{
+    background-color:#f25657;
 }
 
 .layui-btn-disabled, 
@@ -536,12 +926,6 @@ textarea::-webkit-input-placeholder{
     height: 32px;
     line-height: 32px;
 }
-.layui-layer-prompt .layui-layer-btn a.layui-layer-btn0,
-.layui-layer-admin-modal .layui-layer-btn a.layui-layer-btn0{
-    background: #5a8bff;
-    border-color:#5a8bff;
-    color:#fff;
-}
 .layui-layer-admin-modal .layui-layer-content{
     padding-top:0;
 }
@@ -552,7 +936,6 @@ textarea::-webkit-input-placeholder{
 }
 .layui-layer-admin-page .layui-layer-setwin .layui-layer-close2{
     font-family: layui-icon;
-    background: #fff;
     border-radius: 50%;
     text-align: center;
     font-size: 16px;
@@ -563,7 +946,6 @@ textarea::-webkit-input-placeholder{
     transition: all 0.3s ease;
 }
 .layui-layer-admin-page .layui-layer-setwin .layui-layer-close2:hover{
-    color:#333;
     transform: rotate(90deg);
 }
 .layui-layer-admin-page .layui-layer-setwin .layui-layer-close2:after{
@@ -574,13 +956,6 @@ textarea::-webkit-input-placeholder{
 }
 
 /* 修改 table 页码按钮背景色 */
-.layui-laypage .layui-laypage-curr .layui-laypage-em{
-    background: #5a8bff;
-}
-.layui-laypage a:hover{
-    color:#5a8bff;
-}
-
 /* 修改 tab 导航颜色 */
 .layui-tab-title li{
     color: #999;
@@ -590,7 +965,8 @@ textarea::-webkit-input-placeholder{
 }
 .layui-tab-brief>.layui-tab-more li.layui-this:after, 
 .layui-tab-brief>.layui-tab-title .layui-this:after{
-    border-bottom:1px solid #5a8bff;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
 }
 
 /** 修改 laydate 样式 */
@@ -603,19 +979,11 @@ textarea::-webkit-input-placeholder{
 .layui-laydate .layui-laydate-footer span{
     border: none;
 }
-.layui-laydate-footer span[lay-type=date],
-.layui-laydate .layui-laydate-footer span:hover{
-    color:#5a8bff !important;
-}
 .layui-laydate .layui-laydate-header i{
     font-size:10px;
 }
 .layui-laydate td{
     border-radius: 6px;
-}
-.layui-laydate li.layui-this,
-.layui-laydate td.layui-this{
-    background: #5a8bff !important;
 }
 
 /* laydate 只选择小时的样式 */
@@ -684,7 +1052,7 @@ textarea::-webkit-input-placeholder{
 .layui-table-mend,
 .layui-table-patch,
 .layui-table-tool{
-    background: #f2f2f2;
+    background: #f1f1f1;
 }
 @media screen and (max-width: 991px) {
     .nepadmin-sidebar-shrink #app-sidebar{
@@ -797,8 +1165,6 @@ textarea::-webkit-input-placeholder{
     right: 10px;
 }
 .layui-dropdown .layui-dropdown-select{
-    background: #fff;
-    color:#333;
     border-radius: 3px;
     border:1px solid #f1f1f1;
     box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
@@ -822,7 +1188,6 @@ textarea::-webkit-input-placeholder{
 }
 .layui-dropdown .layui-dropdown-option:hover{
     background: #f6f9ff;
-    color: #5a8bff;
 }
 .layui-dropdown .layui-dropdown-option:hover > .layui-dropdown-select{
     display: block;
