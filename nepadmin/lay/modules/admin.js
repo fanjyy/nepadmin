@@ -110,10 +110,6 @@ layui.extend({
                 view.renderLayout(function(){
                     //重新渲染导航
                     element.render('nav','nepadmin-sidebar');
-
-                    //初始化 tab 选项卡
-                    
-
                     //加载视图文件
                     loadRenderPage(url,function(){
                         if(conf.viewTabs == true) view.tab.init();
@@ -253,31 +249,32 @@ layui.extend({
     //当小于这个尺寸的时候会进行手机端的适配
     var mobileWidth = 991;
     var isMobileAdapter = false;
-    //手机端适配函数
-    var mobileAdapter = function(){
-        if(isMobileAdapter == true) return;
-        //默认关闭侧边栏
-        self.flexible(false);
-
-        var device = layui.device();
-        if(device.weixin || device.android || device.ios){
-            //点击空白处关闭侧边栏
-            $(document).on('click','#'+conf.containerBody,function(){
-                if(!view.container.hasClass(self.shrinkCls)){
-                    self.flexible(false);
-                }
-            })
-        }
-        //跳转链接的时候收起侧边栏
-        $(window).on('hashchange',function(e){
+    $(window).on('resize',function(e){
+        if($(window).width() < mobileWidth){
+            if(isMobileAdapter == true) return;
+            
             self.flexible(false);
-        });
-        isMobileAdapter = true
-    }
+            var device = layui.device();
+            if(device.weixin || device.android || device.ios){
+                //点击空白处关闭侧边栏
+                $(document).on('click','#'+conf.containerBody,function(){
+                    if($(window).width() < mobileWidth && !view.container.hasClass(self.shrinkCls)){
+                        self.flexible(false);
+                    }
+                })
+            }
+            isMobileAdapter = true
+        }else{
+            isMobileAdapter = false;
+        }
+    });
 
-    
     var holdHasnUrl = '';
     $(window).on('hashchange',function(e){
+        //移动端跳转链接会先把导航关闭
+        if($(window).width() < mobileWidth){
+            self.flexible(false);
+        }
         if(holdHasnUrl != ''){
             holdHasnUrl = '';
             return false; 
@@ -295,16 +292,6 @@ layui.extend({
         next();
         
     });
-
-    $(window).on('resize',function(e){
-        if($(window).width() < mobileWidth){
-            mobileAdapter();
-        }else{
-            isMobileAdapter = false;
-        }
-    });
-
-
 
 
     //回车提交 form 表单

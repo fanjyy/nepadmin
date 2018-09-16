@@ -134,10 +134,13 @@ layui.extend({
             layui.dropdown.render({
                 elem:'.nepadmin-tabs-down',
                 click:function(name){
-                    var elem = name == 'all' ? $(btnCls) : $(btnCls+'.nepadmin-tabs-active').siblings();
-
+                    var menuBtnClas = tab.menu + ' .nepadmin-tabs-btn';
+                    var elem = name == 'all' ? $(menuBtnClas) : $(menuBtnClas+'.nepadmin-tabs-active').siblings();
+                    
                     elem.each(function(){
-                        tab.del($(this).attr('lay-url'));
+                        var url = $(this).attr('lay-url');
+                        if(url == '/'+conf.entry) return true;
+                        tab.del(url);
                     })
 
                 },
@@ -263,7 +266,8 @@ layui.extend({
     }
     //解析普通文件
     self.render = function(url,callback){
-        if(!url || url == '/') url = conf.entry;
+        url = this.delHeadSymbol(url);
+        url = url || '/'+conf.entry;
         self.loadHtml(url,function(html){
             var htmlElem = $("<div>" + html + "</div>");
             var params = self.fillHtml(url,htmlElem,'html');
@@ -273,7 +277,8 @@ layui.extend({
     //加载 tab
     self.renderTabs = function(url,callback){
         var tab = self.tab;
-        if(!url || url == '/') url = conf.entry;
+        url = this.delHeadSymbol(url);
+        url = url || '/'+conf.entry;
         if(tab.change(url) === false){
             self.loadHtml(url,function(html){
                 var htmlElem = $("<div><div class='nepadmin-tabs-item' lay-url='"+url+"'>" + html + "</div></div>");;
