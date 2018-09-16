@@ -5,6 +5,7 @@ html,
     height: 100%;
     background: #f3f3f3;
 }
+
 a{
     cursor: pointer;
 }
@@ -19,7 +20,8 @@ a{
     background-color: #f1f1f1; 
 }
 ::-webkit-scrollbar-thumb{
-    border-radius: 20px;
+    border-radius: 50px;
+    background-color: #595d68 !important;
 }
 
 #app a{
@@ -86,9 +88,8 @@ html,
 */
 
 #app-header .layui-nav-bar,
-.layui-bg-black,
-::-webkit-scrollbar-thumb{
-    background-color: #171e2d!important;
+.layui-bg-black{
+    background-color: #5a8bff!important;
 }
 
 
@@ -753,12 +754,13 @@ html,
 }
 
 .layui-layout-admin .layui-body{
-    top:50px;
+    top:0;
     bottom:0;
+    padding-top:50px;
     padding-bottom: 15px;
 }
 .layui-layout-admin .nepadmin-tabs-body{
-    top:86px;
+    padding-top:86px;
     float: left;
 }
 
@@ -782,14 +784,14 @@ html,
 /*
     修改 app-body 的样式
 */
-.nepadmin-tabs-item > .layui-fluid{
+#app-body .layui-fluid{
     margin-top:15px !important;
 }
-.nepadmin-tabs-item > .layui-fluid > .layui-table-view,
-.nepadmin-tabs-item > .layui-fluid > .layui-card > .layui-table-view{
+#app-body .layui-fluid > .layui-table-view,
+#app-body .layui-fluid > .layui-card > .layui-table-view{
     margin:0;
 }
-.layui-body .nepadmin-body-tabs{
+#app-body .nepadmin-body-tabs{
     margin:0;
 }
 
@@ -1071,8 +1073,9 @@ textarea::-webkit-input-placeholder{
 @media screen and (max-width: 768px) {
 
     .layui-layout-admin .nepadmin-tabs-body{
-        top:50px;
+        padding-top:50px;
     }
+
     #app-header ul.layui-nav{
         padding:0 10px;
     }

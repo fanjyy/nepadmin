@@ -118,30 +118,6 @@ layui.extend({
         })
     }
 
-    self.fillHtml = function(url,htmlElem,modeName){
-        var title = htmlElem.find('title').text() || '';
-        if(title){
-            self.setTitle(title);
-            htmlElem.find('title').remove();
-        }
-        var container = self.containerBody || self.container;
-
-        container[modeName](htmlElem.html());
-        self.parse(container);
-        //重新对面包屑进行渲染
-        layui.element.render('breadcrumb','nepadmin-breadcrumb');
-
-        return {title:title,url:url,htmlElem:htmlElem};
-    }
-    //解析普通文件
-    self.render = function(url,callback){
-        if(!url || url == '/') url = conf.entry;
-        self.loadHtml(url,function(html){
-            var htmlElem = $("<div>" + html + "</div>");
-            var params = self.fillHtml(url,htmlElem,'html');
-            if($.isFunction(callback)) callback(params);
-        })
-    }
 
     self.tab = {
         minLeft:null,
@@ -270,14 +246,42 @@ layui.extend({
         },
     };
 
+    self.fillHtml = function(url,html,modeName){
+        var htmlElem;
+        var title = $(html).attr('lay-title') || '';
+        self.setTitle(title);
+
+        if(modeName == 'html'){
+            htmlElem = $("<div>" + html + "</div>");
+        }
+        else if(modeName == 'prepend'){
+            htmlElem = $("<div><div class='nepadmin-tabs-item' lay-url='"+url+"'>" + html + "</div></div>");
+        }
+        
+        var container = self.containerBody || self.container;
+        container[modeName](htmlElem.html());
+        self.parse(container);
+        //重新对面包屑进行渲染
+        layui.element.render('breadcrumb','nepadmin-breadcrumb');
+        return {title:title,url:url,htmlElem:htmlElem};
+    }
+    //解析普通文件
+    self.render = function(url,callback){
+        if(!url || url == '/') url = conf.entry;
+        self.loadHtml(url,function(html){
+            //var htmlElem = $("<div>" + html + "</div>");
+            var params = self.fillHtml(url,html,'html');
+            if($.isFunction(callback)) callback(params);
+        })
+    }
     //加载 tab
     self.renderTabs = function(url,callback){
         var tab = self.tab;
         if(!url || url == '/') url = conf.entry;
         if(tab.change(url) === false){
             self.loadHtml(url,function(html){
-                var htmlElem = $("<div><div class='nepadmin-tabs-item' lay-url='"+url+"'>" + html + "</div></div>");;
-                var params = self.fillHtml(url,htmlElem,'prepend');
+                //var htmlElem = $("<div><div class='nepadmin-tabs-item' lay-url='"+url+"'>" + html + "</div></div>");;
+                var params = self.fillHtml(url,html,'prepend');
                 tab.add({url:url,title:params.title});
                 if($.isFunction(callback)) callback(params);
             })
