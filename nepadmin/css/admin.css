@@ -1,7 +1,7 @@
-body,
-html,
-#app,
-.layui-body{
+body{
+    font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+}
+body,html,#app,.layui-body{
     height: 100%;
     background: #f3f3f3;
 }

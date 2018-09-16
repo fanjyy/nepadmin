@@ -246,18 +246,14 @@ layui.extend({
         },
     };
 
-    self.fillHtml = function(url,html,modeName){
-        var htmlElem;
-        var title = $(html).attr('lay-title') || '';
-        self.setTitle(title);
+    self.fillHtml = function(url,htmlElem,modeName){
+        var fluid = htmlElem.find('.layui-fluid[lay-title]');
+        var title = '';
+        if(fluid.length > 0){
+            title = fluid.attr('lay-title');
+            self.setTitle(title);
+        }
 
-        if(modeName == 'html'){
-            htmlElem = $("<div>" + html + "</div>");
-        }
-        else if(modeName == 'prepend'){
-            htmlElem = $("<div><div class='nepadmin-tabs-item' lay-url='"+url+"'>" + html + "</div></div>");
-        }
-        
         var container = self.containerBody || self.container;
         container[modeName](htmlElem.html());
         self.parse(container);
@@ -269,8 +265,8 @@ layui.extend({
     self.render = function(url,callback){
         if(!url || url == '/') url = conf.entry;
         self.loadHtml(url,function(html){
-            //var htmlElem = $("<div>" + html + "</div>");
-            var params = self.fillHtml(url,html,'html');
+            var htmlElem = $("<div>" + html + "</div>");
+            var params = self.fillHtml(url,htmlElem,'html');
             if($.isFunction(callback)) callback(params);
         })
     }
@@ -280,8 +276,8 @@ layui.extend({
         if(!url || url == '/') url = conf.entry;
         if(tab.change(url) === false){
             self.loadHtml(url,function(html){
-                //var htmlElem = $("<div><div class='nepadmin-tabs-item' lay-url='"+url+"'>" + html + "</div></div>");;
-                var params = self.fillHtml(url,html,'prepend');
+                var htmlElem = $("<div><div class='nepadmin-tabs-item' lay-url='"+url+"'>" + html + "</div></div>");;
+                var params = self.fillHtml(url,htmlElem,'prepend');
                 tab.add({url:url,title:params.title});
                 if($.isFunction(callback)) callback(params);
             })
