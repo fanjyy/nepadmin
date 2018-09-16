@@ -32,7 +32,7 @@ layui.extend({
             laytpl(template.html()).render(data, function(html){
                 try{
                     html = $(self.checkHtml(html) ? html : '<span>'+html+'</span>');
-                }catch{
+                }catch(err){
                     html = $('<span>'+html+'</span>');
                 }
 
