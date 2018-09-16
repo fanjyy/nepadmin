@@ -20,7 +20,7 @@
             <div class="layui-card">
                 <div class="layui-card-header">柱状图</div>
                 <div class="layui-card-body">
-                    <div id="echart-bar" style="width: 100%;height:500px;"></div>
+                    <div id="chart-index-echartBar" style="width: 100%;height:500px;"></div>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
             <div class="layui-card">
                 <div class="layui-card-header">折线图</div>
                 <div class="layui-card-body">
-                    <div id="echart-line" style="width: 100%;height:500px;"></div>
+                    <div id="chart-index-echartBine" style="width: 100%;height:500px;"></div>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
             <div class="layui-card">
                 <div class="layui-card-header">饼图</div>
                 <div class="layui-card-body">
-                    <div id="echart-pie" style="width: 100%;height:500px;"></div>
+                    <div id="chart-index-echartBie" style="width: 100%;height:500px;"></div>
                 </div>
             </div>
         </div>
@@ -99,7 +99,7 @@ layui.use(['admin','echarts'], function(admin,code){
             data:[820, 932, 901, 934, 1290, 1330, 1320]
         }]
     };
-    echarts.init(document.getElementById('echart-line'),layui.echartsTheme).setOption(option);
+    echarts.init(document.getElementById('chart-index-echartBine'),layui.echartsTheme).setOption(option);
 
 
 
@@ -148,7 +148,7 @@ layui.use(['admin','echarts'], function(admin,code){
             }
         ]
     };
-    echarts.init(document.getElementById('echart-pie'),layui.echartsTheme).setOption(option);
+    echarts.init(document.getElementById('chart-index-echartBie'),layui.echartsTheme).setOption(option);
 
 
 
@@ -295,7 +295,7 @@ layui.use(['admin','echarts'], function(admin,code){
             }
         ]
     };
-    echarts.init(document.getElementById('echart-bar'),layui.echartsTheme).setOption(option);
+    echarts.init(document.getElementById('chart-index-echartBar'),layui.echartsTheme).setOption(option);
 
 })
 </script>

@@ -125,7 +125,7 @@
                         <div class="layui-col-xs12">
                             <div class="layui-card">
                                 <div class="layui-card-header">12小时内销售额</div>
-                                <div id="echart-line" style="width: 100%;height:400px;"></div>
+                                <div id="index-echartLine" style="width: 100%;height:400px;"></div>
                             </div>
                         </div>
                         <div class="layui-col-xs12">
@@ -338,7 +338,7 @@ layui.use(['admin','echarts','element','helper','table','util'], function(admin,
             data:seriesData
         }]
     };
-    echarts.init(document.getElementById('echart-line'),'blue').setOption(option);
+    echarts.init(document.getElementById('index-echartLine'),'blue').setOption(option);
 
     
     var tableObj = table.render({
