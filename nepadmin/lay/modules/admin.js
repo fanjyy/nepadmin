@@ -249,21 +249,23 @@ layui.extend({
     //当小于这个尺寸的时候会进行手机端的适配
     var mobileWidth = 991;
     var isMobileAdapter = false;
+    function mobileAdapter(){
+        self.flexible(false);
+        var device = layui.device();
+        if(device.weixin || device.android || device.ios){
+            //点击空白处关闭侧边栏
+            $(document).on('click','#'+conf.containerBody,function(){
+                if($(window).width() < mobileWidth && !view.container.hasClass(self.shrinkCls)){
+                    self.flexible(false);
+                }
+            })
+        }
+        isMobileAdapter = true
+    }
     $(window).on('resize',function(e){
         if($(window).width() < mobileWidth){
             if(isMobileAdapter == true) return;
-            
-            self.flexible(false);
-            var device = layui.device();
-            if(device.weixin || device.android || device.ios){
-                //点击空白处关闭侧边栏
-                $(document).on('click','#'+conf.containerBody,function(){
-                    if($(window).width() < mobileWidth && !view.container.hasClass(self.shrinkCls)){
-                        self.flexible(false);
-                    }
-                })
-            }
-            isMobileAdapter = true
+            mobileAdapter();
         }else{
             isMobileAdapter = false;
         }

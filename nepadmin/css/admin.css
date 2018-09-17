@@ -176,7 +176,7 @@ html,
 .layui-table-mend, 
 .layui-table-patch, 
 .layui-table-tool{
-    background-color: #f9f9f9 !important;
+    background-color: #f6f6f6 !important;
 }
 
 .layui-table tbody tr:hover, 
@@ -190,7 +190,7 @@ html,
 .layui-table-total, 
 .layui-table-total tr, 
 .layui-table[lay-even] tr:nth-child(even){
-    background-color: #f9f9f9 !important;
+    background-color: #f6f6f6 !important;
 }
 .layui-table[lay-skin=line] td, .layui-table[lay-skin=line] th{
     border-width: 0;
@@ -631,7 +631,7 @@ html,
     background: #fff8f6;
 }
 .nepadmin-linecard.nepadmin-br-gray:hover{
-    background: #f9f9f9;
+    background: #f6f6f6;
 }
 
 .nepadmin-linecard:last-child{
@@ -706,7 +706,7 @@ html,
     height: 20px;
 }
 .nepadmin-cell:hover{
-    background: #f1f1f1;
+    background: #f6f6f6;
 }
 .nepadmin-cell-selected,
 .nepadmin-cell-selected:hover{
@@ -750,7 +750,7 @@ html,
 .layui-nav .layui-nav-child dd.layui-this a, 
 .layui-nav .layui-this, 
 .layui-nav .layui-this>a, .layui-nav .layui-this>a:hover{
-    background: #f9f9f9;
+    background: #f6f6f6;
 }
 
 .layui-layout-admin .layui-body{
@@ -1020,7 +1020,7 @@ textarea::-webkit-input-placeholder{
     cursor: pointer;
 }
 .layui-cell:hover{
-    background: #f9f9f9;
+    background: #f6f6f6;
 }
 .layui-cell .layui-cell-cover{
     float: left;
