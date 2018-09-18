@@ -22,11 +22,11 @@ layui.define(['jquery'],function(exports){
     Class.prototype.depth = 0;
     Class.prototype.render = function(config){
         var self = this;
-        
-        $(document).on('click',this.config.elem,function(){
-
+        $(this.config.elem).unbind().click(function(e){
+            e.stopPropagation();
             if(self.dropdownElem == ''){
-                var dropdown = $(HTML_DROPDOWN);
+                var dropdown = $(HTML_DROPDOWN).attr('lay-key',config.elem);
+                $('.'+CLS_DROPDOWN+'[lay-key="'+config.elem+'"]').remove();
                 dropdown.html(self.createOptionsHtml(config));
                 $('body').prepend(dropdown);
                 dropdown.on('click','.'+CLS_OPTION,function(e){
@@ -40,11 +40,11 @@ layui.define(['jquery'],function(exports){
             }
 
             var dropdown = self.dropdownElem;
+
             var top = $(this).offset().top + $(this).height() + 12;
             var left = $(this).offset().left;
             dropdown.css({
-                'top':top,
-                'display':'none'
+                'top':top - 10
             });
             var offsetWidth = (self.depth + 1) * self.config.width;
 
@@ -56,14 +56,21 @@ layui.define(['jquery'],function(exports){
                 self.dropdownSelect.css({right:'auto',left:self.config.width});
             }
 
-            $(document).one('click',function(e){
-                var dropdownExists = $(e.target).parents('.layui-dropdown');
-                if(dropdownExists.length == 0){
-                    dropdown.fadeOut();
-                }
-            });
-            
-            dropdown.fadeIn();
+            setTimeout(function(){
+
+                $('body').one('click',function(e){
+                    dropdown.stop().animate({
+                        top:'-=10',
+                        opacity:0
+                    },250);
+                });
+
+            },200);
+
+            dropdown.stop().animate({
+                top:'+=10',
+                opacity:1
+            },250);
         })
     }
     Class.prototype.createOptionsHtml = function(data,depth){

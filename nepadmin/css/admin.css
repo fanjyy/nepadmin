@@ -1155,6 +1155,7 @@ textarea::-webkit-input-placeholder{
     top:0;
     left:0;
     z-index:999;
+    opacity: 0;
 }
 
 .layui-dropdown .nepadmin-arrow-up{

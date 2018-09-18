@@ -11,9 +11,7 @@ layui.extend({
     var self = {
         ie8:navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE8.0" ? true : false,
         container:$('#'+conf.container),
-        containerBody:null,
-        tabMenuTplId:'TPL-app-tabsmenu',
-        tabData:[]
+        containerBody:null
     }
     /**
      * 字符串是否含有html标签的检测
@@ -120,6 +118,9 @@ layui.extend({
 
 
     self.tab = {
+        isInit:false,
+        data:[],
+        tabMenuTplId:'TPL-app-tabsmenu',
         minLeft:null,
         maxLeft:null,
         wrap:'.nepadmin-tabs-wrap',
@@ -130,19 +131,11 @@ layui.extend({
         init:function(){
             var tab = this;
             var btnCls = tab.wrap + ' .nepadmin-tabs-btn';
-            
+
             layui.dropdown.render({
                 elem:'.nepadmin-tabs-down',
                 click:function(name){
-                    var menuBtnClas = tab.menu + ' .nepadmin-tabs-btn';
-                    var elem = name == 'all' ? $(menuBtnClas) : $(menuBtnClas+'.nepadmin-tabs-active').siblings();
-                    
-                    elem.each(function(){
-                        var url = $(this).attr('lay-url');
-                        if(url == '/'+conf.entry) return true;
-                        tab.del(url);
-                    })
-
+                    name == 'all' ? tab.delAll() : tab.delOther();
                 },
                 options:[{
                     name:'other',
@@ -152,6 +145,8 @@ layui.extend({
                     title:'关闭所有选项卡'
                 }]
             });
+
+            
 
             $(document).on('click',btnCls,function(e){
                 var url = $(this).attr('lay-url');
@@ -182,29 +177,53 @@ layui.extend({
                     }
                 }
             });
-            $('.nepadmin-tabs-hidden').addClass('layui-show');
 
+            $('.nepadmin-tabs-hidden').addClass('layui-show');
+            this.isInit = true;
         },
         has:function(url){
             var exists = false;
-            layui.each(self.tabData,function(i,data){
+            layui.each(this.data,function(i,data){
                 if(data.url == url) return exists = true;
             })
             return exists;
         },
+        clear:function(){
+            this.data = [];
+            this.isInit = false;
+            $(document).off('click',this.wrap + ' .nepadmin-tabs-btn');
+        },
         add:function(data){
             if(!data.url || this.has(data.url)) return false;
-            self.tabData.push(data);
-            layui.admin.render(self.tabMenuTplId);
+            this.data.push(data);
+            layui.admin.render(this.tabMenuTplId);
             this.change(data.url);
             return true;
         },
-        del:function(url){
-            if(self.tabData.length > 1){
+        delAll:function(type){
+            var tab = this;
+            var menuBtnClas = tab.menu + ' .nepadmin-tabs-btn';
+            $(menuBtnClas).each(function(){
+                var url = $(this).attr('lay-url');
+                if(url == '/'+conf.entry) return true;
+                tab.del(url);
+            })
+        },
+        delOther:function(){
+            var tab = this;
+            var menuBtnClas = tab.menu + ' .nepadmin-tabs-btn';
 
-                layui.each(self.tabData,function(i,data){
+            $(menuBtnClas+'.nepadmin-tabs-active').siblings().each(function(){
+                var url = $(this).attr('lay-url');
+                tab.del(url);
+            })
+        },
+        del:function(url){
+            var tab = this;
+            if(tab.data.length > 1){
+                layui.each(tab.data,function(i,data){
                     if(data.url == url){
-                        self.tabData.splice(i,1);
+                        tab.data.splice(i,1);
                         return true;
                     }
                 })
@@ -222,12 +241,13 @@ layui.extend({
             }
         },
         change:function(url){
+            if(this.isInit == false) this.init();
             if(this.has(url)){
                 var layUrl = '[lay-url="'+url+'"]';
                 var menu = $(this.menu);
                 var thisMenu = menu.find(layUrl);
-                thisMenu.addClass('nepadmin-tabs-active').siblings().removeClass('nepadmin-tabs-active');
 
+                thisMenu.addClass('nepadmin-tabs-active').siblings().removeClass('nepadmin-tabs-active');
                 this.minLeft = this.minLeft || parseInt(menu.css('left'));
 
                 var offsetLeft = thisMenu.offset().left;
@@ -279,6 +299,7 @@ layui.extend({
         var tab = self.tab;
         url = this.delHeadSymbol(url);
         url = url || '/'+conf.entry;
+
         if(tab.change(url) === false){
             self.loadHtml(url,function(html){
                 var htmlElem = $("<div><div class='nepadmin-tabs-item' lay-url='"+url+"'>" + html + "</div></div>");;

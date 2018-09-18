@@ -80,7 +80,7 @@
                 <i class="layui-icon layui-icon-close"></i>
             </span>
             <ul class="nepadmin-tabs-menu">
-                {{# layui.each(layui.admin.tabData,function(i,item){ }}<li data-type="page" class="nepadmin-tabs-btn nepadmin-tabs-active" lay-url="{{item.url}}"><i class="nepadmin-tabs-ball"></i>{{ item.title }}<b class="layui-icon layui-icon-close nepadmin-tabs-close"></b></li>{{# }) }}
+                {{# layui.each(layui.view.tab.data,function(i,item){ }}<li data-type="page" class="nepadmin-tabs-btn nepadmin-tabs-active" lay-url="{{item.url}}"><i class="nepadmin-tabs-ball"></i>{{ item.title }}<b class="layui-icon layui-icon-close nepadmin-tabs-close"></b></li>{{# }) }}
             </ul>
         </div>
         {{# } }}

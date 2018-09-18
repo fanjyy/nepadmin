@@ -19,7 +19,6 @@ layui.extend({
     var windowWidth = $(window).width();
     
     self.route = layui.router();
-    self.tabData = view.tabData;
     self.api = layui.api;
     self.ie8 = view.ie8;
     self.get  = view.request;
@@ -98,11 +97,11 @@ layui.extend({
         }
         
         if($.inArray(url,conf.indPage) === -1){
-            var loadRenderPage = function(url,callback){
+            var loadRenderPage = function(url){
                 if(conf.viewTabs == true){
-                    view.renderTabs(url,callback);
+                    view.renderTabs(url);
                 }else{
-                    view.render(url,callback);
+                    view.render(url);
                 }
             }
             if(view.containerBody == null){
@@ -111,9 +110,7 @@ layui.extend({
                     //重新渲染导航
                     element.render('nav','nepadmin-sidebar');
                     //加载视图文件
-                    loadRenderPage(url,function(){
-                        if(conf.viewTabs == true) view.tab.init();
-                    });
+                    loadRenderPage(url);
                 });
             }else{
                 //layout文件已加载，加载视图文件
@@ -121,7 +118,9 @@ layui.extend({
             }
         }else{
             //加载单页面
-            view.renderIndPage(url)
+            view.renderIndPage(url,function(){
+                if(conf.viewTabs == true) view.tab.clear();
+            })
         }
     }
     //根据当前加载的URL高亮左侧导航
