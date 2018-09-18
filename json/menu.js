@@ -6,6 +6,29 @@
 		"icon": "layui-icon-home",
 		"href": "/"
 	},{
+		"title":"异常页",
+		"icon": "layui-icon-error",
+		"childs":[{
+			"title": "403",
+			"href":"/exception/403"
+		},{
+			"title": "404",
+			"href":"/exception/404"
+		},{
+			"title": "500",
+			"href":"/exception/500"
+		}]
+	},{
+		"title":"列表页",
+		"icon": "layui-icon-error",
+		"childs":[{
+			"title": "表格列表",
+			"href":"/list/table"
+		},{
+			"title": "卡片列表",
+			"href":"/list/card"
+		}]
+	},{
 		"title": "新增模块",
 		"icon": "layui-icon-experiment",
 		"notice":3,
@@ -19,14 +42,6 @@
 			"title": "loadBar",
 			"href":"/module/loadbar"
 		}]
-	},{
-		"title": "图表",
-		"icon": "layui-icon-barchart",
-		"href":"/chart/index"
-	},{
-		"title": "表格编辑验证",
-		"icon": "layui-icon-table",
-		"href":"/table/editcheck"
 	},{
 		"title": "图标",
 		"icon": "layui-icon-star",

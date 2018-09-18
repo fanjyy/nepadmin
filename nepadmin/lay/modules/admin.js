@@ -125,7 +125,7 @@ layui.extend({
     }
     //根据当前加载的URL高亮左侧导航
     self.sidebarFocus = function(url){
-        url = url || self.route.href == '/' ? self.route.href :view.delHeadSymbol(self.route.href);
+        url = url || self.route.href;
         var elem = $('#app-sidebar').find('[lay-href="'+url+'"]').eq(0);
         if(elem.length > 0){
             elem.parents('.layui-nav-item').addClass('layui-nav-itemed');

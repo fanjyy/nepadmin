@@ -1,0 +1,40 @@
+<div class="layui-fluid" id="VIEW-list-table" lay-title="表格列表">
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-lg12">
+            <div class="layui-card">
+                <div class="layui-card-body nepadmin-table-full">
+                    <table id="list-table" lay-filter="list-table"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="TPL-list-table-status">
+        {{#
+            var status = {
+                WAIT_PAY:{title:'待付款',color:'blue'},
+                WAIT_DELIVER:{title:'待发货',color:'orange'},
+                WAIT_REFUND:{title:'待退款',color:'red'},
+            }[d.status];
+        }}
+        <span class="layui-badge layui-bg-{{status.color}}">{{ status.title }}</span>
+    </script>
+</div>
+<script>
+layui.use(['admin','table','element'], function(admin,table,element){
+    table.render({
+        elem:'[lay-filter="list-table"]',
+        api:'getGoods',
+        height:'full-120',
+        cols: [[
+            {title:'',type:'checkbox',fixed:true,width:60},
+            {title:'订单状态',templet:'#TPL-list-table-status',width:80},
+            {title:'商品名称',field: 'title',width:460},
+            {title:'商品参数',templet:'#TPL-index-params',width:240},
+            {title:'商品单价',templet:'<p><b class="nepadmin-c-red">￥{{d.price}}</b></p>',align:'center'},
+            {title:'购买数量',templet:'<p><b>{{d.buycount}}</b> <span class="nepadmin-c-gray">件</span></p>',align:'center'},
+            {field:'time',title:'操作时间',templet:'<p><span title="{{d.time}}" class="nepadmin-c-gray">{{ layui.util.timeAgo(d.time)}}</span></p>',align:'center'}
+        ]]
+    }); 
+
+})
+</script>

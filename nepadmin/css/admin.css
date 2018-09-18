@@ -192,8 +192,31 @@ html,
 .layui-table[lay-even] tr:nth-child(even){
     background-color: #f6f6f6 !important;
 }
+
+.layui-badge-rim, 
+.layui-colla-content, 
+.layui-colla-item, 
+.layui-collapse, 
+.layui-elem-field, 
+.layui-form-pane .layui-form-item[pane], 
+.layui-form-pane .layui-form-label, 
+.layui-input, 
+.layui-layedit, 
+.layui-layedit-tool, 
+.layui-quote-nm, 
+.layui-select, .layui-tab-bar, .layui-tab-card, .layui-tab-title, .layui-tab-title .layui-this:after, .layui-textarea{
+    border-color:#f6f6f6;
+}
+
+.layui-btn-group .layui-btn-primary:first-child{
+    border-color:#eee;
+}
+
 .layui-table[lay-skin=line] td, .layui-table[lay-skin=line] th{
     border-width: 0;
+}
+.nepadmin-table-full{
+    padding:0;
 }
 .nepadmin-table-full .layui-table, 
 .nepadmin-table-full .layui-table-view{
@@ -545,11 +568,13 @@ html,
     position: absolute;
     top:0;
     right: 0;
+    z-index:1;
 }
 .nepadmin-alel{
     position: absolute;
     top:0;
     left: 0;
+    z-index:1;
 }
 .nepadmin-fl{
     float: left;
@@ -609,6 +634,14 @@ html,
 
 .layui-card{
     box-shadow: 0 2px 3px 0 rgba(0,0,0,.05);
+}
+.layui-card .layui-card-extra{
+    position: absolute;
+    right: 10px;
+    top:8px;
+    z-index:1;
+    line-height: 40px;
+    padding-right: 15px;
 }
 .nepadmin-linecard{
     margin-bottom: 15px;
@@ -959,6 +992,9 @@ textarea::-webkit-input-placeholder{
 
 /* 修改 table 页码按钮背景色 */
 /* 修改 tab 导航颜色 */
+.layui-tab-title{
+    height: 42px;
+}
 .layui-tab-title li{
     color: #999;
 }
@@ -1055,6 +1091,9 @@ textarea::-webkit-input-placeholder{
 .layui-table-patch,
 .layui-table-tool{
     background: #f1f1f1;
+}
+.layui-table-tool{
+    background: #fff !important;
 }
 @media screen and (max-width: 991px) {
     .nepadmin-sidebar-shrink #app-sidebar{

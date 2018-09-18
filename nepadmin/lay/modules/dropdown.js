@@ -22,7 +22,8 @@ layui.define(['jquery'],function(exports){
     Class.prototype.depth = 0;
     Class.prototype.render = function(config){
         var self = this;
-        $(this.config.elem).unbind().click(function(e){
+
+        $(document).on('click',this.config.elem,function(e){
             e.stopPropagation();
             if(self.dropdownElem == ''){
                 var dropdown = $(HTML_DROPDOWN).attr('lay-key',config.elem);

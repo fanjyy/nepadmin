@@ -131,7 +131,7 @@ layui.extend({
         init:function(){
             var tab = this;
             var btnCls = tab.wrap + ' .nepadmin-tabs-btn';
-
+            
             layui.dropdown.render({
                 elem:'.nepadmin-tabs-down',
                 click:function(name){

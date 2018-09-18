@@ -124,13 +124,29 @@
 
                         <div class="layui-col-xs12">
                             <div class="layui-card">
-                                <div class="layui-card-header">12小时内销售额</div>
-                                <div id="index-echartLine" style="width: 100%;height:400px;"></div>
+                                <div class="layui-card-extra nepadmin-c-gray">
+                                    <span class="nepadmin-c-blue">今日</span>&nbsp;&nbsp;
+                                    <span>本周</span>&nbsp;&nbsp;
+                                    <span>本月</span>&nbsp;&nbsp;
+                                    <span>全年</span>&nbsp;&nbsp;
+                                </div>
+                                <div class="layui-tab layui-tab-brief" lay-filter="index-chart">
+                                    <ul class="layui-tab-title">
+                                        <li class="layui-this">销售额</li>
+                                        <li>访问量</li>
+                                        <li>注册量</li>
+                                    </ul>
+                                    <div class="layui-tab-content" style="padding:0;">
+                                        <div class="layui-tab-item layui-show">
+                                            <div id="index-echartLine" style="width: 100%;height:400px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="layui-col-xs12">
                             <div class="layui-card">
-                                <div class="layui-tab layui-tab-brief" lay-filter="index-tabOrder">
+                                <div class="layui-tab layui-tab-brief" lay-filter="index-order">
                                     <ul class="layui-tab-title">
                                         <li class="layui-this">全部订单</li>
                                         <li>待付款</li>
@@ -143,7 +159,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -278,16 +293,14 @@
         </div>
     </script>
     <script type="text/html" id="TPL-index-status">
-        <div>
-            {{#
-               var status = {
-                    WAIT_PAY:{title:'待付款',color:'blue'},
-                    WAIT_DELIVER:{title:'待发货',color:'orange'},
-                    WAIT_REFUND:{title:'待退款',color:'red'},
-                }[d.status];
-            }}
+        {{#
+            var status = {
+                WAIT_PAY:{title:'待付款',color:'blue'},
+                WAIT_DELIVER:{title:'待发货',color:'orange'},
+                WAIT_REFUND:{title:'待退款',color:'red'},
+            }[d.status];
+        }}
         <span class="layui-badge layui-bg-{{status.color}}">{{ status.title }}</span>
-        </div>
     </script>
 </div>
 <script>
@@ -296,51 +309,8 @@ layui.use(['admin','echarts','element','helper','table','util'], function(admin,
     var view = $('#VIEW-chart-index');
     element.render('progress');
 
-    var seriesData = [];
-    var xAxisData = [];
-    for(var i=1;i<=12;i++){
-        var val = helper.rand(8000,10000);
-        seriesData.push(val);
-        xAxisData.push((i < 10 ? '0'+i : i) +':00');
-    }
-    var option = {
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {type: 'cross'}
-        },
-        xAxis:  {
-            type: 'category',
-            data: xAxisData
-        },
-        yAxis: {
-            max:function(val){
-                return val.max + 400;
-            },
-            min:function(val){
-                return val.min - 400;
-            },
-            type: 'value',
-            axisLabel: {formatter: '￥{value}'},
-            axisPointer: {snap: true}
-        },
-        series: [{
-            name:'时段销售额',
-            type:'line',
-            symbolSize: 12,
-            lineStyle: {
-                normal: {
-                    width: 5,
-                    shadowColor: '#5a8bff',
-                    shadowBlur: 40,
-                    shadowOffsetY: 10
-                }
-            },
-            data:seriesData
-        }]
-    };
-    echarts.init(document.getElementById('index-echartLine'),'blue').setOption(option);
+    createChart();
 
-    
     var tableObj = table.render({
         elem:'[lay-filter="index-tableOrder"]',
         api:'getGoods',
@@ -355,9 +325,60 @@ layui.use(['admin','echarts','element','helper','table','util'], function(admin,
         ]]
     }); 
 
-    //一些事件监听
-    element.on('tab(index-tabOrder)', function(data){
+    element.on('tab(index-order)', function(data){
         tableObj.reload();
     });
+
+    element.on('tab(index-chart)', function(data){
+        createChart();
+    });
+  
+    
+
+    function createChart(){
+        var seriesData = [];
+        var xAxisData = [];
+        for(var i=1;i<=12;i++){
+            var val = helper.rand(8000,10000);
+            seriesData.push(val);
+            xAxisData.push((i < 10 ? '0'+i : i) +':00');
+        }
+        var option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {type: 'cross'}
+            },
+            xAxis:  {
+                type: 'category',
+                data: xAxisData
+            },
+            yAxis: {
+                max:function(val){
+                    return val.max + 400;
+                },
+                min:function(val){
+                    return val.min - 400;
+                },
+                type: 'value',
+                axisLabel: {formatter: '￥{value}'},
+                axisPointer: {snap: true}
+            },
+            series: [{
+                name:'时段销售额',
+                type:'line',
+                symbolSize: 12,
+                lineStyle: {
+                    normal: {
+                        width: 5,
+                        shadowColor: '#5a8bff',
+                        shadowBlur: 40,
+                        shadowOffsetY: 10
+                    }
+                },
+                data:seriesData
+            }]
+        };
+        echarts.init(document.getElementById('index-echartLine'),'blue').setOption(option);
+    }
 })
 </script>
