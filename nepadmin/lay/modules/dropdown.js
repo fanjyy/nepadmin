@@ -35,7 +35,7 @@ layui.define(['jquery'],function(exports){
             if(self.dropdownElem == ''){
                 INDEX += 1;
                 self.index = INDEX;
-                
+
                 var dropdown = $(HTML_DROPDOWN).attr('lay-index',self.index);
                 $('.'+CLS_DROPDOWN+'[lay-index="'+self.index+'"]').remove();
                 
@@ -50,7 +50,6 @@ layui.define(['jquery'],function(exports){
                 self.dropdownElem = dropdown;
                 self.dropdownSelect = dropdown.find('.'+CLS_SELECT);
             }
-            console.log(self.index);
 
             var dropdown = self.dropdownElem;
 
