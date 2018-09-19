@@ -22,12 +22,20 @@ layui.define(['jquery'],function(exports){
     Class.prototype.depth = 0;
     Class.prototype.render = function(config){
         var self = this;
-
-        $(document).on('click',this.config.elem,function(e){
+        if(typeof this.config.elem == 'string'){
+            $(document).on('click',this.config.elem,event);
+        }else{
+            this.config.elem.click(event);
+        }
+        
+        function event(e){
             e.stopPropagation();
             if(self.dropdownElem == ''){
-                var dropdown = $(HTML_DROPDOWN).attr('lay-key',config.elem);
-                $('.'+CLS_DROPDOWN+'[lay-key="'+config.elem+'"]').remove();
+                //var dropdown = $(HTML_DROPDOWN).attr('lay-key',config.elem);
+                //$('.'+CLS_DROPDOWN+'[lay-key="'+config.elem+'"]').remove();
+                var dropdown = $(HTML_DROPDOWN);
+                $('.'+CLS_DROPDOWN).remove();
+                
                 dropdown.html(self.createOptionsHtml(config));
                 $('body').prepend(dropdown);
                 dropdown.on('click','.'+CLS_OPTION,function(e){
@@ -72,7 +80,7 @@ layui.define(['jquery'],function(exports){
                 top:'+=10',
                 opacity:1
             },250);
-        })
+        }
     }
     Class.prototype.createOptionsHtml = function(data,depth){
         depth = depth || 0;

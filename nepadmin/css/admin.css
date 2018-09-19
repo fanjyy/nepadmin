@@ -8,6 +8,11 @@ body,html,#app,.layui-body{
 
 a{
     cursor: pointer;
+    color:#5a8bff;
+    transition: color .3s ease;
+}
+a:hover{
+    color:#1e51c7;
 }
 
 /** 修改滚动条样式 部分浏览器不支持 */
@@ -21,7 +26,7 @@ a{
 }
 ::-webkit-scrollbar-thumb{
     border-radius: 50px;
-    background-color: #595d68 !important;
+    background-color: #afb3bf !important;
 }
 
 #app a{
@@ -114,8 +119,14 @@ html,
 .layui-layer-admin-modal .layui-layer-btn a.layui-layer-btn0,
 .layui-laypage .layui-laypage-curr .layui-laypage-em,
 .layui-laydate li.layui-this,
-.layui-laydate td.layui-this{
+.layui-laydate td.layui-this,
+.layui-form-select dl dd.layui-this{
     background-color: #5a8bff !important;
+}
+
+.layui-form-select dl dd.layui-this{
+    border-radius: 10px;
+    border:5px solid #fff;
 }
 .nepadmin-br-blue,
 #app-sidebar .layui-logo span,
@@ -424,97 +435,43 @@ html,
     color:#999;
 }
 
-.nepadmin-pad20{
-    padding:20px;
-}
-.nepadmin-pad10{
-    padding:20px;
-}
-.nepadmin-pad5{
-    padding:20px;
-}
-.nepadmin-pad-tb20{
-    padding:20px 0;
-}
-.nepadmin-pad-tb10{
-    padding:10px 0;
-}
-.nepadmin-pad-tb5{
-    padding:5px 0;
-}
-.nepadmin-pad-r20{
-    padding-right:20px;
-}
-.nepadmin-pad-r10{
-    padding-right:10px;
-}
-.nepadmin-pad-r5{
-    padding-right:5px;
-}
-.nepadmin-pad-b20{
-    padding-bottom:20px;
-}
-.nepadmin-pad-b10{
-    padding-bottom:10px;
-}
-.nepadmin-pad-b5{
-    padding-bottom:5px;
-}
-.nepadmin-pad-t20{
-    padding-top:20px;
-}
-.nepadmin-pad-t10{
-    padding-top:10px;
-}
-.nepadmin-pad-t5{
-    padding-top:5px;
-}
+.nepadmin-pad20{padding:20px;}
+.nepadmin-pad10{padding:20px;}
+.nepadmin-pad5{padding:20px;}
+.nepadmin-pad-tb20{padding:20px 0;}
+.nepadmin-pad-tb10{padding:10px 0;}
+.nepadmin-pad-tb5{padding:5px 0;}
+.nepadmin-pad-r20{padding-right:20px;}
+.nepadmin-pad-r10{padding-right:10px;}
+.nepadmin-pad-r5{padding-right:5px;}
+.nepadmin-pad-b20{padding-bottom:20px;}
+.nepadmin-pad-b10{padding-bottom:10px;}
+.nepadmin-pad-b5{padding-bottom:5px;}
+.nepadmin-pad-t20{padding-top:20px;}
+.nepadmin-pad-t10{padding-top:10px;}
+.nepadmin-pad-t5{padding-top:5px;}
+.nepadmin-pad-l20{padding-left:20px;}
+.nepadmin-pad-l10{padding-left:10px;}
+.nepadmin-pad-l5{padding-left:5px;}
 
-.nepadmin-mar20{
-    margin:20px;
-}
-.nepadmin-mar10{
-    margin:20px;
-}
-.nepadmin-mar5{
-    margin:20px;
-}
-.nepadmin-mar-tb20{
-    margin:20px 0;
-}
-.nepadmin-mar-tb10{
-    margin:10px 0;
-}
-.nepadmin-mar-tb5{
-    margin:5px 0;
-}
-.nepadmin-mar-r20{
-    margin-right:20px;
-}
-.nepadmin-mar-r10{
-    margin-right:10px;
-}
-.nepadmin-mar-r5{
-    margi-rightn:5px;
-}
-.nepadmin-mar-b20{
-    margin-bottom:20px;
-}
-.nepadmin-mar-b10{
-    margin-bottom:10px;
-}
-.nepadmin-mar-b5{
-    margi-bottomn:5px;
-}
-.nepadmin-mar-t20{
-    margin-top:20px;
-}
-.nepadmin-mar-t10{
-    margin-top:10px;
-}
-.nepadmin-mar-t5{
-    margi-topn:5px;
-}
+.nepadmin-mar20{margin:20px;}
+.nepadmin-mar10{margin:20px;}
+.nepadmin-mar5{margin:20px;}
+.nepadmin-mar-tb20{margin:20px 0;}
+.nepadmin-mar-tb10{margin:10px 0;}
+.nepadmin-mar-tb5{margin:5px 0;}
+.nepadmin-mar-r20{margin-right:20px;}
+.nepadmin-mar-r10{margin-right:10px;}
+.nepadmin-mar-r5{margin-right:5px;}
+.nepadmin-mar-b20{margin-bottom:20px;}
+.nepadmin-mar-b10{margin-bottom:10px;}
+.nepadmin-mar-b5{margin-bottom:5px;}
+.nepadmin-mar-t20{margin-top:20px;}
+.nepadmin-mar-t10{margin-top:10px;}
+.nepadmin-mar-t5{margin-top:5px;}
+.nepadmin-mar-l20{margin-left:20px;}
+.nepadmin-mar-l10{margin-left:10px;}
+.nepadmin-mar-l5{margin-left:5px;}
 
 .nepadmin-gray{
     filter:grayscale(100%);
@@ -894,14 +851,10 @@ textarea::-webkit-input-placeholder{
     border-color:transparent;
     border-color:#ccc\9;
 }
-.layui-form-select dl dd.layui-this,
-.layui-form-checked[lay-skin=primary] i{
-    background-color:#00d57b;
-}
-
 /* 修改多选框的颜颜色 */
 .layui-form-checked[lay-skin=primary] i{
-    border-color:#00d57b;
+    border-color:#04b96d;
+    background-color:#00d57b;
 }
 /** 修改单选框的颜色 */
 .layui-form-radio>i:hover, .layui-form-radioed>i{
@@ -1200,8 +1153,7 @@ textarea::-webkit-input-placeholder{
 .layui-dropdown .nepadmin-arrow-up{
     position: absolute;
     top:-6px;
-    left:50%;
-    margin-left:-8px;
+    left:10px;
 }
 .layui-dropdown-right .nepadmin-arrow-up{
     left:auto;

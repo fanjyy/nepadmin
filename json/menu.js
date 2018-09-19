@@ -20,7 +20,7 @@
 		}]
 	},{
 		"title":"列表页",
-		"icon": "layui-icon-error",
+		"icon": "layui-icon-unorderedlist",
 		"childs":[{
 			"title": "表格列表",
 			"href":"/list/table"

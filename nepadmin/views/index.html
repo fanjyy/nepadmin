@@ -286,11 +286,9 @@
         </div>
     </div>
     <script type="text/html" id="TPL-index-params">
-        <div>
         {{# layui.each(d.params,function(i,item){ }}
         <span class="layui-badge-rim">{{ item.val }}</span>
         {{# }) }}
-        </div>
     </script>
     <script type="text/html" id="TPL-index-status">
         {{#
@@ -316,12 +314,12 @@ layui.use(['admin','echarts','element','helper','table','util'], function(admin,
         api:'getGoods',
         height:400,
         cols: [[
-            {title:'订单状态',fixed:true,templet:'#TPL-index-status',width:80},
+            {title:'状态',fixed:true,templet:'#TPL-index-status',width:80},
             {field: 'title',title:'商品名称',width:460},
             {title:'商品参数',templet:'#TPL-index-params',width:240},
-            {title:'商品单价',templet:'<p><b class="nepadmin-c-red">￥{{d.price}}</b></p>',align:'center'},
-            {title:'购买数量',templet:'<p><b>{{d.buycount}}</b> <span class="nepadmin-c-gray">件</span></p>',align:'center'},
-            {field:'time',title:'操作时间',templet:'<p><span title="{{d.time}}" class="nepadmin-c-gray">{{ layui.util.timeAgo(d.time)}}</span></p>',align:'center'}
+            {title:'商品单价',templet:'<p><b class="nepadmin-c-red">￥{{d.price}}</b></p>',align:'center',width:90},
+            {title:'购买数量',templet:'<p><b>{{d.buycount}}</b> <span class="nepadmin-c-gray">件</span></p>',align:'center',width:90},
+            {field:'time',title:'操作时间',templet:'<p><span title="{{d.time}}" class="nepadmin-c-gray">{{ layui.util.timeAgo(d.time)}}</span></p>',align:'center',width:90}
         ]]
     }); 
 
