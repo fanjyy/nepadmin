@@ -8,6 +8,7 @@ layui.define(['jquery'],function(exports){
     var CLS_ARROW = 'nepadmin-arrow-up'
     var HTML_DROPDOWN = '<div class="'+CLS_DROPDOWN+'">奥术大师大所<div>';
     var DEPTH = 0;
+    var INDEX = 0;
 
     var Class = function(config){
         this.config = $.extend({},this.config,config);
@@ -20,6 +21,7 @@ layui.define(['jquery'],function(exports){
     Class.prototype.dropdownElem = '';
     Class.prototype.exists = false;
     Class.prototype.depth = 0;
+    Class.prototype.index = 0;
     Class.prototype.render = function(config){
         var self = this;
         if(typeof this.config.elem == 'string'){
@@ -31,10 +33,11 @@ layui.define(['jquery'],function(exports){
         function event(e){
             e.stopPropagation();
             if(self.dropdownElem == ''){
-                //var dropdown = $(HTML_DROPDOWN).attr('lay-key',config.elem);
-                //$('.'+CLS_DROPDOWN+'[lay-key="'+config.elem+'"]').remove();
-                var dropdown = $(HTML_DROPDOWN);
-                $('.'+CLS_DROPDOWN).remove();
+                INDEX += 1;
+                self.index = INDEX;
+                
+                var dropdown = $(HTML_DROPDOWN).attr('lay-index',self.index);
+                $('.'+CLS_DROPDOWN+'[lay-index="'+self.index+'"]').remove();
                 
                 dropdown.html(self.createOptionsHtml(config));
                 $('body').prepend(dropdown);
@@ -47,6 +50,7 @@ layui.define(['jquery'],function(exports){
                 self.dropdownElem = dropdown;
                 self.dropdownSelect = dropdown.find('.'+CLS_SELECT);
             }
+            console.log(self.index);
 
             var dropdown = self.dropdownElem;
 
