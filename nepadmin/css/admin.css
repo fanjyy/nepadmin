@@ -435,43 +435,47 @@ html,
     color:#999;
 }
 
-.nepadmin-pad20{padding:20px;}
-.nepadmin-pad10{padding:20px;}
-.nepadmin-pad5{padding:20px;}
-.nepadmin-pad-tb20{padding:20px 0;}
-.nepadmin-pad-tb10{padding:10px 0;}
-.nepadmin-pad-tb5{padding:5px 0;}
-.nepadmin-pad-r20{padding-right:20px;}
-.nepadmin-pad-r10{padding-right:10px;}
-.nepadmin-pad-r5{padding-right:5px;}
-.nepadmin-pad-b20{padding-bottom:20px;}
-.nepadmin-pad-b10{padding-bottom:10px;}
-.nepadmin-pad-b5{padding-bottom:5px;}
-.nepadmin-pad-t20{padding-top:20px;}
-.nepadmin-pad-t10{padding-top:10px;}
-.nepadmin-pad-t5{padding-top:5px;}
-.nepadmin-pad-l20{padding-left:20px;}
-.nepadmin-pad-l10{padding-left:10px;}
-.nepadmin-pad-l5{padding-left:5px;}
+.nepadmin-pad30{padding:30px !important;}
+.nepadmin-pad20{padding:20px !important;}
+.nepadmin-pad10{padding:20px !important;}
+.nepadmin-pad5{padding:20px !important;}
+.nepadmin-pad0{padding:0px !important;}
+.nepadmin-pad-tb20{padding:20px 0 !important;}
+.nepadmin-pad-tb10{padding:10px 0 !important;}
+.nepadmin-pad-tb5{padding:5px 0 !important;}
+.nepadmin-pad-r20{padding-right:20px !important;}
+.nepadmin-pad-r10{padding-right:10px !important;}
+.nepadmin-pad-r5{padding-right:5px !important;}
+.nepadmin-pad-b20{padding-bottom:20px !important;}
+.nepadmin-pad-b10{padding-bottom:10px !important;}
+.nepadmin-pad-b5{padding-bottom:5px !important;}
+.nepadmin-pad-t20{padding-top:20px !important;}
+.nepadmin-pad-t10{padding-top:10px !important;}
+.nepadmin-pad-t5{padding-top:5px !important;}
+.nepadmin-pad-l20{padding-left:20px !important;}
+.nepadmin-pad-l10{padding-left:10px !important;}
+.nepadmin-pad-l5{padding-left:5px !important;}
 
-.nepadmin-mar20{margin:20px;}
-.nepadmin-mar10{margin:20px;}
-.nepadmin-mar5{margin:20px;}
-.nepadmin-mar-tb20{margin:20px 0;}
-.nepadmin-mar-tb10{margin:10px 0;}
-.nepadmin-mar-tb5{margin:5px 0;}
-.nepadmin-mar-r20{margin-right:20px;}
-.nepadmin-mar-r10{margin-right:10px;}
-.nepadmin-mar-r5{margin-right:5px;}
-.nepadmin-mar-b20{margin-bottom:20px;}
-.nepadmin-mar-b10{margin-bottom:10px;}
-.nepadmin-mar-b5{margin-bottom:5px;}
-.nepadmin-mar-t20{margin-top:20px;}
-.nepadmin-mar-t10{margin-top:10px;}
-.nepadmin-mar-t5{margin-top:5px;}
-.nepadmin-mar-l20{margin-left:20px;}
-.nepadmin-mar-l10{margin-left:10px;}
-.nepadmin-mar-l5{margin-left:5px;}
+.nepadmin-mar30{margin:30px !important;}
+.nepadmin-mar20{margin:20px !important;}
+.nepadmin-mar10{margin:20px !important;}
+.nepadmin-mar5{margin:20px !important;}
+.nepadmin-mar0{margin:0px !important;}
+.nepadmin-mar-tb20{margin:20px 0 !important;}
+.nepadmin-mar-tb10{margin:10px 0 !important;}
+.nepadmin-mar-tb5{margin:5px 0 !important;}
+.nepadmin-mar-r20{margin-right:20px !important;}
+.nepadmin-mar-r10{margin-right:10px !important;}
+.nepadmin-mar-r5{margin-right:5px !important;}
+.nepadmin-mar-b20{margin-bottom:20px !important;}
+.nepadmin-mar-b10{margin-bottom:10px !important;}
+.nepadmin-mar-b5{margin-bottom:5px !important;}
+.nepadmin-mar-t20{margin-top:20px !important;}
+.nepadmin-mar-t10{margin-top:10px !important;}
+.nepadmin-mar-t5{margin-top:5px !important;}
+.nepadmin-mar-l20{margin-left:20px !important;}
+.nepadmin-mar-l10{margin-left:10px !important;}
+.nepadmin-mar-l5{margin-left:5px !important;}
 
 .nepadmin-gray{
     filter:grayscale(100%);
@@ -558,39 +562,52 @@ html,
     font-weight: bold !important;
 }
 
-.nepadmin-face{
+.nepadmin-avatar{
     position: relative;
     height: 40px;
     width: 40px;
     display: inline-block;
     overflow: hidden;
 }
-.nepadmin-face-lg{
+.nepadmin-avatar-lg{
     height: 60px;
     width: 60px;
 }
-.nepadmin-face-xs{
+.nepadmin-avatar-xs{
     height: 20px;
     width: 20px;
 }
-.nepadmin-face img{
+.nepadmin-avatar img{
     height: 100%;
     width: 100%;
     display: block;
 }
-.nepadmin-face .layui-badge-dot{
+.nepadmin-avatar .layui-badge-dot{
     position: absolute;
     top: 2px;
     right: 2px;
     z-index:1;
 }
-.nepadmin-face,
-.nepadmin-face img{
+.nepadmin-avatar,
+.nepadmin-avatar img{
     border-radius: 5px;
 }
 
 .layui-card{
     box-shadow: 0 2px 3px 0 rgba(0,0,0,.05);
+}
+.layui-card .layui-card-header{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.layui-card .layui-card-cover{
+    height: 200px;
+    overflow: hidden;
+}
+.layui-card .layui-card-cover img{
+    width:100%;
+    min-height: 100%;
 }
 .layui-card .layui-card-extra{
     position: absolute;
@@ -599,6 +616,18 @@ html,
     z-index:1;
     line-height: 40px;
     padding-right: 15px;
+}
+.layui-card .layui-card-footer{
+    padding:10px;
+    line-height: 36px;
+    text-align: right;
+    background: #f9f9f9;
+}
+.layui-card .nepadmin-avatar{
+    float: left;
+    margin-right: 12px;
+    margin-top:4px;
+    margin-bottom: 4px;
 }
 .nepadmin-linecard{
     margin-bottom: 15px;
@@ -672,13 +701,13 @@ html,
     position: relative;
     transition: background .2s ease-in-out;
 }
-.nepadmin-cell .nepadmin-face{
+.nepadmin-cell .nepadmin-avatar{
     float: left;
     margin-right: 10px;
     position: relative;
     top:3px;
 }
-.nepadmin-cell .nepadmin-face-xs{
+.nepadmin-cell .nepadmin-avatar-xs{
     top:4px;
 }
 .nepadmin-cell-arrow:before{
@@ -775,7 +804,7 @@ html,
     修改 app-body 的样式
 */
 #app-body .layui-fluid{
-    margin-top:15px !important;
+    margin-top:15px;
 }
 #app-body .layui-fluid > .layui-table-view,
 #app-body .layui-fluid > .layui-card > .layui-table-view{
