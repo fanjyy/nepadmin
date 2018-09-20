@@ -310,16 +310,17 @@ layui.use(['admin','echarts','element','helper','table','util'], function(admin,
     createChart();
 
     var tableObj = table.render({
+        size:'nob',
         elem:'[lay-filter="index-tableOrder"]',
         api:'getGoods',
         height:400,
         cols: [[
             {title:'状态',fixed:true,templet:'#TPL-index-status',width:80},
-            {field: 'title',title:'商品名称',width:460},
-            {title:'商品参数',templet:'#TPL-index-params',width:240},
+            {field: 'title',title:'商品名称',minWidth:300},
+            {title:'商品参数',templet:'#TPL-index-params',minWidth:240},
             {title:'商品单价',templet:'<p><b class="nepadmin-c-red">￥{{d.price}}</b></p>',align:'center',width:90},
             {title:'购买数量',templet:'<p><b>{{d.buycount}}</b> <span class="nepadmin-c-gray">件</span></p>',align:'center',width:90},
-            {field:'time',title:'操作时间',templet:'<p><span title="{{d.time}}" class="nepadmin-c-gray">{{ layui.util.timeAgo(d.time)}}</span></p>',align:'center',width:90}
+            {field:'time',title:'操作时间',templet:'<p><span title="{{d.time}}" class="nepadmin-c-gray">{{ layui.util.timeAgo(d.time)}}</span></p>',align:'center',width:170}
         ]]
     }); 
 

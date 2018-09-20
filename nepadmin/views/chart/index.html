@@ -1,42 +1,75 @@
 <div class="layui-breadcrumb nepadmin-breadcrumb" lay-filter="nepadmin-breadcrumb">
     <a lay-href="/">首页</a>
-    <a><cite>图表</cite></a>
+    <a><cite>数据统计</cite></a>
 </div>
-<style>
-#VIEW-chart-index .padding{
-    padding:15px 0;
-}
-</style>
 <div class="layui-fluid" id="VIEW-chart-index" lay-title="图表">
     <div class="layui-row layui-col-space10">
         <div class="layui-col-lg12">
             <div class="layui-card">
-                <div class="layui-card-body">
-                    <p>更多使用方法参考：<a class="nepadmin-c-blue" target="__blank" href="http://echarts.baidu.com/examples/">ECharts</a></p>
+                <div class="layui-card-extra nepadmin-c-gray">
+                    <span class="nepadmin-c-blue">今日</span>&nbsp;&nbsp;
+                    <span>本周</span>&nbsp;&nbsp;
+                    <span>本月</span>&nbsp;&nbsp;
+                    <span>全年</span>&nbsp;&nbsp;
+                </div>
+                <div class="layui-tab layui-tab-brief" lay-filter="chart-index-echartBar">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">销售额</li>
+                        <li>访问量</li>
+                        <li>注册量</li>
+                    </ul>
+                    <div class="layui-tab-content nepadmin-pad0">
+                        <div class="layui-tab-item layui-show">
+                            <div class="layui-row">
+                                <div class="layui-col-lg8">
+                                    <div id="chart-index-echartBar" style="width: 100%;height:340px;"></div>
+                                </div>
+                                <div class="layui-col-lg4">
+                                    <h3 class="nepadmin-pad10 nepadmin-tc">销售额排行</h3>
+                                    <div class="nepadmin-cell">
+                                        <div class="nepadmin-cell-title"><span class="layui-badge">1</span> 广州商X一行将于30日莅临公司考察调研</div>
+                                        <div class="nepadmin-cell-extra">100 / 400</div>
+                                    </div>
+                                    <div class="nepadmin-cell">
+                                        <div class="nepadmin-cell-title"><span class="layui-badge layui-bg-orange">2</span> 广州商X一行将于30日莅临公司考察调研</div>
+                                        <div class="nepadmin-cell-extra">100 / 400</div>
+                                    </div>
+                                    <div class="nepadmin-cell">
+                                        <div class="nepadmin-cell-title"><span class="layui-badge layui-bg-green">3</span> 广州商X一行将于30日莅临公司考察调研</div>
+                                        <div class="nepadmin-cell-extra">100 / 400</div>
+                                    </div>
+                                    <div class="nepadmin-cell">
+                                        <div class="nepadmin-cell-title"><span class="layui-badge layui-bg-gray">4</span> 广州商X一行将于30日莅临公司考察调研</div>
+                                        <div class="nepadmin-cell-extra">100 / 400</div>
+                                    </div>
+                                    <div class="nepadmin-cell">
+                                        <div class="nepadmin-cell-title"><span class="layui-badge layui-bg-gray">5</span> 广州商X一行将于30日莅临公司考察调研</div>
+                                        <div class="nepadmin-cell-extra">100 / 400</div>
+                                    </div>
+                                    <div class="nepadmin-cell">
+                                        <div class="nepadmin-cell-title"><span class="layui-badge layui-bg-gray">6</span> 广州商X一行将于30日莅临公司考察调研</div>
+                                        <div class="nepadmin-cell-extra">100 / 400</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="layui-col-lg6">
-            <div class="layui-card">
-                <div class="layui-card-header">柱状图</div>
-                <div class="layui-card-body">
-                    <div id="chart-index-echartBar" style="width: 100%;height:500px;"></div>
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-lg6">
+        <div class="layui-col-lg7">
             <div class="layui-card">
                 <div class="layui-card-header">折线图</div>
                 <div class="layui-card-body">
-                    <div id="chart-index-echartBine" style="width: 100%;height:500px;"></div>
+                    <div id="chart-index-echartLine" style="width: 100%;height:300px;"></div>
                 </div>
             </div>
         </div>
-        <div class="layui-col-lg4">
+        <div class="layui-col-lg5">
             <div class="layui-card">
                 <div class="layui-card-header">饼图</div>
                 <div class="layui-card-body">
-                    <div id="chart-index-echartBie" style="width: 100%;height:500px;"></div>
+                    <div id="chart-index-echartBie" style="width: 100%;height:300px;"></div>
                 </div>
             </div>
         </div>
@@ -47,255 +80,126 @@ layui.use(['admin','echarts'], function(admin,code){
     var $ = layui.jquery;
     var view = $('#VIEW-chart-index');
 
+    function initChart(id,option){
+        echarts.init(document.getElementById(id),layui.echartsTheme).setOption(option);
+    }
+
     var option = {
-        legend: {
-            x: 'left',
-            y: 10
-        },
-        tooltip : {
+        tooltip: {
             trigger: 'axis'
         },
-        toolbox: {
-            show : true,
-            y:5,
-            feature : {
-                magicType : {show: true, type: ['line', 'bar']},
-                restore : {show: true},
-                saveAsImage : {show: true}
-            }
+        xAxis:  {
+            type: 'category',
+            data: ['周一', '周二', '周三', '周四','周五', '周六', '周日']
         },
-        xAxis: {
-            type: 'category'
+        yAxis: {
+            type: 'value',
+            axisLabel: {formatter: '{value} 人'},
+            axisPointer: {snap: true}
         },
-        yAxis: {},
         series: [{
-            name:'邮件营销',
             type:'line',
-            stack: '总量',
+            symbolSize: 12,
+            lineStyle: {
+                normal: {
+                    width: 5,
+                    shadowColor: '#5a8bff',
+                    shadowBlur: 40,
+                    shadowOffsetY: 10
+                }
+            },
             data:[120, 132, 101, 134, 90, 230, 210]
-        },
-        {
-            name:'联盟广告',
-            type:'line',
-            stack: '总量',
-            data:[220, 182, 191, 234, 290, 330, 310]
-        },
-        {
-            name:'视频广告',
-            type:'line',
-            stack: '总量',
-            data:[150, 232, 201, 154, 190, 330, 410]
-        },
-        {
-            name:'直接访问',
-            type:'line',
-            stack: '总量',
-            data:[320, 332, 301, 334, 390, 330, 320]
-        },
-        {
-            name:'搜索引擎',
-            type:'line',
-            stack: '总量',
-            data:[820, 932, 901, 934, 1290, 1330, 1320]
         }]
     };
-    echarts.init(document.getElementById('chart-index-echartBine'),layui.echartsTheme).setOption(option);
+    initChart('chart-index-echartLine',option);
 
 
 
 
+    var pieData = [
+        {value:335, name:'直接访问'},
+        {value:310, name:'邮件营销'},
+        {value:234, name:'联盟广告'},
+        {value:135, name:'视频广告'},
+        {value:1548, name:'搜索引擎'}
+    ];
     var option = {
+        title: {
+            text: '销售总额',
+            subtext:'￥ 122,123',
+            subtextStyle:{
+                fontSize:18
+            },
+            x: '100',
+            y: 'center'
+        },
+        legend: {
+            orient: 'vertical',
+            y:'center',
+            x: '50%',
+            itemGap: 30,
+	        formatter:function(name){
+                layui.each(pieData,function(i,item){
+                    if(item.name == name) name = name + ' {a|' + item.value + '}' + ' {a|25%}';
+                })
+	        	return name;
+            },
+            textStyle:{
+                rich:{
+                    a:{
+                        color:'#aaa',
+                        display:'inline-block',
+                        width:50
+                    }
+                }
+            },
+            borderRadius: 10,
+        },
         tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
-        legend: {
-            orient: 'vertical',
-            x: 'left',
-            data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
-        },
-        series: [
-            {
-                name:'访问来源',
-                type:'pie',
-                radius: ['50%', '70%'],
-                avoidLabelOverlap: false,
-                label: {
-                    normal: {
-                        show: false,
-                        position: 'center'
-                    },
-                    emphasis: {
-                        show: true,
-                        textStyle: {
-                            fontSize: '30',
-                            fontWeight: 'bold'
-                        }
-                    }
-                },
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                data:[
-                    {value:335, name:'直接访问'},
-                    {value:310, name:'邮件营销'},
-                    {value:234, name:'联盟广告'},
-                    {value:135, name:'视频广告'},
-                    {value:1548, name:'搜索引擎'}
-                ]
-            }
-        ]
+        series: [{
+            hoverAnimation: false,
+            name:'访问来源',
+            type:'pie',
+            label: {
+                normal: {show: false},
+                emphasis: {show: false}
+            },
+            labelLine: {
+                normal: {show: false},
+                emphasis: {show: false}
+            },
+            radius: ['62%', '70%'],
+            center: ['150', '50%'],
+            avoidLabelOverlap: false,
+            data:pieData
+        }]
     };
-    echarts.init(document.getElementById('chart-index-echartBie'),layui.echartsTheme).setOption(option);
+    initChart('chart-index-echartBie',option);
 
 
-
-
-
-    var posList = [
-        'left', 'right', 'top', 'bottom',
-        'inside',
-        'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
-        'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
-    ];
-
-    app.configParameters = {
-        rotate: {
-            min: -90,
-            max: 90
-        },
-        align: {
-            options: {
-                left: 'left',
-                center: 'center',
-                right: 'right'
-            }
-        },
-        verticalAlign: {
-            options: {
-                top: 'top',
-                middle: 'middle',
-                bottom: 'bottom'
-            }
-        },
-        position: {
-            options: echarts.util.reduce(posList, function (map, pos) {
-                map[pos] = pos;
-                return map;
-            }, {})
-        },
-        distance: {
-            min: 0,
-            max: 100
-        }
-    };
-
-    app.config = {
-        rotate: 90,
-        align: 'left',
-        verticalAlign: 'middle',
-        position: 'insideBottom',
-        distance: 15,
-        onChange: function () {
-            var labelOption = {
-                normal: {
-                    rotate: app.config.rotate,
-                    align: app.config.align,
-                    verticalAlign: app.config.verticalAlign,
-                    position: app.config.position,
-                    distance: app.config.distance
-                }
-            };
-            myChart.setOption({
-                series: [{
-                    label: labelOption
-                }, {
-                    label: labelOption
-                }, {
-                    label: labelOption
-                }, {
-                    label: labelOption
-                }]
-            });
-        }
-    };
-
-
-    var labelOption = {
-        normal: {
-            show: true,
-            position: app.config.position,
-            distance: app.config.distance,
-            align: app.config.align,
-            verticalAlign: app.config.verticalAlign,
-            rotate: app.config.rotate,
-            formatter: '{c}  {name|{a}}',
-            fontSize: 16,
-            rich: {
-                name: {
-                    textBorderColor: '#fff'
-                }
-            }
-        }
-    };
 
     var option = {
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'shadow'
-            }
+        tooltip : {
+            trigger: 'axis'
         },
-        legend: {
-            data: ['Forest', 'Steppe', 'Desert', 'Wetland']
-        },
-        toolbox: {
-            show: false,
-        },
-        calculable: true,
-        xAxis: [
-            {
-                type: 'category',
-                axisTick: {show: false},
-                data: ['2012', '2013', '2014', '2015', '2016']
+        xAxis : [{
+            type : 'category',
+            data : ['周一', '周二', '周三', '周四','周五', '周六', '周日','周五', '周六', '周日', '周日'],
+            axisTick: {
+                alignWithLabel: true
             }
-        ],
-        yAxis: [
-            {
-                type: 'value'
-            }
-        ],
-        series: [
-            {
-                name: 'Forest',
-                type: 'bar',
-                barGap: 0,
-                label: labelOption,
-                data: [320, 332, 301, 334, 390]
-            },
-            {
-                name: 'Steppe',
-                type: 'bar',
-                label: labelOption,
-                data: [220, 182, 191, 234, 290]
-            },
-            {
-                name: 'Desert',
-                type: 'bar',
-                label: labelOption,
-                data: [150, 232, 201, 154, 190]
-            },
-            {
-                name: 'Wetland',
-                type: 'bar',
-                label: labelOption,
-                data: [98, 77, 101, 99, 40]
-            }
-        ]
+        }],
+        yAxis : [{type : 'value'}],
+        series : [{
+            type:'bar',
+            barWidth: '60%',
+            data:[10, 52, 200, 334, 390, 330, 220,334, 390, 330, 330]
+        }]
     };
-    echarts.init(document.getElementById('chart-index-echartBar'),layui.echartsTheme).setOption(option);
+    initChart('chart-index-echartBar',option);
 
 })
 </script>

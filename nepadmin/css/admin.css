@@ -224,7 +224,6 @@ html,
 }
 
 .layui-table[lay-skin=line] td, .layui-table[lay-skin=line] th{
-    border-width: 0;
 }
 .nepadmin-table-full{
     padding:0;
@@ -493,7 +492,7 @@ html,
     background-color:#fab600 !important;
 }
 .layui-bg-gray{
-    background-color:#aaadb2 !important;
+    background-color:#eee !important;
 }
 
 .nepadmin-c-green{

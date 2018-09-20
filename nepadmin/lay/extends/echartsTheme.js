@@ -19,7 +19,10 @@ layui.define(function(exports) {
         "textStyle": {},
         "title": {
             "textStyle": {
-                "color": "#666666"
+                "color": "#666666",
+                "color":'#171e2d',
+                "fontSize":24,
+                "fontWeight":'normal'
             },
             "subtextStyle": {
                 "color": "#999999"
@@ -270,7 +273,7 @@ layui.define(function(exports) {
                 }
             },
             "splitLine": {
-                "show": true,
+                "show": false,
                 "lineStyle": {
                     "color": [
                         "#ffffff"
@@ -278,7 +281,7 @@ layui.define(function(exports) {
                 }
             },
             "splitArea": {
-                "show": true,
+                "show": false,
                 "areaStyle": {
                     "color": [
                         "#f9f9f9",
@@ -411,7 +414,9 @@ layui.define(function(exports) {
         "legend": {
             "textStyle": {
                 "color": "#171e2d"
-            }
+            },
+            itemWidth: 8,
+            itemHeight: 8,
         },
         "tooltip": {
             "backgroundColor":"rgba(23,30,45,.8)",

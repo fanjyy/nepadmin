@@ -6,6 +6,20 @@
 		"icon": "layui-icon-home",
 		"href": "/"
 	},{
+		"title":"列表页",
+		"icon": "layui-icon-unorderedlist",
+		"childs":[{
+			"title": "表格列表",
+			"href":"/list/table"
+		},{
+			"title": "卡片列表",
+			"href":"/list/card"
+		}]
+	},{
+		"title":"数据统计",
+		"icon": "layui-icon-linechart",
+		"href": "/chart/index"
+	},{
 		"title":"异常页",
 		"icon": "layui-icon-error",
 		"childs":[{
@@ -17,16 +31,6 @@
 		},{
 			"title": "500",
 			"href":"/exception/500"
-		}]
-	},{
-		"title":"列表页",
-		"icon": "layui-icon-unorderedlist",
-		"childs":[{
-			"title": "表格列表",
-			"href":"/list/table"
-		},{
-			"title": "卡片列表",
-			"href":"/list/card"
 		}]
 	},{
 		"title": "新增模块",
