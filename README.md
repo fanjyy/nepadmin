@@ -5,4 +5,4 @@
 
 ![avatar](https://cdn.layui.com/upload/2018_9/8603952_1537076911174_42129.jpg)
 
-### [在线预览](https://fanjyy.github.io/nepadmin/#/)
+### [在线预览](https://june000.gitee.io/nep-admin/)
