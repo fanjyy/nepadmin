@@ -221,6 +221,7 @@ layui.extend({
         del:function(url){
             var tab = this;
             if(tab.data.length > 1){
+                console.log(tab.data);
                 layui.each(tab.data,function(i,data){
                     if(data.url == url){
                         tab.data.splice(i,1);

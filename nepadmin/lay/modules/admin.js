@@ -204,7 +204,7 @@ layui.extend({
         return /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/.test(str)
     }
     self.popup = function(params){
-        var url = params.url || '';
+        var url = view.delHeadSymbol(params.url) || '';
         var success = params.success || function(){};
         params.skin = 'layui-layer-admin-page';
         POPUP_DATA = params.data || {};
