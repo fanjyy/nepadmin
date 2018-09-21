@@ -271,7 +271,6 @@ layui.extend({
     };
 
     self.fillHtml = function(url,htmlElem,modeName){
-        alert(123);
         var fluid = htmlElem.find('.layui-fluid[lay-title]');
         var title = '';
         if(fluid.length > 0){
