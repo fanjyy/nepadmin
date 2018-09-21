@@ -280,7 +280,11 @@ layui.extend({
 
         var container = self.containerBody || self.container;
         container[modeName](htmlElem.html());
-        self.parse(container);
+        if(modeName == 'prepend'){
+            self.parse(container.children('[lay-url="'+url+'"]'));
+        }else{
+            self.parse(container);
+        }
         //重新对面包屑进行渲染
         layui.element.render('breadcrumb','nepadmin-breadcrumb');
         return {title:title,url:url,htmlElem:htmlElem};

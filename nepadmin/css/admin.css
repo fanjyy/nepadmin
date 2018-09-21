@@ -622,12 +622,6 @@ html,
     text-align: right;
     background: #f9f9f9;
 }
-.layui-card .nepadmin-avatar{
-    float: left;
-    margin-right: 12px;
-    margin-top:4px;
-    margin-bottom: 4px;
-}
 .nepadmin-linecard{
     margin-bottom: 15px;
     border-radius: 2px;
