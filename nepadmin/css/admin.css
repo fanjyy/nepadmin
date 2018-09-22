@@ -114,7 +114,6 @@ html,
 .nepadmin-tabs-wrap li.nepadmin-tabs-active .nepadmin-tabs-ball,
 #app-sidebar .layui-nav-tree .layui-nav-bar,
 .layui-bg-blue,
-.layui-btn-normal,
 .layui-layer-prompt .layui-layer-btn a.layui-layer-btn0,
 .layui-layer-admin-modal .layui-layer-btn a.layui-layer-btn0,
 .layui-laypage .layui-laypage-curr .layui-laypage-em,
@@ -482,9 +481,29 @@ html,
 .layui-circle {
     border-radius: 100% !important;
 }
+
+.layui-form-checked span, 
+.layui-form-checked:hover span,
+.layui-form-checked[lay-skin=primary] i,
+.layui-form-onswitch,
 .layui-bg-green{
     background-color:#00d57b !important
 }
+
+.layui-form-checked i, 
+.layui-form-checked:hover i{
+    color:#00d57b;
+}
+
+/* 修改多选框的颜色 */
+.layui-form-checked[lay-skin=primary] i{
+    border-color:#04b96d;
+}
+
+.layui-form-checked[lay-skin="primary"] span{
+    background-color: transparent !important;
+}
+
 .layui-bg-red{
     background-color:#f25657 !important;
 }
@@ -873,11 +892,6 @@ textarea::-webkit-input-placeholder{
     border-color:transparent;
     border-color:#ccc\9;
 }
-/* 修改多选框的颜颜色 */
-.layui-form-checked[lay-skin=primary] i{
-    border-color:#04b96d;
-    background-color:#00d57b;
-}
 /** 修改单选框的颜色 */
 .layui-form-radio>i:hover, .layui-form-radioed>i{
     color:#00d57b;
@@ -904,7 +918,11 @@ textarea::-webkit-input-placeholder{
     color: #ff4911;
 }
 /** 修改 button 背景色 */
-.layui-btn{
+.layui-btn,
+.layui-btn-normal{
+    background-color:#5a8bff;
+}
+.layui-btn-success{
     background-color:#00d57b;
 }
 .layui-btn-primary{
@@ -961,8 +979,55 @@ textarea::-webkit-input-placeholder{
 .layui-layer-admin-page .layui-layer-setwin .layui-layer-close2:after{
     content:"\1006";
 }
-.layui-layer-msg{
-    border-color: #f1f1f1;
+
+.layui-layer-msg {
+    border:none !important;
+}
+.layui-layer-msg .layui-layer-content{
+    padding: 10px 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /*
+    padding:10px 20px 10px 55px;
+    */
+}
+.layui-layer-dialog .layui-layer-content .layui-layer-ico{
+    font-family:"layui-icon","nep-icon" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    line-height: 30px;
+    font-size: 26px;
+    background:none;
+}
+.layui-layer-dialog .layui-layer-content .layui-layer-ico::before{
+    content: "\e8b3";
+    color:#fab600;
+}
+.layui-layer-dialog .layui-layer-content .layui-layer-ico1::before{
+    content: "\e89d";
+    color:#00d57b;
+}
+.layui-layer-dialog .layui-layer-content .layui-layer-ico2::before{
+    content: "\e8a1";
+    color:#f25657;
+}
+.layui-layer-dialog .layui-layer-content .layui-layer-ico3::before{
+    content: "\e8a6";
+    color:#fab600;
+}
+.layui-layer-dialog .layui-layer-content .layui-layer-ico4::before{
+    content: "\e910";
+    color:#171e2d;
+}
+.layui-layer-dialog .layui-layer-content .layui-layer-ico5::before{
+    content: "\e782";
+    color:#f25657;
+}
+.layui-layer-dialog .layui-layer-content .layui-layer-ico6::before{
+    content: "\e78f";
+    color:#00d57b;
 }
 
 /* 修改 table 页码按钮背景色 */

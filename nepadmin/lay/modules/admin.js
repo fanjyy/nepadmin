@@ -171,7 +171,7 @@ layui.extend({
     self.modal.info = function(msg,params){
         params = params || {}
         params.titleIcoColor = params.titleIcoColor || '#5a8bff';
-        params.titleIco = params.titleIco || 'ok';
+        params.titleIco = params.titleIco || 'exclaimination';
         params.title = ['<i class="layui-icon layui-icon-'+params.titleIco+'" style="font-size:12px;background:'+params.titleIcoColor+';display:inline-block;position:relative;top:-2px;height:24px;line-height:24px;text-align:center;width:24px;color:#fff;border-radius:50%;margin-right:10px;"></i>' + (params.title || '提醒'),'background:#fff;border:none;font-weight:bold;font-size:18px;color:#08132b;padding-top:20px;height:46px;line-height:46px;padding-bottom:0;'];
         params = $.extend({
             btn: ['我知道了'],
@@ -190,7 +190,7 @@ layui.extend({
     }
     self.modal.warn=function(msg,params){
         params = params || {};
-        params.titleIco = 'close';
+        params.titleIco = 'exclaimination';
         params.titleIcoColor = '#ff9900';
         self.modal.info(msg,params);
     }

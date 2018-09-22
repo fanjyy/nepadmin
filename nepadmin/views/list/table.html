@@ -6,7 +6,7 @@
                 <div class="layui-card">
                     <div class="layui-card-body nepadmin-table-full">
                         <div class="layui-btn-container nepadmin-pad-t10 nepadmin-pad-l10">
-                            <div class="layui-btn layui-btn-sm layui-btn-normal">添加商品</div>
+                            <div class="layui-btn layui-btn-sm">添加商品</div>
                             <div class="layui-btn layui-btn-sm layui-btn-primary table-action" data-type="lower">下架</div>
                             <div class="layui-btn layui-btn-sm layui-btn-primary table-action" data-type="del">删除</div>
                             <div class="layui-btn layui-btn-sm layui-btn-primary table-action" data-type="move">移动分类</div>
@@ -18,80 +18,77 @@
             </div>
         </div>
     </div>
-    <div class="layui-col-md2 layui-hide-xs layui-hide-sm layui-show-md-block">
-        <div class="layui-row layui-col-space10">
-            <div class="layui-col-md12">
-                <div class="layui-card">
-                    <div class="layui-card-header">筛选数据</div>
-                    <div class="layui-card-body">
-                        <div class="layui-row layui-col-space10 layui-form">
-                            <div class="layui-col-md12 layui-col-xs4">
-                                <select name="type">
-                                    <option value="">销售状况</option>
-                                    <option value="1">出售中</option>
-                                    <option value="2">已售罄</option>
-                                    <option value="3">仓库中</option>
-                                </select>
+    <div class="layui-col-md2">
+
+        <div class="layui-card">
+            <div class="layui-card-header">筛选数据</div>
+            <div class="layui-card-body">
+                <div class="layui-row layui-col-space10 layui-form">
+                    <div class="layui-col-md12 layui-col-xs4">
+                        <select name="type">
+                            <option value="">销售状况</option>
+                            <option value="1">出售中</option>
+                            <option value="2">已售罄</option>
+                            <option value="3">仓库中</option>
+                        </select>
+                    </div>
+                    <div class="layui-col-md12 layui-col-xs4">
+                        <select name="status">
+                            <option value="">商品类型</option>
+                            <option value="1">实物商品</option>
+                            <option value="2">虚拟商品</option>
+                            <option value="3">电子卡券</option>
+                            <option value="4">付费会员卡</option>
+                            <option value="5">酒店商品</option>
+                        </select>
+                    </div>
+                    <div class="layui-col-md12 layui-col-xs4">
+                        <select name="group">
+                            <option value="">商品分组</option>
+                            <option value="1">最新商品</option>
+                            <option value="2">最热商品</option>
+                        </select>
+                    </div>
+                    <div class="layui-col-md12">
+                        <div class="layui-row layui-col-space10">
+                            <div class="layui-col-md6 layui-col-xs6">
+                                <input type="text" class="layui-input" placeholder="最高销量" />
                             </div>
-                            <div class="layui-col-md12 layui-col-xs4">
-                                <select name="status">
-                                    <option value="">商品类型</option>
-                                    <option value="1">实物商品</option>
-                                    <option value="2">虚拟商品</option>
-                                    <option value="3">电子卡券</option>
-                                    <option value="4">付费会员卡</option>
-                                    <option value="5">酒店商品</option>
-                                </select>
+                            <div class="layui-col-md6 layui-col-xs6">
+                                <input type="text" class="layui-input" placeholder="最低销量" />
                             </div>
-                            <div class="layui-col-md12 layui-col-xs4">
-                                <select name="group">
-                                    <option value="">商品分组</option>
-                                    <option value="1">最新商品</option>
-                                    <option value="2">最热商品</option>
-                                </select>
+                        </div>
+                    </div>
+                    <div class="layui-col-md12 layui-col-xs12">
+                        <div class="layui-row layui-col-space10">
+                            <div class="layui-col-xs6">
+                                <div class="layui-btn layui-btn-sm layui-btn-fluid">筛选</div>
                             </div>
-                            <div class="layui-col-md12">
-                                <div class="layui-row layui-col-space10">
-                                    <div class="layui-col-md6 layui-col-xs6">
-                                        <input type="text" class="layui-input" placeholder="最高销量" />
-                                    </div>
-                                    <div class="layui-col-md6 layui-col-xs6">
-                                        <input type="text" class="layui-input" placeholder="最低销量" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="layui-col-md12 layui-col-xs12">
-                                <div class="layui-row layui-col-space10">
-                                    <div class="layui-col-xs6">
-                                        <div class="layui-btn layui-btn-sm layui-btn-fluid layui-btn-normal">筛选</div>
-                                    </div>
-                                    <div class="layui-col-xs6">
-                                        <div class="layui-btn layui-btn-sm layui-btn-fluid layui-btn-primary">重置</div>
-                                    </div>
-                                </div>
+                            <div class="layui-col-xs6">
+                                <div class="layui-btn layui-btn-sm layui-btn-fluid layui-btn-primary">重置</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="layui-col-md12">
-                <div class="layui-card nepadmin-font-12">
-                    <div class="layui-card-header"><i class="layui-icon">&#xe78c;</i> 帮助中心</div>
-                    <div class="layui-card-extra"><a>进入</a></div>
-                    <div class="layui-card-body">
-                        <p>商品在出售中列表找不到？</p>
-                        <p class="nepadmin-c-gray">商品售罄库存为0，在已售罄列表中，提醒您该添加库存了。待付款订单也会占据库存，其超时关闭后库存才会释放。</p>
-                        <hr/>
-                        <p><a>如何新建／发布商品？</a></p>
-                        <p><a>如何管理商品？</a></p>
-                        <p><a>商品如何排序？</a></p>
-                        <p><a>商品销量找不到对应的订单？</a></p>
-                        <p><a>商品二维码使用说明</a></p>
-                        <p><a>商品可以设置用积分兑换吗？</a></p>
-                    </div>
-                </div>
+        </div>
+
+        <div class="layui-card nepadmin-font-12">
+            <div class="layui-card-header"><i class="layui-icon">&#xe78c;</i> 帮助中心</div>
+            <div class="layui-card-extra"><a>进入</a></div>
+            <div class="layui-card-body">
+                <p>商品在出售中列表找不到？</p>
+                <p class="nepadmin-c-gray">商品售罄库存为0，在已售罄列表中，提醒您该添加库存了。待付款订单也会占据库存，其超时关闭后库存才会释放。</p>
+                <hr/>
+                <p><a>如何新建／发布商品？</a></p>
+                <p><a>如何管理商品？</a></p>
+                <p><a>商品如何排序？</a></p>
+                <p><a>商品销量找不到对应的订单？</a></p>
+                <p><a>商品二维码使用说明</a></p>
+                <p><a>商品可以设置用积分兑换吗？</a></p>
             </div>
         </div>
+
     </div>
     </div>
     <script type="text/html" id="TPL-list-table-params">
