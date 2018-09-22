@@ -17,7 +17,7 @@
 		}]
 	},{
 		"title":"表单页",
-		"icon": "layui-icon-error",
+		"icon": "layui-icon-file-exception",
 		"childs":[{
 			"title": "表单元素",
 			"href":"form/basic"
