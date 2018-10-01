@@ -33,12 +33,5 @@
     var view = $('#VIEW-module-helper');
     helper.qrcode(view.find('.qrcode-image'), 'test');
 
-    helper.upload({
-      elem: view.find('.upload'),
-      done: function (res, setPreviewUrl, currentFile) {
-        console.log(res);
-      }
-    })
-
   })
 </script>
