@@ -1,0 +1,99 @@
+<div class="layui-fluid nepadmin-pad0 nepadmin-mar0" id="VIEW-detail-plan" lay-title="工作计划">
+  <div class="layui-card" style="margin-bottom: 0;">
+    <div class="layui-card-body nepadmin-pad30">
+      <div class="layui-row">
+        <div class="layui-col-lg12"></div>
+        <h2 class="nepadmin-pad-b10">日历平铺展示内容</h2>
+        <p class="nepadmin-c-gray">可以展示一些工作计划、日程等内容。</p>
+      </div>
+    </div>
+  </div>
+  <div class="layui-row layui-col-space10 nepadmin-pad20">
+    <div class="layui-col-md12 layui-bg-white">
+      <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin:0;">
+        <ul class="layui-tab-title">
+          <li>普通展示</li>
+          <li class="layui-this">自定义日期内容</li>
+        </ul>
+        <div class="layui-tab-content">
+          <div class="layui-tab-item">
+            <div class="normal-full-date nepadmin-laydate-full"></div>
+          </div>
+          <div class="layui-tab-item layui-show">
+            <div class="custom-full-date nepadmin-laydate-full"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  #VIEW-detail-plan .custom-full-date td.layui-this .customdate-content {
+    color: #5a8bff;
+  }
+
+  #VIEW-detail-plan .customdate-content {
+    line-height: 18px;
+    font-size: 12px;
+    color: #f25657;
+  }
+
+  #VIEW-detail-plan .customdate-content h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+</style>
+<script>
+  layui.use(['laydate', 'jquery'], function (laydate) {
+    var $ = layui.jquery;
+    var viewCls = '#VIEW-detail-plan';
+
+    laydate.render({
+      elem: viewCls + ' .normal-full-date',
+      position: 'static',
+      showBottom: false,
+      calendar: true,
+      ready: function () {
+        console.log('ready');
+      },
+      change: function (value, date) {
+        console.log(date);
+      }
+    });
+
+    function customContent() {
+      var markList = {
+        '9': [
+          '发布推广信息',
+          '上传最新文章',
+          '审核商品'
+        ],
+        '21': [
+          '发工资'
+        ],
+        '3': [
+          '该干嘛干嘛'
+        ]
+      };
+
+      $(this.elem).find('[lay-ymd]').each(function () {
+        var ymd = $(this).attr('lay-ymd');
+        var day = ymd.split('-')[2];
+        var mark = markList[day];
+        if (mark) {
+          var p = $('<div class="customdate-content"><h2>' + day + '</h2>' + mark.join('<br/>') + '</div>');
+          $(this).html(p);
+        }
+      })
+    }
+
+    laydate.render({
+      elem: viewCls + ' .custom-full-date',
+      position: 'static',
+      showBottom: false,
+      ready: customContent,
+      change: customContent
+    });
+
+  })
+</script>

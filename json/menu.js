@@ -16,6 +16,13 @@
 			"href":"list/card"
 		}]
 	},{
+		"title":"详情页",
+		"icon": "layui-icon-container",
+		"childs":[{
+			"title": "工作计划",
+			"href":"detail/plan"
+		}]
+	},{
 		"title":"表单页",
 		"icon": "layui-icon-file-exception",
 		"childs":[{
