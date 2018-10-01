@@ -965,21 +965,24 @@ input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
   color: #ccc;
 }
-
 .layui-input:hover,
-.layui-textarea:hover {
-  border-color: #eee !important;
+.layui-textarea:hover,
+.layui-input:focus,
+.layui-textarea:focus {
+  border-color: #eee;
 }
 .layui-input:focus,
 .layui-textarea:focus {
-  border-color: #eee !important;
+  border-color: #94b2fa !important;
+  box-shadow: 0 0 0 3px rgba(90, 139, 255, 0.2);
 }
 
 .layui-input,
 .layui-select,
 .layui-textarea {
-  border-radius: 0;
+  border-radius: 5px;
   border-color: #eee;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 /** 修改 select option的选中颜色*/
 .layui-form-select dl {

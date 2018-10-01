@@ -1,7 +1,127 @@
-<div class="layui-fluid" id="VIEW-icon-index" lay-title="文章编辑">
-  <div class="layui-row layui-col-space10">
-    <div class="layui-col-xs12">
-      文章编辑
+<div class="layui-fluid" lay-title="文章编辑">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md2">
+      <div class="layui-card">
+        <div class="layui-card-header">文章列表</div>
+        <div class="layui-card-body">
+          12312312
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md10">
+      <div class="layui-card">
+        <div class="layui-card-header">编辑文章</div>
+        <div class="layui-card-body">
+          <form class="layui-form" action="" lay-filter="form-group">
+            <div class="layui-form-item">
+              <label class="layui-form-label">类目</label>
+              <div class="layui-input-inline">
+                <select name="interest" lay-filter="aihao">
+                  <option value="0">行业动态</option>
+                  <option value="1">科技</option>
+                  <option value="2">娱乐</option>
+                  <option value="3">体育</option>
+                  <option value="4">文学</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">标题</label>
+              <div class="layui-input-block">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">缩略图</label>
+              <div class="layui-input-block">
+
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">关键字</label>
+              <div class="layui-input-block">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="多个关键字中间用逗号隔开" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+              <label class="layui-form-label">作者</label>
+              <div class="layui-input-inline">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+              <label class="layui-form-label">来源</label>
+              <div class="layui-input-inline">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">摘要</label>
+              <div class="layui-input-block">
+                <textarea name="text" placeholder="请输入内容" class="layui-textarea"></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">内容</label>
+              <div class="layui-input-block">
+                <textarea name="text" placeholder="请输入内容" class="layui-textarea"></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" lay-filter="form-group-submit">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  layui.use(['admin', 'form', 'laydate'], function () {
+    var $ = layui.$
+      , admin = layui.admin
+      , element = layui.element
+      , layer = layui.layer
+      , laydate = layui.laydate
+      , form = layui.form;
+
+    form.render(null, 'form-group');
+
+    laydate.render({
+      elem: '#form-group-date'
+    });
+
+    /* 自定义验证规则 */
+    form.verify({
+      title: function (value) {
+        if (value.length < 5) {
+          return '标题至少得5个字符啊';
+        }
+      }
+      , pass: [/(.+){6,12}$/, '密码必须6到12位']
+      , content: function (value) {
+        layedit.sync(editIndex);
+      }
+    });
+
+    /* 监听指定开关 */
+    form.on('switch(form-group-switch)', function (data) {
+      layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+        offset: '6px'
+      });
+      layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+    });
+
+    /* 监听提交 */
+    form.on('submit(form-group-submit)', function (data) {
+      layer.alert(JSON.stringify(data.field), {
+        title: '最终的提交信息'
+      })
+      return false;
+    });
+  });
+</script>

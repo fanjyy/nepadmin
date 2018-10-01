@@ -1,25 +1,22 @@
 <div class="layui-fluid nepadmin-pad0 nepadmin-mar0" id="VIEW-detail-plan" lay-title="工作计划">
   <div class="layui-card" style="margin-bottom: 0;">
     <div class="layui-card-body nepadmin-pad30">
-      <div class="layui-row">
-        <div class="layui-col-lg12"></div>
-        <h2 class="nepadmin-pad-b10">日历平铺展示内容</h2>
-        <p class="nepadmin-c-gray">可以展示一些工作计划、日程等内容。</p>
-      </div>
+      <h2 class="nepadmin-pad-b10">日历平铺展示内容</h2>
+      <p class="nepadmin-c-gray">可以展示一些工作计划、日程等内容。</p>
     </div>
   </div>
   <div class="layui-row layui-col-space10 nepadmin-pad20">
     <div class="layui-col-md12 layui-bg-white">
       <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin:0;">
         <ul class="layui-tab-title">
-          <li>普通展示</li>
-          <li class="layui-this">自定义日期内容</li>
+          <li class="layui-this">普通展示</li>
+          <li>自定义日期内容</li>
         </ul>
         <div class="layui-tab-content">
-          <div class="layui-tab-item">
+          <div class="layui-tab-item layui-show">
             <div class="normal-full-date nepadmin-laydate-full"></div>
           </div>
-          <div class="layui-tab-item layui-show">
+          <div class="layui-tab-item">
             <div class="custom-full-date nepadmin-laydate-full"></div>
           </div>
         </div>
@@ -52,13 +49,7 @@
       elem: viewCls + ' .normal-full-date',
       position: 'static',
       showBottom: false,
-      calendar: true,
-      ready: function () {
-        console.log('ready');
-      },
-      change: function (value, date) {
-        console.log(date);
-      }
+      calendar: true
     });
 
     function customContent() {
