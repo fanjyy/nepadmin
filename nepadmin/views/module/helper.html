@@ -1,60 +1,44 @@
 <style>
-#VIEW-module-helper .qrcode-image{
-    padding:20px;
-    border:1px solid #f1f1f1;
+  #VIEW-module-helper .qrcode-image {
+    padding: 20px;
+    border: 1px solid #f1f1f1;
     display: inline-block;
-    margin:15px 0;
-}
+    margin: 15px 0;
+  }
 </style>
 <div class="layui-breadcrumb nepadmin-breadcrumb" lay-filter="nepadmin-breadcrumb">
-    <a lay-href="/">首页</a>
-    <a>新增模块</a>
-    <a>
-        <cite>helper</cite>
-    </a>
+  <a lay-href="/">首页</a>
+  <a>新增模块</a>
+  <a>
+    <cite>helper</cite>
+  </a>
 </div>
 <div class="layui-fluid" id="VIEW-module-helper" lay-title="helper 模块">
-    <div class="layui-row layui-col-space10">
-        <div class="layui-col-lg12">
-            <div class="layui-card">
-                <div class="layui-card-body">
-                    <h3 class="nepadmin-c-gray">创建二维码</h3><hr>
-                    <p>使用 helper.qrcode 创建二维码会调整IE8上的显示问题</p>
-                    <div class="qrcode-image"></div>
-                </div>
-            </div>
-
-            <div class="layui-card">
-                <div class="layui-card-body">
-                    <h3 class="nepadmin-c-gray">单文件上传</h3><hr>
-                    <p style="margin-bottom: 10px">helper.upload 上传单文件，绑定的按钮会有“上传中”，"已上传" 的页面表现</p>
-                    <button class="layui-btn layui-btn-primary upload"><i class="layui-icon">&#xe64a;</i> 点我上传</button>
-                    <pre class="layui-code">
-helper.upload({
-    elem:view.find('.upload'),
-    done:function(res,setPreviewUrl,currentFile){
-        // res 返回信息
-        // setPreviewUrl('http://www.baidu.com/logo.png') 设置 查看图片 按钮的图片URL
-        // currentFile 本地文件信息
-    }
-})</pre>
-                </div>
-            </div>
+  <div class="layui-row layui-col-space10">
+    <div class="layui-col-lg12">
+      <div class="layui-card">
+        <div class="layui-card-body">
+          <h3 class="nepadmin-c-gray">创建二维码</h3>
+          <hr>
+          <p>使用 helper.qrcode 创建二维码会调整IE8上的显示问题</p>
+          <div class="qrcode-image"></div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <script>
-    layui.use(['admin','code','helper','qrcode','upload'], function (admin,code,helper) {
-        var $ = layui.jquery;
-        var view = $('#VIEW-module-helper');
-        helper.qrcode(view.find('.qrcode-image'),'test');
-        
-        helper.upload({
-            elem:view.find('.upload'),
-            done:function(res,setPreviewUrl,currentFile){
-                console.log(res);
-            }
-        })
+  layui.use(['admin', 'code', 'helper', 'qrcode', 'upload'], function (admin, code, helper) {
+    var $ = layui.jquery;
+    var view = $('#VIEW-module-helper');
+    helper.qrcode(view.find('.qrcode-image'), 'test');
 
+    helper.upload({
+      elem: view.find('.upload'),
+      done: function (res, setPreviewUrl, currentFile) {
+        console.log(res);
+      }
     })
+
+  })
 </script>
