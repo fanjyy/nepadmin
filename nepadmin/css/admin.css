@@ -336,6 +336,9 @@ html,
   margin-top: 5px;
   border: none;
 }
+#app-header .layui-search-input:focus {
+  box-shadow: none;
+}
 
 #app-header .layui-nav-bar {
   height: 1px;
