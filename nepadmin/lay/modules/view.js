@@ -237,9 +237,10 @@ layui
               tab.del(url)
             })
         },
-        del: function(url) {
+        del: function(url,backMenu) {
+          url = self.delHeadSymbol(url) || conf.entry
           var tab = this
-          if (tab.data.length > 1) {
+          if (tab.data.length > 1 || backMenu === true) {
             layui.each(tab.data, function(i, data) {
               if (data.url == url) {
                 tab.data.splice(i, 1)
@@ -252,14 +253,18 @@ layui
               '#' + conf.containerBody + ' > .nepadmin-tabs-item' + layUrl
             )
             var thisMenu = $(this.menu).find(layUrl)
-
             thisMenu.remove()
             thisBody.remove()
-
-            if (thisMenu.hasClass('nepadmin-tabs-active')) {
-              $(this.menu + ' li:last').click()
+            if(!backMenu){
+                if (thisMenu.hasClass('nepadmin-tabs-active')) {
+                    $(this.menu + ' li:last').click()
+                }
             }
           }
+        },
+        refresh:function(url){
+            this.del(url,true);
+            self.renderTabs(url);
         },
         change: function(url) {
           if (this.isInit == false) this.init()

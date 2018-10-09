@@ -370,8 +370,7 @@ layui
       self.event($(this).attr(conf.eventName), $(this))
     })
 
-    var shrinkSidebarBtn =
-      '.' + self.shrinkCls + ' #app-sidebar .layui-nav-item a'
+    var shrinkSidebarBtn = '.' + self.shrinkCls + ' #app-sidebar .layui-nav-item a'
 
     $(document).on('click', shrinkSidebarBtn, function(e) {
       var chileLength = $(this)
@@ -401,7 +400,12 @@ layui
     })
 
     self.on('refresh', function(e) {
-      view.render(location.hash)
+      var url = layui.router().href;
+      if(conf.viewTabs == true){
+        view.tab.refresh(url);
+      }else{
+        view.render(location.hash)
+      }
     })
     self.on('prev', function(e) {
       self.prev()
