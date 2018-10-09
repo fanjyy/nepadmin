@@ -19,53 +19,53 @@ layui.define(function(exports) {
     style: [
       //layui.cache.base + "css/admin.css"
     ],
-    //是否开启调试模式。如开启，接口异常时会抛出异常 URL 等信息
+    //是否开启调试模式，开启的话接口异常会抛出异常 URL信息
     debug: layui.cache.debug,
+    //网站名称
+    name: 'nepadmin',
     //默认视图文件名
     entry: 'index',
     //视图文件后缀名
     engine: '.html',
     eventName: 'nepadmin-event',
-    name: 'nepadmin',
     //本地存储表名
     tableName: 'nepadmin',
-    //作用于 table upload request 时带上的 headers
+    //全局设置 headers 信息
     requestHeaders: {
-      'PP-User-Agent': 'os=3;ver=0.0.1;ctype=2;imei='
+      'Test-User-Agent': 'os=pc;ver=0.0.1;imei=asdasdas'
     },
     //request 基础URL
-    //requestUrl:'http://192.168.0.0/',
-
     requestUrl: './',
-    //图片基础URL
-    imageUrl: 'http://192.168.3.191/',
-    //独立页面路由，可随意添加（无需写参数） 前面不能带 /
+    //独立页面路由，可随意添加（无需写参数）
     indPage: [
-      '/user/login', //登入页
-      '/user/reg', //注册页
-      '/user/forget' //找回密码
+      'user/login', //登入页
+      'user/reg', //注册页
+      'user/forget' //找回密码
     ],
     //登录页面，当未登录或登录失效时进入
-    loginPage: '/user/login',
+    loginPage: 'user/login',
     //登录 token 名称，request 请求的时候会带上此参数到 header
     tokenName: 'token',
-    //是否要检查登录状态， 使用tokenName进行登录验证，不通过的话会返回 loginPage 页面
+    //是否要强制检查登录状态， 使用tokenName进行登录验证，不通过的话会返回 loginPage 页面
     loginCheck: true,
-    //自定义响应字段
+    //根据服务器返回的 HTTP 状态码检查登录过期，设置为false不通过http返回码检查
+    logoutHttpCode: '401',
+    //全局自定义响应字段
     response: {
       //数据状态的字段名称
       statusName: 'code',
       statusCode: {
         //数据状态一切正常的状态码
         ok: 0,
-        //登录过期状态码
-        logout: 100004
+        //通过接口返回的登录过期状态码
+        logout: 401
       },
       msgName: 'msg', //状态信息的字段名称
       dataName: 'data', //数据详情的字段名称
       countName: 'count' //数据条数的字段名称，用于 table
     },
-    //全局 table 配置，调用 admin.table()生成表格有效， 不能配置 url、headers、response
+    //全局 table 配置
+    //参数请参照 https://www.layui.com/doc/modules/table.html
     table: {
       page: true,
       size: 'lg',
@@ -80,8 +80,6 @@ layui.define(function(exports) {
         limitName: 'size' //每页数据量的参数名，默认：limit
       }
     },
-    //登录过期 HTTP 状态，设置为false不通过http返回码检查
-    logoutHttpCode: '401',
     //第三方扩展
     extend: {
       //后台根据业务需求扩展的方法

@@ -82,6 +82,7 @@ layui
     }
     //初始化视图区域
     self.initView = function(url) {
+        url = view.delHeadSymbol(url);
       $(window).unbind('beforeunload')
       //判断登录页面
       if (conf.loginCheck == true) {
