@@ -240,8 +240,8 @@ layui
 
       view.tab.del(url)
 
-      view.loadHtml(conf.views + url, function(html) {
-        var htmlElem = $('<div>' + html + '</div>')
+      view.loadHtml(conf.views + url, function(res) {
+        var htmlElem = $('<div>' + res.html + '</div>')
 
         if (params.title === undefined) {
           params.title = htmlElem.find('title').text() || '信息'
@@ -328,19 +328,19 @@ layui
 
       if (href == '') return
       if (self.isUrl(href)) {
-        target == '__blank' ? window.open(href) : (location.href = href)
+        next();
       }
-
-      href = '#/' + view.delHeadSymbol(href)
 
       function next() {
-        target == '__blank' ? window.open(href) : (location.href = href)
+        target == '__blank' ? window.open(href) : self.navigate(href);
       }
+
       if ($.isFunction(self.routeLeaveFunc)) {
         self.routeLeaveFunc(self.route, href, next)
       } else {
         next()
       }
+
       return false
     })
     $(document).on('click', '[lay-popup]', function(e) {

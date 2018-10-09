@@ -115,23 +115,16 @@ layui
         return str.replace(new RegExp('(^' + symbol + '*)', 'g'), '')
       }
       self.loadHtml = function(url, callback) {
+          url = self.delHeadSymbol(url) || conf.entry;
         loadBar.start()
         var queryIndex = url.indexOf('?')
         if (queryIndex !== -1) url = url.slice(0, queryIndex)
-
-        url = self.delHeadSymbol(url, '#')
-        url =
-          (url.indexOf(conf.base) === 0 ? '' : conf.views) +
-          url +
-          conf.engine +
-          '?v=' +
-          layui.cache.version
         $.ajax({
-          url: url,
+          url: (url.indexOf(conf.base) === 0 ? '' : conf.views) + url + conf.engine + '?v=' + layui.cache.version,
           type: 'get',
           dataType: 'html',
           success: function(html) {
-            callback(html)
+            callback({html:html,url:url})
             loadBar.finish()
           },
           error: function(res) {
@@ -163,16 +156,13 @@ layui
             click: function(name) {
               name == 'all' ? tab.delAll() : tab.delOther()
             },
-            options: [
-              {
+            options: [{
                 name: 'other',
                 title: '关闭其他选项卡'
-              },
-              {
+            },{
                 name: 'all',
                 title: '关闭所有选项卡'
-              }
-            ]
+            }]
           })
 
           $(document).on('click', btnCls, function(e) {
@@ -220,6 +210,7 @@ layui
           $(document).off('click', this.wrap + ' .nepadmin-tabs-btn')
         },
         add: function(data) {
+            data.url = self.delHeadSymbol(data.url) || conf.entry;
           if (!data.url || this.has(data.url)) return false
           this.data.push(data)
           layui.admin.render(this.tabMenuTplId)
@@ -231,7 +222,7 @@ layui
           var menuBtnClas = tab.menu + ' .nepadmin-tabs-btn'
           $(menuBtnClas).each(function() {
             var url = $(this).attr('lay-url')
-            if (url == '/' + conf.entry) return true
+            if (url === conf.entry) return true
             tab.del(url)
           })
         },
@@ -272,6 +263,8 @@ layui
         },
         change: function(url) {
           if (this.isInit == false) this.init()
+          url = self.delHeadSymbol(url) || conf.entry
+          
           if (this.has(url)) {
             var layUrl = '[lay-url="' + url + '"]'
             var menu = $(this.menu)
@@ -295,6 +288,8 @@ layui
               .siblings()
               .hide()
             $(document).scrollTop(-100)
+            
+            layui.admin.navigate(url);
             return true
           }
           return false
@@ -323,31 +318,26 @@ layui
       }
       //解析普通文件
       self.render = function(url, callback) {
-        url = this.delHeadSymbol(url)
-        url = url || '/' + conf.entry
-        self.loadHtml(url, function(html) {
-          var htmlElem = $('<div>' + html + '</div>')
-          var params = self.fillHtml(url, htmlElem, 'html')
+        self.loadHtml(url, function(res) {
+          var htmlElem = $('<div>' + res.html + '</div>')
+          var params = self.fillHtml(res.url, htmlElem, 'html')
           if ($.isFunction(callback)) callback(params)
         })
       }
       //加载 tab
       self.renderTabs = function(url, callback) {
         var tab = self.tab
-        url = this.delHeadSymbol(url)
-        url = url || '/' + conf.entry
-
         if (tab.change(url) === false) {
-          self.loadHtml(url, function(html) {
+          self.loadHtml(url, function(res) {
             var htmlElem = $(
               "<div><div class='nepadmin-tabs-item' lay-url='" +
-                url +
+                res.url +
                 "'>" +
-                html +
+                res.html +
                 '</div></div>'
             )
-            var params = self.fillHtml(url, htmlElem, 'prepend')
-            tab.add({ url: url, title: params.title })
+            var params = self.fillHtml(res.url, htmlElem, 'prepend')
+            tab.add({ url: res.url, title: params.title })
             if ($.isFunction(callback)) callback(params)
           })
         }
