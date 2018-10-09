@@ -267,15 +267,12 @@ layui
     var mobileWidth = 991
     var isMobileAdapter = false
     function mobileAdapter() {
-      self.flexible(false)
+        self.flexible(false)
       var device = layui.device()
       if (device.weixin || device.android || device.ios) {
         //点击空白处关闭侧边栏
         $(document).on('click', '#' + conf.containerBody, function() {
-          if (
-            $(window).width() < mobileWidth &&
-            !view.container.hasClass(self.shrinkCls)
-          ) {
+          if ($(window).width() < mobileWidth && !view.container.hasClass(self.shrinkCls)) {
             self.flexible(false)
           }
         })
@@ -373,9 +370,8 @@ layui
     var shrinkSidebarBtn = '.' + self.shrinkCls + ' #app-sidebar .layui-nav-item a'
 
     $(document).on('click', shrinkSidebarBtn, function(e) {
-      var chileLength = $(this)
-        .parent()
-        .find('.layui-nav-child').length
+        if(isMobileAdapter == true) return;
+      var chileLength = $(this).parent().find('.layui-nav-child').length
       if (chileLength > 0) {
         self.flexible(true)
         layer.closeAll('tips')
@@ -441,7 +437,7 @@ layui
       }
     })
 
-    if ($(window).width() < mobileWidth) {
+    if ($(window).width() <= mobileWidth) {
       mobileAdapter()
     } else {
       var flexibleOpen = self.data().flexible
