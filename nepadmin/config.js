@@ -12,7 +12,7 @@ layui.define(function(exports) {
     //视图所在目录
     views: layui.cache.base + 'views/',
     //是否开启选项卡
-    viewTabs: false,
+    viewTabs: true,
     //显示页面加载条
     viewLoadBar: false,
     //公用加载的样式
