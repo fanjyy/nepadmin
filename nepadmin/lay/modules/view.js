@@ -11,7 +11,6 @@ layui
       var laytpl = layui.laytpl
       var conf = layui.conf
       var loadBar = layui.loadBar
-
       var self = {
         ie8:
           navigator.appName == 'Microsoft Internet Explorer' &&
@@ -200,7 +199,7 @@ layui
         has: function(url) {
           var exists = false
           layui.each(this.data, function(i, data) {
-            if (data.url == url) return (exists = true)
+            if (data.url == url) return (exists = data)
           })
           return exists
         },
@@ -212,6 +211,7 @@ layui
         add: function(data) {
             data.url = self.delHeadSymbol(data.url) || conf.entry;
           if (!data.url || this.has(data.url)) return false
+          data.hash = layui.admin.route.href
           this.data.push(data)
           layui.admin.render(this.tabMenuTplId)
           this.change(data.url)
@@ -269,8 +269,8 @@ layui
         change: function(url) {
           if (this.isInit == false) this.init()
           url = self.delHeadSymbol(url) || conf.entry
-          
-          if (this.has(url)) {
+          var data = this.has(url);
+          if (data) {
             var layUrl = '[lay-url="' + url + '"]'
             var menu = $(this.menu)
             var thisMenu = menu.find(layUrl)
@@ -293,8 +293,8 @@ layui
               .siblings()
               .hide()
             $(document).scrollTop(-100)
-            
-            layui.admin.navigate(url);
+
+            layui.admin.navigate(data.hash);
             return true
           }
           return false
@@ -342,7 +342,7 @@ layui
                 '</div></div>'
             )
             var params = self.fillHtml(res.url, htmlElem, 'prepend')
-            tab.add({ url: res.url, title: params.title })
+            tab.add({ url: res.url, title: params.title})
             if ($.isFunction(callback)) callback(params)
           })
         }

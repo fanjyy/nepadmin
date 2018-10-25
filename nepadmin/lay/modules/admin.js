@@ -299,7 +299,8 @@ layui
         return false
       }
 
-      var fromRoute = layui.router()
+      self.route = layui.router();
+      var fromRoute = self.route
 
       function next() {
         self.routeLeaveFunc = null
@@ -394,9 +395,8 @@ layui
       self.flexible(status)
       self.data({ key: 'flexible', value: status })
     })
-
     self.on('refresh', function(e) {
-      var url = layui.router().href;
+      var url = self.route.href;
       if(conf.viewTabs == true){
         view.tab.refresh(url);
       }else{
