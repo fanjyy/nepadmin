@@ -8,6 +8,7 @@
             <div class="layui-btn layui-btn-sm layui-btn-primary table-action" data-type="lower">下架</div>
             <div class="layui-btn layui-btn-sm layui-btn-primary table-action" data-type="del">删除</div>
             <div class="layui-btn layui-btn-sm layui-btn-primary table-action" data-type="move">移动分类</div>
+            <div class="layui-btn layui-btn-sm layui-btn-primary table-action" data-type="refresh">刷新页面</div>
             <div class="layui-btn layui-btn-sm layui-btn-primary action-more">
               <i class="layui-icon">&#xe875;</i>
             </div>
@@ -169,6 +170,16 @@
     });
 
     view.find('.table-action').click(function () {
+      var type = $(this).attr('data-type')
+      if (type == 'refresh') {
+        //刷新当前页
+        layui.view.tab.refresh()
+
+        //刷新一个指定页，不用传入页面的参数
+        //layui.view.tab.refresh('/index')
+
+        return false;
+      }
       var checkedCount = table.checkStatus(tableFilter).data.length;
       if (checkedCount == 0) {
         layer.msg('请先选择某行');

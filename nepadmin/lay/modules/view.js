@@ -256,8 +256,11 @@ layui
           }
         },
         refresh: function(url) {
-          this.del(url, true)
-          self.renderTabs(url)
+          url = url || layui.admin.route.fileurl
+          if (this.has(url)) {
+            this.del(url, true)
+            self.renderTabs(url)
+          }
         },
         clear: function() {
           this.data = []
