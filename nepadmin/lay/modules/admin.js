@@ -17,6 +17,7 @@ layui
 
     self.route = layui.router()
     self.api = layui.api
+    self.closeOnceHashChange = false
     self.ie8 = view.ie8
     self.get = view.request
     self.appBody = null
@@ -46,8 +47,7 @@ layui
       self.data({ key: conf.tokenName, remove: true }, sessionStorage)
       self.loginToken = null
 
-      var url = conf.loginPage
-      self.navigate(url)
+      self.navigate(conf.loginPage)
     }
     self.login = function(token, data, isSession) {
       self.data(
@@ -75,60 +75,78 @@ layui
       layui.each(layui.conf.style, function(index, url) {
         layui.link(url + '?v=' + conf.v)
       })
-      self.initView('/' + self.route.path.join('/'))
+      self.initView(self.route)
     }
     self.post = function(params) {
       view.request($.extend({ type: 'post' }, params))
     }
+
+    /**
+    self.router = function(url) {
+      var route
+      if (url) {
+        url = '#' + url
+        if (url == '#/') url += conf.entry
+        console.log(url)
+      } else {
+        route = layui.router()
+      }
+      route.fileurl = '/' + route.path.join('/')
+      return route
+    }
+     */
     //初始化视图区域
-    self.initView = function(url) {
-        url = view.delHeadSymbol(url);
-      $(window).unbind('beforeunload')
+    self.initView = function(route) {
+      if (!self.route.href || self.route.href == '/') {
+        self.route = layui.router('#' + conf.entry)
+        route = self.route
+      }
+      route.fileurl = '/' + route.path.join('/')
       //判断登录页面
       if (conf.loginCheck == true) {
         if (self.getLoginToken()) {
-          if (url == conf.loginPage) {
+          if (route.fileurl == conf.loginPage) {
             self.navigate('/')
             return
           }
         } else {
-          if (url != conf.loginPage) {
+          if (route.fileurl != conf.loginPage) {
             self.logout()
-            return
           }
         }
       }
 
-      if ($.inArray(url, conf.indPage) === -1) {
-        var loadRenderPage = function(url) {
+      if ($.inArray('/' + route.fileurl, conf.indPage) === -1) {
+        var loadRenderPage = function(params) {
           if (conf.viewTabs == true) {
-            view.renderTabs(url)
+            view.renderTabs(route)
           } else {
-            view.render(url)
+            view.render(route.fileurl)
           }
         }
+
         if (view.containerBody == null) {
           //加载layout文件
           view.renderLayout(function() {
             //重新渲染导航
             element.render('nav', 'nepadmin-sidebar')
             //加载视图文件
-            loadRenderPage(url)
+            loadRenderPage()
           })
         } else {
           //layout文件已加载，加载视图文件
-          loadRenderPage(url)
+          loadRenderPage()
         }
       } else {
         //加载单页面
-        view.renderIndPage(url, function() {
-          if (conf.viewTabs == true) view.tab.clear()
+        view.renderIndPage(route.fileurl, function() {
+          //if (conf.viewTabs == true) view.tab.clear()
         })
       }
     }
     //根据当前加载的URL高亮左侧导航
     self.sidebarFocus = function(url) {
-      url = view.delHeadSymbol(url || self.route.href)
+      url = url || self.route.href
       var elem = $('#app-sidebar')
         .find('[lay-href="' + url + '"]')
         .eq(0)
@@ -159,7 +177,7 @@ layui
       window.history.go(n)
     }
     self.navigate = function(url) {
-      window.location.hash = '/' + view.delHeadSymbol(url)
+      window.location.hash = url
     }
     self.data = function(settings, storage) {
       if (settings == undefined) return layui.data(conf.tableName)
@@ -222,7 +240,7 @@ layui
       )
     }
     self.popup = function(params) {
-      var url = view.delHeadSymbol(params.url) || ''
+      var url = params.url || ''
       var success = params.success || function() {}
       params.skin = 'layui-layer-admin-page'
       POPUP_DATA = params.data || {}
@@ -267,12 +285,15 @@ layui
     var mobileWidth = 991
     var isMobileAdapter = false
     function mobileAdapter() {
-        self.flexible(false)
+      self.flexible(false)
       var device = layui.device()
       if (device.weixin || device.android || device.ios) {
         //点击空白处关闭侧边栏
         $(document).on('click', '#' + conf.containerBody, function() {
-          if ($(window).width() < mobileWidth && !view.container.hasClass(self.shrinkCls)) {
+          if (
+            $(window).width() < mobileWidth &&
+            !view.container.hasClass(self.shrinkCls)
+          ) {
             self.flexible(false)
           }
         })
@@ -288,28 +309,14 @@ layui
       }
     })
 
-    var holdHasnUrl = ''
     $(window).on('hashchange', function(e) {
-      //移动端跳转链接会先把导航关闭
+      //移动端跳转链接先把导航关闭
       if ($(window).width() < mobileWidth) {
         self.flexible(false)
       }
-      if (holdHasnUrl != '') {
-        holdHasnUrl = ''
-        return false
-      }
-
-      self.route = layui.router();
-      var fromRoute = self.route
-
-      function next() {
-        self.routeLeaveFunc = null
-        self.route = fromRoute
-        var url = '/' + self.route.path.join('/')
-        layer.closeAll()
-        self.initView(url)
-      }
-      next()
+      self.route = layui.router()
+      layer.closeAll()
+      self.initView(self.route)
     })
 
     //回车提交 form 表单
@@ -327,11 +334,11 @@ layui
 
       if (href == '') return
       if (self.isUrl(href)) {
-        next();
+        next()
       }
 
       function next() {
-        target == '__blank' ? window.open(href) : self.navigate(href);
+        target == '__blank' ? window.open(href) : self.navigate(href)
       }
 
       if ($.isFunction(self.routeLeaveFunc)) {
@@ -368,11 +375,14 @@ layui
       self.event($(this).attr(conf.eventName), $(this))
     })
 
-    var shrinkSidebarBtn = '.' + self.shrinkCls + ' #app-sidebar .layui-nav-item a'
+    var shrinkSidebarBtn =
+      '.' + self.shrinkCls + ' #app-sidebar .layui-nav-item a'
 
     $(document).on('click', shrinkSidebarBtn, function(e) {
-        if(isMobileAdapter == true) return;
-      var chileLength = $(this).parent().find('.layui-nav-child').length
+      if (isMobileAdapter == true) return
+      var chileLength = $(this)
+        .parent()
+        .find('.layui-nav-child').length
       if (chileLength > 0) {
         self.flexible(true)
         layer.closeAll('tips')
@@ -396,10 +406,10 @@ layui
       self.data({ key: 'flexible', value: status })
     })
     self.on('refresh', function(e) {
-      var url = self.route.href;
-      if(conf.viewTabs == true){
-        view.tab.refresh(url);
-      }else{
+      var url = self.route.href
+      if (conf.viewTabs == true) {
+        //view.tab.refresh(url);
+      } else {
         view.render(location.hash)
       }
     })

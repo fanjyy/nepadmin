@@ -1,7 +1,7 @@
-<div class="layui-layout layui-layout-admin" >
-    
-    <div class="layui-header" id="app-header">
-        <script type="text/html" template lay-done="layui.element.render('nav','nepadmin-header')">
+<div class="layui-layout layui-layout-admin">
+
+  <div class="layui-header" id="app-header">
+    <script type="text/html" template lay-done="layui.element.render('nav','nepadmin-header')">
         <ul class="layui-nav layui-layout-left" lay-filter="nepadmin-header">
             <li class="layui-nav-item" lay-unselect>
                 <a nepadmin-event="flexible" title="侧边伸缩">
@@ -64,10 +64,10 @@
             </li>
         </ul>
         </script>
-    </div>
+  </div>
 
-    <div class="nepadmin-tabs-hidden">
-        <script type="text/html" id="TPL-app-tabsmenu" template>
+  <div class="nepadmin-tabs-hidden">
+    <script type="text/html" id="TPL-app-tabsmenu" template>
         {{# if(layui.conf.viewTabs == true){ }}
         <div class="nepadmin-tabs-wrap">
             <span class="nepadmin-tabs-btn nepadmin-tabs-action nepadmin-tabs-prev" data-type="prev">
@@ -80,18 +80,21 @@
                 <i class="layui-icon layui-icon-close"></i>
             </span>
             <ul class="nepadmin-tabs-menu">
-                {{# layui.each(layui.view.tab.data,function(i,item){ }}<li data-type="page" class="nepadmin-tabs-btn nepadmin-tabs-active" lay-url="{{item.url}}"><i class="nepadmin-tabs-ball"></i>{{ item.title }}<b class="layui-icon layui-icon-close nepadmin-tabs-close"></b></li>{{# }) }}
+                {{# layui.each(layui.view.tab.data,function(i,item){ }}<li data-type="page" class="nepadmin-tabs-btn" lay-url="{{item.fileurl}}"><i class="nepadmin-tabs-ball"></i>{{ item.title }}<b class="layui-icon layui-icon-close nepadmin-tabs-close"></b></li>{{# }) }}
             </ul>
         </div>
         {{# } }}
         </script>
-    </div>
+  </div>
 
-    <!-- 侧边菜单 -->
-    <div class="layui-side" id="app-sidebar">
-        <div class="layui-side-scroll">
-            <div class="layui-logo"><span>Ne<b>pA</b>dmin</span></div>
-            <script type="text/html" template lay-api="getMenu" lay-done="layui.element.render('nav','nepadmin-sidebar');layui.admin.sidebarFocus()">
+  <!-- 侧边菜单 -->
+  <div class="layui-side" id="app-sidebar">
+    <div class="layui-side-scroll">
+      <div class="layui-logo">
+        <span>Ne
+          <b>pA</b>dmin</span>
+      </div>
+      <script type="text/html" template lay-api="getMenu" lay-done="layui.element.render('nav','nepadmin-sidebar');layui.admin.sidebarFocus()">
             <ul class="layui-nav layui-nav-tree" lay-filter="nepadmin-sidebar" >
                 {{#
                     function __createSlidebar(data,index){
@@ -114,13 +117,13 @@
                 {{# }) }}
             </ul>
             </script>
-        </div>
-        
     </div>
 
+  </div>
 
 
-    <!-- 主体内容 -->
-    <div class="layui-body" id="app-body"></div>
+
+  <!-- 主体内容 -->
+  <div class="layui-body" id="app-body"></div>
 
 </div>

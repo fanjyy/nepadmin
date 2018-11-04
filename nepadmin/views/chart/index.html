@@ -1,205 +1,207 @@
-<div class="layui-breadcrumb nepadmin-breadcrumb" lay-filter="nepadmin-breadcrumb">
-    <a lay-href="/">首页</a>
-    <a><cite>数据统计</cite></a>
-</div>
-<div class="layui-fluid" id="VIEW-chart-index" lay-title="图表">
-    <div class="layui-row layui-col-space10">
-        <div class="layui-col-md12">
-            <div class="layui-card">
-                <div class="layui-card-extra nepadmin-c-gray">
-                    <span class="nepadmin-c-blue">今日</span>&nbsp;&nbsp;
-                    <span>本周</span>&nbsp;&nbsp;
-                    <span>本月</span>&nbsp;&nbsp;
-                    <span>全年</span>&nbsp;&nbsp;
-                </div>
-                <div class="layui-tab layui-tab-brief" lay-filter="chart-index-echartBar">
-                    <ul class="layui-tab-title">
-                        <li class="layui-this">销售额</li>
-                        <li>访问量</li>
-                        <li>注册量</li>
-                    </ul>
-                    <div class="layui-tab-content nepadmin-pad0">
-                        <div class="layui-tab-item layui-show">
-                            <div class="layui-row">
-                                <div class="layui-col-md8">
-                                    <div id="chart-index-echartBar" style="width: 100%;height:340px;"></div>
-                                </div>
-                                <div class="layui-col-md4">
-                                    <h3 class="nepadmin-pad10 nepadmin-tc">销售额排行</h3>
-                                    <div class="nepadmin-cell">
-                                        <div class="nepadmin-cell-title"><span class="layui-badge">1</span> 广州商X一行将于30日莅临公司考察调研</div>
-                                        <div class="nepadmin-cell-extra">100 / 400</div>
-                                    </div>
-                                    <div class="nepadmin-cell">
-                                        <div class="nepadmin-cell-title"><span class="layui-badge layui-bg-orange">2</span> 广州商X一行将于30日莅临公司考察调研</div>
-                                        <div class="nepadmin-cell-extra">100 / 400</div>
-                                    </div>
-                                    <div class="nepadmin-cell">
-                                        <div class="nepadmin-cell-title"><span class="layui-badge layui-bg-green">3</span> 广州商X一行将于30日莅临公司考察调研</div>
-                                        <div class="nepadmin-cell-extra">100 / 400</div>
-                                    </div>
-                                    <div class="nepadmin-cell">
-                                        <div class="nepadmin-cell-title"><span class="layui-badge layui-bg-gray">4</span> 广州商X一行将于30日莅临公司考察调研</div>
-                                        <div class="nepadmin-cell-extra">100 / 400</div>
-                                    </div>
-                                    <div class="nepadmin-cell">
-                                        <div class="nepadmin-cell-title"><span class="layui-badge layui-bg-gray">5</span> 广州商X一行将于30日莅临公司考察调研</div>
-                                        <div class="nepadmin-cell-extra">100 / 400</div>
-                                    </div>
-                                    <div class="nepadmin-cell">
-                                        <div class="nepadmin-cell-title"><span class="layui-badge layui-bg-gray">6</span> 广州商X一行将于30日莅临公司考察调研</div>
-                                        <div class="nepadmin-cell-extra">100 / 400</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="layui-fluid" id="VIEW-chart-index" lay-title="数据统计">
+  <div class="layui-row layui-col-space10">
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-extra nepadmin-c-gray">
+          <span class="nepadmin-c-blue">今日</span>&nbsp;&nbsp;
+          <span>本周</span>&nbsp;&nbsp;
+          <span>本月</span>&nbsp;&nbsp;
+          <span>全年</span>&nbsp;&nbsp;
         </div>
-        <div class="layui-col-md7">
-            <div class="layui-card">
-                <div class="layui-card-header">折线图</div>
-                <div class="layui-card-body">
-                    <div id="chart-index-echartLine" style="width: 100%;height:300px;"></div>
+        <div class="layui-tab layui-tab-brief" lay-filter="chart-index-echartBar">
+          <ul class="layui-tab-title">
+            <li class="layui-this">销售额</li>
+            <li>访问量</li>
+            <li>注册量</li>
+          </ul>
+          <div class="layui-tab-content nepadmin-pad0">
+            <div class="layui-tab-item layui-show">
+              <div class="layui-row">
+                <div class="layui-col-md8">
+                  <div id="chart-index-echartBar" style="width: 100%;height:340px;"></div>
                 </div>
-            </div>
-        </div>
-        <div class="layui-col-md5">
-            <div class="layui-card">
-                <div class="layui-card-header">饼图</div>
-                <div class="layui-card-body">
-                    <div id="chart-index-echartBie" style="width: 100%;height:300px;"></div>
+                <div class="layui-col-md4">
+                  <h3 class="nepadmin-pad10 nepadmin-tc">销售额排行</h3>
+                  <div class="nepadmin-cell">
+                    <div class="nepadmin-cell-title">
+                      <span class="layui-badge">1</span> 广州商X一行将于30日莅临公司考察调研</div>
+                    <div class="nepadmin-cell-extra">100 / 400</div>
+                  </div>
+                  <div class="nepadmin-cell">
+                    <div class="nepadmin-cell-title">
+                      <span class="layui-badge layui-bg-orange">2</span> 广州商X一行将于30日莅临公司考察调研</div>
+                    <div class="nepadmin-cell-extra">100 / 400</div>
+                  </div>
+                  <div class="nepadmin-cell">
+                    <div class="nepadmin-cell-title">
+                      <span class="layui-badge layui-bg-green">3</span> 广州商X一行将于30日莅临公司考察调研</div>
+                    <div class="nepadmin-cell-extra">100 / 400</div>
+                  </div>
+                  <div class="nepadmin-cell">
+                    <div class="nepadmin-cell-title">
+                      <span class="layui-badge layui-bg-gray">4</span> 广州商X一行将于30日莅临公司考察调研</div>
+                    <div class="nepadmin-cell-extra">100 / 400</div>
+                  </div>
+                  <div class="nepadmin-cell">
+                    <div class="nepadmin-cell-title">
+                      <span class="layui-badge layui-bg-gray">5</span> 广州商X一行将于30日莅临公司考察调研</div>
+                    <div class="nepadmin-cell-extra">100 / 400</div>
+                  </div>
+                  <div class="nepadmin-cell">
+                    <div class="nepadmin-cell-title">
+                      <span class="layui-badge layui-bg-gray">6</span> 广州商X一行将于30日莅临公司考察调研</div>
+                    <div class="nepadmin-cell-extra">100 / 400</div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+    <div class="layui-col-md7">
+      <div class="layui-card">
+        <div class="layui-card-header">折线图</div>
+        <div class="layui-card-body">
+          <div id="chart-index-echartLine" style="width: 100%;height:300px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md5">
+      <div class="layui-card">
+        <div class="layui-card-header">饼图</div>
+        <div class="layui-card-body">
+          <div id="chart-index-echartBie" style="width: 100%;height:300px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <script>
-layui.use(['admin','echarts'], function(admin,code){
+  layui.use(['admin', 'echarts'], function (admin, code) {
     var $ = layui.jquery;
     var view = $('#VIEW-chart-index');
 
-    function initChart(id,option){
-        echarts.init(document.getElementById(id),layui.echartsTheme).setOption(option);
+    function initChart(id, option) {
+      echarts.init(document.getElementById(id), layui.echartsTheme).setOption(option);
     }
 
     var option = {
-        tooltip: {
-            trigger: 'axis'
+      tooltip: {
+        trigger: 'axis'
+      },
+      xAxis: {
+        type: 'category',
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: { formatter: '{value} 人' },
+        axisPointer: { snap: true }
+      },
+      series: [{
+        type: 'line',
+        symbolSize: 12,
+        lineStyle: {
+          normal: {
+            width: 5,
+            shadowColor: '#5a8bff',
+            shadowBlur: 40,
+            shadowOffsetY: 10
+          }
         },
-        xAxis:  {
-            type: 'category',
-            data: ['周一', '周二', '周三', '周四','周五', '周六', '周日']
-        },
-        yAxis: {
-            type: 'value',
-            axisLabel: {formatter: '{value} 人'},
-            axisPointer: {snap: true}
-        },
-        series: [{
-            type:'line',
-            symbolSize: 12,
-            lineStyle: {
-                normal: {
-                    width: 5,
-                    shadowColor: '#5a8bff',
-                    shadowBlur: 40,
-                    shadowOffsetY: 10
-                }
-            },
-            data:[120, 132, 101, 134, 90, 230, 210]
-        }]
+        data: [120, 132, 101, 134, 90, 230, 210]
+      }]
     };
-    initChart('chart-index-echartLine',option);
+    initChart('chart-index-echartLine', option);
 
 
 
 
     var pieData = [
-        {value:335, name:'直接访问'},
-        {value:310, name:'邮件营销'},
-        {value:234, name:'联盟广告'},
-        {value:135, name:'视频广告'},
-        {value:1548, name:'搜索引擎'}
+      { value: 335, name: '直接访问' },
+      { value: 310, name: '邮件营销' },
+      { value: 234, name: '联盟广告' },
+      { value: 135, name: '视频广告' },
+      { value: 1548, name: '搜索引擎' }
     ];
     var option = {
-        title: {
-            text: '销售总额',
-            subtext:'￥ 122,123',
-            subtextStyle:{
-                fontSize:18
-            },
-            x: '100',
-            y: 'center'
+      title: {
+        text: '销售总额',
+        subtext: '￥ 122,123',
+        subtextStyle: {
+          fontSize: 18
         },
-        legend: {
-            orient: 'vertical',
-            y:'center',
-            x: '50%',
-            itemGap: 30,
-	        formatter:function(name){
-                layui.each(pieData,function(i,item){
-                    if(item.name == name) name = name + ' {a|' + item.value + '}' + ' {a|25%}';
-                })
-	        	return name;
-            },
-            textStyle:{
-                rich:{
-                    a:{
-                        color:'#aaa',
-                        display:'inline-block',
-                        width:50
-                    }
-                }
-            },
-            borderRadius: 10,
+        x: '100',
+        y: 'center'
+      },
+      legend: {
+        orient: 'vertical',
+        y: 'center',
+        x: '50%',
+        itemGap: 30,
+        formatter: function (name) {
+          layui.each(pieData, function (i, item) {
+            if (item.name == name) name = name + ' {a|' + item.value + '}' + ' {a|25%}';
+          })
+          return name;
         },
-        tooltip: {
-            trigger: 'item',
-            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        textStyle: {
+          rich: {
+            a: {
+              color: '#aaa',
+              display: 'inline-block',
+              width: 50
+            }
+          }
         },
-        series: [{
-            hoverAnimation: false,
-            name:'访问来源',
-            type:'pie',
-            label: {
-                normal: {show: false},
-                emphasis: {show: false}
-            },
-            labelLine: {
-                normal: {show: false},
-                emphasis: {show: false}
-            },
-            radius: ['62%', '70%'],
-            center: ['150', '50%'],
-            avoidLabelOverlap: false,
-            data:pieData
-        }]
+        borderRadius: 10,
+      },
+      tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+      },
+      series: [{
+        hoverAnimation: false,
+        name: '访问来源',
+        type: 'pie',
+        label: {
+          normal: { show: false },
+          emphasis: { show: false }
+        },
+        labelLine: {
+          normal: { show: false },
+          emphasis: { show: false }
+        },
+        radius: ['62%', '70%'],
+        center: ['150', '50%'],
+        avoidLabelOverlap: false,
+        data: pieData
+      }]
     };
-    initChart('chart-index-echartBie',option);
+    initChart('chart-index-echartBie', option);
 
 
 
     var option = {
-        tooltip : {
-            trigger: 'axis'
-        },
-        xAxis : [{
-            type : 'category',
-            data : ['周一', '周二', '周三', '周四','周五', '周六', '周日','周五', '周六', '周日', '周日'],
-            axisTick: {
-                alignWithLabel: true
-            }
-        }],
-        yAxis : [{type : 'value'}],
-        series : [{
-            type:'bar',
-            barWidth: '60%',
-            data:[10, 52, 200, 334, 390, 330, 220,334, 390, 330, 330]
-        }]
+      tooltip: {
+        trigger: 'axis'
+      },
+      xAxis: [{
+        type: 'category',
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日', '周五', '周六', '周日', '周日'],
+        axisTick: {
+          alignWithLabel: true
+        }
+      }],
+      yAxis: [{ type: 'value' }],
+      series: [{
+        type: 'bar',
+        barWidth: '60%',
+        data: [10, 52, 200, 334, 390, 330, 220, 334, 390, 330, 330]
+      }]
     };
-    initChart('chart-index-echartBar',option);
+    initChart('chart-index-echartBar', option);
 
-})
+  })
 </script>

@@ -11,13 +11,18 @@
             <div class="layui-btn layui-btn-sm layui-btn-primary action-more">
               <i class="layui-icon">&#xe875;</i>
             </div>
+            <div class="layui-btn layui-btn-sm layui-btn-primary">
+              URL信息：
+              <script type="text/html" template>
+                {{ JSON.stringify(layui.router()) }}
+              </script>
+            </div>
           </div>
           <table id="list-table" lay-filter="list-table"></table>
         </div>
       </div>
     </div>
     <div class="layui-col-md2">
-
       <div class="layui-card">
         <div class="layui-card-header">筛选数据</div>
         <div class="layui-card-body">
@@ -144,15 +149,22 @@
 
     dropdown.render({
       elem: view.find('.action-more'),
-      click: function (name) {
-        console.log('点击了 ' + name);
+      click: function (name, elem, event) {
+        console.log('点击了' + name);
       },
       options: [{
         name: 'action1',
-        title: '更多操作'
+        title: 'Menu 1'
       }, {
         name: 'action2',
-        title: '更多操作'
+        title: 'Menu 2',
+        options: [{
+          name: 'action3',
+          title: 'Menu 3',
+        }, {
+          name: 'action4',
+          title: 'Menu 4',
+        }]
       }]
     });
 

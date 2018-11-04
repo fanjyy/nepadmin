@@ -24,7 +24,7 @@ layui.define(function(exports) {
     //网站名称
     name: 'nepadmin',
     //默认视图文件名
-    entry: 'index',
+    entry: '/index',
     //视图文件后缀名
     engine: '.html',
     eventName: 'nepadmin-event',
@@ -38,12 +38,12 @@ layui.define(function(exports) {
     requestUrl: './',
     //独立页面路由，可随意添加（无需写参数）
     indPage: [
-      'user/login', //登入页
-      'user/reg', //注册页
-      'user/forget' //找回密码
+      '/user/login', //登入页
+      '/user/reg', //注册页
+      '/user/forget' //找回密码
     ],
     //登录页面，当未登录或登录失效时进入
-    loginPage: 'user/login',
+    loginPage: '/user/login',
     //登录 token 名称，request 请求的时候会带上此参数到 header
     tokenName: 'token',
     //是否要强制检查登录状态， 使用tokenName进行登录验证，不通过的话会返回 loginPage 页面

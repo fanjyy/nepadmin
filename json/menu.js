@@ -10,63 +10,62 @@
 		"icon": "layui-icon-unorderedlist",
 		"childs":[{
 			"title": "表格列表",
-			"href":"list/table"
+			"href":"/list/table/id=1"
 		},{
 			"title": "卡片列表",
-			"href":"list/card"
+			"href":"/list/card"
 		}]
 	},{
 		"title":"详情页",
 		"icon": "layui-icon-container",
 		"childs":[{
 			"title": "工作计划",
-			"href":"detail/plan"
-		}]
+			"href":"/detail/plan"
+		},{
+      "title":"数据统计",
+      "href": "/chart/index"
+    }]
 	},{
 		"title":"表单页",
 		"icon": "layui-icon-file-exception",
 		"childs":[{
 			"title": "表单元素",
-			"href":"form/basic"
+			"href":"/form/basic"
 		},{
 			"title": "表单组合",
-			"href":"form/group"
+			"href":"/form/group"
 		}]
 	},{
 		"title":"异常页",
 		"icon": "layui-icon-error",
 		"childs":[{
 			"title": "403",
-			"href":"exception/403"
+			"href":"/exception/403"
 		},{
 			"title": "404",
-			"href":"exception/404"
+			"href":"/exception/404"
 		},{
 			"title": "500",
-			"href":"exception/500"
+			"href":"/exception/500"
 		}]
-	},{
-		"title":"数据统计",
-		"icon": "layui-icon-linechart",
-		"href": "/chart/index"
 	},{
 		"title": "新增模块",
 		"icon": "layui-icon-experiment",
 		"notice":3,
 		"childs":[{
 			"title": "admin",
-			"href":"module/admin"
+			"href":"/module/admin"
 		},{
 			"title": "helper",
-			"href":"module/helper"
+			"href":"/module/helper"
 		},{
 			"title": "loadBar",
-			"href":"module/loadbar"
+			"href":"/module/loadbar"
 		}]
 	},{
 		"title": "图标",
 		"icon": "layui-icon-star",
-		"href":"icon/index"
+		"href":"/icon/index"
 	},{
 		"title": "多级导航",
 		"icon": "layui-icon-apartment",

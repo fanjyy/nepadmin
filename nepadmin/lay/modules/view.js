@@ -107,23 +107,30 @@ layui
       self.clear = function() {
         self.containerBody.html('')
       }
+      /**
       self.delHeadSymbol = function(str, symbol) {
         if (!str) return str
         symbol = symbol || '/'
         if (symbol == '/') symbol = '/'
         return str.replace(new RegExp('(^' + symbol + '*)', 'g'), '')
       }
+       */
       self.loadHtml = function(url, callback) {
-          url = self.delHeadSymbol(url) || conf.entry;
+        url = url || conf.entry
         loadBar.start()
         var queryIndex = url.indexOf('?')
         if (queryIndex !== -1) url = url.slice(0, queryIndex)
         $.ajax({
-          url: (url.indexOf(conf.base) === 0 ? '' : conf.views) + url + conf.engine + '?v=' + layui.cache.version,
+          url:
+            (url.indexOf(conf.base) === 0 ? '' : conf.views) +
+            url +
+            conf.engine +
+            '?v=' +
+            layui.cache.version,
           type: 'get',
           dataType: 'html',
           success: function(html) {
-            callback({html:html,url:url})
+            callback({ html: html, url: url })
             loadBar.finish()
           },
           error: function(res) {
@@ -155,13 +162,16 @@ layui
             click: function(name) {
               name == 'all' ? tab.delAll() : tab.delOther()
             },
-            options: [{
+            options: [
+              {
                 name: 'other',
                 title: '关闭其他选项卡'
-            },{
+              },
+              {
                 name: 'all',
                 title: '关闭所有选项卡'
-            }]
+              }
+            ]
           })
 
           $(document).on('click', btnCls, function(e) {
@@ -171,7 +181,7 @@ layui
             } else {
               var type = $(this).attr('data-type')
               if (type == 'page') {
-                tab.change(url)
+                tab.change(tab.has(url))
               } else if (type == 'prev' || type == 'next') {
                 tab.menuElem = $(tab.menu)
                 var menu = tab.menuElem
@@ -187,7 +197,6 @@ layui
                   var last = menu.find('li:last')
                   if (last.offset().left + last.width() < tab.maxLeft) return
                 }
-
                 menu.css('left', left)
               }
             }
@@ -199,23 +208,9 @@ layui
         has: function(url) {
           var exists = false
           layui.each(this.data, function(i, data) {
-            if (data.url == url) return (exists = data)
+            if (data.fileurl == url) return (exists = data)
           })
           return exists
-        },
-        clear: function() {
-          this.data = []
-          this.isInit = false
-          $(document).off('click', this.wrap + ' .nepadmin-tabs-btn')
-        },
-        add: function(data) {
-            data.url = self.delHeadSymbol(data.url) || conf.entry;
-          if (!data.url || this.has(data.url)) return false
-          data.hash = layui.admin.route.href
-          this.data.push(data)
-          layui.admin.render(this.tabMenuTplId)
-          this.change(data.url)
-          return true
         },
         delAll: function(type) {
           var tab = this
@@ -229,7 +224,6 @@ layui
         delOther: function() {
           var tab = this
           var menuBtnClas = tab.menu + ' .nepadmin-tabs-btn'
-
           $(menuBtnClas + '.nepadmin-tabs-active')
             .siblings()
             .each(function() {
@@ -237,37 +231,126 @@ layui
               tab.del(url)
             })
         },
-        del: function(url,backMenu) {
-          url = self.delHeadSymbol(url) || conf.entry
+        del: function(url, backgroundDel) {
           var tab = this
-          if (tab.data.length > 1 || backMenu === true) {
-            layui.each(tab.data, function(i, data) {
-              if (data.url == url) {
-                tab.data.splice(i, 1)
-                return true
-              }
-            })
+          if (tab.data.length <= 1 && backgroundDel === undefined) return
+          layui.each(tab.data, function(i, data) {
+            if (data.fileurl == url) {
+              tab.data.splice(i, 1)
+              return true
+            }
+          })
 
-            var layUrl = '[lay-url="' + url + '"]'
-            var thisBody = $(
-              '#' + conf.containerBody + ' > .nepadmin-tabs-item' + layUrl
-            )
-            var thisMenu = $(this.menu).find(layUrl)
-            thisMenu.remove()
-            thisBody.remove()
-            if(!backMenu){
-                if (thisMenu.hasClass('nepadmin-tabs-active')) {
-                    $(this.menu + ' li:last').click()
-                }
+          var lay = '[lay-url="' + url + '"]'
+          var thisBody = $(
+            '#' + conf.containerBody + ' > .nepadmin-tabs-item' + lay
+          )
+          var thisMenu = $(this.menu).find(lay)
+          thisMenu.remove()
+          thisBody.remove()
+
+          if (backgroundDel === undefined) {
+            if (thisMenu.hasClass('nepadmin-tabs-active')) {
+              $(this.menu + ' li:last').click()
             }
           }
         },
-        refresh:function(url){
+        refresh: function(url) {
+          /**
             this.del(url,true);
             self.renderTabs(url);
+             */
         },
-        change: function(url) {
-          if (this.isInit == false) this.init()
+        change: function(route, callback) {
+          if (typeof route == 'string') {
+            route = layui.router('#' + route)
+            route.fileurl = '/' + route.path.join('/')
+          }
+          var fileurl = route.fileurl
+          var tab = this
+          if (tab.isInit == false) tab.init()
+
+          var changeView = function(lay) {
+            $('#' + conf.containerBody + ' > .nepadmin-tabs-item' + lay)
+              .show()
+              .siblings()
+              .hide()
+          }
+
+          var lay = '[lay-url="' + fileurl + '"]'
+
+          var activeCls = 'nepadmin-tabs-active'
+
+          var existsTab = tab.has(fileurl)
+          if (existsTab) {
+            var menu = $(this.menu)
+            var currentMenu = menu.find(lay)
+
+            if (existsTab.href !== route.href) {
+              tab.del(existsTab.fileurl, true)
+              tab.change(route)
+              return false
+              //tab.del(route.fileurl)
+            }
+            currentMenu
+              .addClass(activeCls)
+              .siblings()
+              .removeClass(activeCls)
+
+            changeView(lay)
+
+            this.minLeft = this.minLeft || parseInt(menu.css('left'))
+
+            var offsetLeft = currentMenu.offset().left
+            if (offsetLeft - this.minLeft - $(this.next).width() < 0) {
+              $(this.prev).click()
+            } else if (offsetLeft - this.minLeft > menu.width() * 0.5) {
+              $(this.next).click()
+            }
+            $(document).scrollTop(-100)
+            layui.admin.navigate(route.href)
+          } else {
+            self.loadHtml(fileurl, function(res) {
+              var htmlElem = $(
+                "<div><div class='nepadmin-tabs-item' lay-url='" +
+                  fileurl +
+                  "'>" +
+                  res.html +
+                  '</div></div>'
+              )
+              var params = self.fillHtml(fileurl, htmlElem, 'prepend')
+              route.title = params.title
+              tab.data.push(route)
+              layui.admin.render(tab.tabMenuTplId)
+
+              var currentMenu = $(tab.menu + ' ' + lay)
+              currentMenu.addClass(activeCls)
+
+              changeView(lay)
+
+              if ($.isFunction(callback)) callback(params)
+            })
+          }
+
+          //layui.admin.sidebarFocus(route.href)
+
+          /**
+          
+       
+        if (tab.change(data.fileurl) === false) {
+            self.loadHtml(url, function(res) {
+                var htmlElem = $(
+                "<div><div class='nepadmin-tabs-item' lay-url='" +
+                    res.url +
+                    "'>" +
+                    res.html +
+                    '</div></div>'
+                )
+                var params = self.fillHtml(res.url, htmlElem, 'prepend')
+                tab.add({ url: res.url, title: params.title})
+                if ($.isFunction(callback)) callback(params)
+            })
+        }
           url = self.delHeadSymbol(url) || conf.entry
           var data = this.has(url);
           if (data) {
@@ -298,6 +381,7 @@ layui
             return true
           }
           return false
+          */
         },
         onChange: function() {}
       }
@@ -322,52 +406,38 @@ layui
         return { title: title, url: url, htmlElem: htmlElem }
       }
       //解析普通文件
-      self.render = function(url, callback) {
-        self.loadHtml(url, function(res) {
+      self.render = function(fileurl, callback) {
+        self.loadHtml(fileurl, function(res) {
           var htmlElem = $('<div>' + res.html + '</div>')
           var params = self.fillHtml(res.url, htmlElem, 'html')
           if ($.isFunction(callback)) callback(params)
         })
       }
       //加载 tab
-      self.renderTabs = function(url, callback) {
+      self.renderTabs = function(route, callback) {
         var tab = self.tab
-        if (tab.change(url) === false) {
-          self.loadHtml(url, function(res) {
-            var htmlElem = $(
-              "<div><div class='nepadmin-tabs-item' lay-url='" +
-                res.url +
-                "'>" +
-                res.html +
-                '</div></div>'
-            )
-            var params = self.fillHtml(res.url, htmlElem, 'prepend')
-            tab.add({ url: res.url, title: params.title})
-            if ($.isFunction(callback)) callback(params)
-          })
-        }
+        tab.change(route, callback)
       }
       //加载layout文件
       self.renderLayout = function(callback, url) {
         if (url == undefined) url = 'layout'
         self.containerBody = null
+
         self.render(url, function(res) {
           self.containerBody = $('#' + conf.containerBody)
-
           if (conf.viewTabs == true) {
             self.containerBody.addClass('nepadmin-tabs-body')
           }
-
           layui.admin.appBody = self.containerBody
           if ($.isFunction(callback)) callback()
         })
       }
       //加载单页面
-      self.renderIndPage = function(url, callback) {
+      self.renderIndPage = function(fileurl, callback) {
         self.renderLayout(function() {
           self.containerBody = null
           if ($.isFunction(callback)) callback()
-        }, url)
+        }, fileurl)
       }
       self.log = function(msg, type) {
         if (conf.debug === false) return
