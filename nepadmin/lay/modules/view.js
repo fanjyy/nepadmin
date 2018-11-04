@@ -314,6 +314,7 @@ layui
               $(this.next).click()
             }
             $(document).scrollTop(-100)
+
             layui.admin.navigate(route.href)
           } else {
             self.loadHtml(fileurl, function(res) {

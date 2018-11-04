@@ -177,6 +177,7 @@ layui
       window.history.go(n)
     }
     self.navigate = function(url) {
+      if (url == conf.entry) url = '/'
       window.location.hash = url
     }
     self.data = function(settings, storage) {
