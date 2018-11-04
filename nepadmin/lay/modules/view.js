@@ -256,10 +256,13 @@ layui
           }
         },
         refresh: function(url) {
-          /**
-            this.del(url,true);
-            self.renderTabs(url);
-             */
+          this.del(url, true)
+          self.renderTabs(url)
+        },
+        clear: function() {
+          this.data = []
+          this.isInit = false
+          $(document).off('click', this.wrap + ' .nepadmin-tabs-btn')
         },
         change: function(route, callback) {
           if (typeof route == 'string') {

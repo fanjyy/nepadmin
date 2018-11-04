@@ -116,7 +116,7 @@ layui
         }
       }
 
-      if ($.inArray('/' + route.fileurl, conf.indPage) === -1) {
+      if ($.inArray(route.fileurl, conf.indPage) === -1) {
         var loadRenderPage = function(params) {
           if (conf.viewTabs == true) {
             view.renderTabs(route)
@@ -140,7 +140,7 @@ layui
       } else {
         //加载单页面
         view.renderIndPage(route.fileurl, function() {
-          //if (conf.viewTabs == true) view.tab.clear()
+          if (conf.viewTabs == true) view.tab.clear()
         })
       }
     }
