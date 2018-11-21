@@ -1,383 +1,543 @@
 <div class="layui-fluid" id="VIEW-index" lay-title="首页">
-    <div class="nepadmin-pad-tb20">
-        <h1 class="nepadmin-lead">NepAdmin 后台单页面模板</h1>
-        <div class="nepadmin-ignore nepadmin-pad-tb10">
-            <p>遵循原生 HTML/CSS/JS 的书写与组织形式，上手容易，拿来即用。</p>
-            <p>nepadmin 最低兼容到IE8浏览器。</p>
-        </div>
+  <div class="nepadmin-pad-tb20">
+    <h1 class="nepadmin-lead">NepAdmin 后台单页面模板</h1>
+    <div class="nepadmin-ignore nepadmin-pad-tb10">
+      <p>遵循原生 HTML/CSS/JS 的书写与组织形式，上手容易，拿来即用。</p>
+      <p>nepadmin 最低兼容到IE8浏览器。</p>
     </div>
-    <div class="layui-row layui-col-space15">
-        <div class="layui-col-lg8">
-            <div class="layui-row layui-col-space15">
-                <div class="layui-col-sm4">
-                    <div class="nepadmin-linecard">
-                        <p class="nepadmin-linecard-title">日成交额</p>
-                        <span class="nepadmin-linecard-text">￥229,200</span>
-                        <span class="nepadmin-ignore">万元</span>
-                    </div>
-                </div>
-                <div class="layui-col-sm4">
-                    <div class="nepadmin-linecard nepadmin-br-green">
-                        <p class="nepadmin-linecard-title">日新增用户</p>
-                        <span class="nepadmin-linecard-text">2468</span>
-                        <span class="nepadmin-ignore">人</span>
-                    </div>
-                </div>
-                <div class="layui-col-sm4">
-                    <div class="nepadmin-linecard nepadmin-br-red">
-                        <p class="nepadmin-linecard-title">待处理订单 <a href="#" class="nepadmin-c-blue nepadmin-font-12">立即处理</a></p>
-                        <span class="nepadmin-linecard-text">￥229,200</span>
-                        <span class="nepadmin-ignore">万元</span>
-                    </div>
-                </div>
-                <div class="layui-col-xs12">
-                    <div class="layui-row layui-col-space15">
-                        <div class="layui-col-sm6">
-                            <div class="layui-card">
-                                <div class="layui-card-header">快捷操作</div>
-                                <div class="layui-card-body" style="height: 200px;">
-                                    <div class="layui-row" style="margin-top:15px;">
-                                        <div class="layui-col-xs3 nepadmin-grid">
-                                            <span class="layui-icon layui-icon-skin-fill"></span>
-                                            <p>添加商品</p>
-                                        </div>
-                                        <div class="layui-col-xs3 nepadmin-grid">
-                                            <span class="layui-icon layui-icon-notification-fill"></span>
-                                            <p>发布文章</p>
-                                        </div>
-                                        <div class="layui-col-xs3 nepadmin-grid">
-                                            <span class="layui-icon layui-icon-message-fill"></span>
-                                            <p>订单列表</p>
-                                        </div>
-                                        <div class="layui-col-xs3 nepadmin-grid">
-                                            <span class="layui-icon layui-icon-message-fill"></span>
-                                            <p>热门评论</p>
-                                        </div>
-                                        <div class="layui-col-xs3 nepadmin-grid">
-                                            <span class="layui-icon layui-icon-heart-fill"></span>
-                                            <p>用户管理</p>
-                                        </div>
-                                        <div class="layui-col-xs3 nepadmin-grid">
-                                            <span class="layui-icon layui-icon-setting-fill"></span>
-                                            <p>短信营销</p>
-                                        </div>
-                                        <div class="layui-col-xs3 nepadmin-grid">
-                                            <span class="layui-icon layui-icon-star-fill"></span>
-                                            <p>网站流量</p>
-                                        </div>
-                                        <div class="layui-col-xs3 nepadmin-grid">
-                                            <span class="layui-icon layui-icon-setting-fill"></span>
-                                            <p>网站设置</p>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="layui-col-sm6">
-                            <div class="layui-card">
-                                <div class="layui-card-header"><span class="layui-icon layui-icon-fire-fill"></span> 最新评论<a href="#" class="nepadmin-c-gray nepadmin-font-12 nepadmin-fr">查看更多</a></div>
-                                <!--
-                                <div class="nepadmin-cell">
-                                    <a lay-href="/" class="nepadmin-avatar" title="在线">
-                                        <img src="http://tx.haiqq.com/uploads/allimg/170504/0641415410-1.jpg" />
-                                    </a>
-                                    <div class="nepadmin-cell-title">axsxs 说：</div>
-                                    <div class="nepadmin-cell-label">非常好看，就上肚子上肉有点多了，申请换货速度很快啊。</div>
-                                    <div class="nepadmin-cell-extra">112 <span class="layui-icon layui-icon-message"></span></div>
-                                </div>
-                                -->
-                                <div class="layui-card-body" style="height: 210px; padding:5px 0">
-                                    <div class="nepadmin-cell nepadmin-cell-arrow">
-                                        <a lay-href="/" class="nepadmin-avatar nepadmin-avatar-xs" title="在线">
-                                            <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1736487673,2633075576&fm=26&gp=0.jpg" />
-                                        </a>
-                                        <div class="nepadmin-cell-title">竹鼠是无辜的 说：<span class="nepadmin-c-gray">大家来看看，这是有多丑。。[照片][照片]</span></div>
-                                    </div>
-                                    <div class="nepadmin-cell nepadmin-cell-arrow">
-                                        <a lay-href="/" class="nepadmin-avatar nepadmin-avatar-xs" title="在线">
-                                            <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1493370524,4156203431&fm=26&gp=0.jpg" />
-                                        </a>
-                                        <div class="nepadmin-cell-title">Alex。 说：<span class="nepadmin-c-gray">第一感觉就是很长，价格实惠</span></div>
-                                    </div>
-                                    <div class="nepadmin-cell nepadmin-cell-arrow">
-                                        <a lay-href="/" class="nepadmin-avatar nepadmin-avatar-xs" title="在线">
-                                            <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4205845588,1460063116&fm=26&gp=0.jpg" />
-                                        </a>
-                                        <div class="nepadmin-cell-title">薪火 说：<span class="nepadmin-c-gray">随着包装盒压坏了，但是鼠标垫确实不错，非常细腻的表面</span></div>
-                                    </div>
-                                    <div class="nepadmin-cell nepadmin-cell-arrow">
-                                        <a lay-href="/" class="nepadmin-avatar nepadmin-avatar-xs" title="在线">
-                                            <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2085920166,1744212726&fm=26&gp=0.jpg" />
-                                        </a>
-                                        <div class="nepadmin-cell-title">路见不平一声吼 说：<span class="nepadmin-c-gray">五星，好评！</span></div>
-                                    </div>
-                                    <div class="nepadmin-cell nepadmin-cell-arrow">
-                                        <a lay-href="/" class="nepadmin-avatar nepadmin-avatar-xs" title="在线">
-                                            <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3662899748,1914720251&fm=26&gp=0.jpg" />
-                                        </a>
-                                        <div class="nepadmin-cell-title">天泉 说：<span class="nepadmin-c-gray">超值 超值 超值。</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="layui-col-xs12">
-                            <div class="layui-card">
-                                <div class="layui-card-extra nepadmin-c-gray">
-                                    <span class="nepadmin-c-blue">今日</span>&nbsp;&nbsp;
-                                    <span>本周</span>&nbsp;&nbsp;
-                                    <span>本月</span>&nbsp;&nbsp;
-                                    <span>全年</span>&nbsp;&nbsp;
-                                </div>
-                                <div class="layui-tab layui-tab-brief" lay-filter="index-chart">
-                                    <ul class="layui-tab-title">
-                                        <li class="layui-this">销售额</li>
-                                        <li>访问量</li>
-                                        <li>注册量</li>
-                                    </ul>
-                                    <div class="layui-tab-content" style="padding:0;">
-                                        <div class="layui-tab-item layui-show">
-                                            <div id="index-echartLine" style="width: 100%;height:400px;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="layui-col-xs12">
-                            <div class="layui-card">
-                                <div class="layui-tab layui-tab-brief" lay-filter="index-order">
-                                    <ul class="layui-tab-title">
-                                        <li class="layui-this">全部订单</li>
-                                        <li>待付款</li>
-                                        <li>待发货</li>
-                                        <li>待处理退款</li>
-                                    </ul>
-                                    <div class="layui-tab-content" style="padding:0;">
-                                        <div class="layui-tab-item layui-show nepadmin-table-full">
-                                            <table lay-filter="index-tableOrder"></table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  </div>
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-lg8">
+      <div class="layui-row layui-col-space15">
+        <div class="layui-col-sm4">
+          <div class="nepadmin-linecard">
+            <p class="nepadmin-linecard-title">日成交额</p>
+            <span class="nepadmin-linecard-text">￥229,200</span>
+            <span class="nepadmin-ignore">万元</span>
+          </div>
         </div>
-        <div class="layui-col-lg4">
-            <div class="layui-card">
-                <div class="layui-card-header">版本信息</div>
-                <div class="layui-card-body">
-                    <table class="layui-table">
-                        <colgroup>
-                            <col width="100">
-                            <col>
-                        </colgroup>
-                        <tbody>
-                            <tr>
-                                <td>当前版本</td>
-                                <td>v1.0.0</td>
-                            </tr>
-                            <tr>
-                                <td>基于框架</td>
-                                <td><script type="text/html" template>layui-v{{ layui.v }}</script></td>
-                            </tr>
-                            <tr>
-                                <td>主要特色</td>
-                                <td>单页面 / 响应式 / 简洁</td>
-                            </tr>
-                            <tr>
-                                <td>下载源码</td>
-                                <td style="padding-bottom: 0;">
-                                    <div class="layui-btn-container">
-                                        <a href="https://github.com/fanjyy/nep-admin" target="_blank" class="layui-btn layui-btn-danger"><i class="layui-icon">&#xe965;</i>GITHUB</a>
-                                        <a href="https://gitee.com/june000/nep-admin" target="_blank" class="layui-btn layui-btn-success">GITEE</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class="layui-col-sm4">
+          <div class="nepadmin-linecard nepadmin-br-green">
+            <p class="nepadmin-linecard-title">日新增用户</p>
+            <span class="nepadmin-linecard-text">2468</span>
+            <span class="nepadmin-ignore">人</span>
+          </div>
+        </div>
+        <div class="layui-col-sm4">
+          <div class="nepadmin-linecard nepadmin-br-red">
+            <p class="nepadmin-linecard-title">
+              待处理订单
+              <a href="#" class="nepadmin-c-blue nepadmin-font-12">立即处理</a>
+            </p>
+            <span class="nepadmin-linecard-text">￥229,200</span>
+            <span class="nepadmin-ignore">万元</span>
+          </div>
+        </div>
+        <div class="layui-col-xs12">
+          <div class="layui-row layui-col-space15">
+            <div class="layui-col-sm6">
+              <div class="layui-card">
+                <div class="layui-card-header">快捷操作</div>
+                <div class="layui-card-body" style="height: 200px;">
+                  <div class="layui-row" style="margin-top:15px;">
+                    <div class="layui-col-xs3 nepadmin-grid">
+                      <span class="layui-icon layui-icon-skin-fill"></span>
+                      <p>添加商品</p>
+                    </div>
+                    <div class="layui-col-xs3 nepadmin-grid">
+                      <span
+                        class="layui-icon layui-icon-notification-fill"
+                      ></span>
+                      <p>发布文章</p>
+                    </div>
+                    <div class="layui-col-xs3 nepadmin-grid">
+                      <span class="layui-icon layui-icon-message-fill"></span>
+                      <p>订单列表</p>
+                    </div>
+                    <div class="layui-col-xs3 nepadmin-grid">
+                      <span class="layui-icon layui-icon-message-fill"></span>
+                      <p>热门评论</p>
+                    </div>
+                    <div class="layui-col-xs3 nepadmin-grid">
+                      <span class="layui-icon layui-icon-heart-fill"></span>
+                      <p>用户管理</p>
+                    </div>
+                    <div class="layui-col-xs3 nepadmin-grid">
+                      <span class="layui-icon layui-icon-setting-fill"></span>
+                      <p>短信营销</p>
+                    </div>
+                    <div class="layui-col-xs3 nepadmin-grid">
+                      <span class="layui-icon layui-icon-star-fill"></span>
+                      <p>网站流量</p>
+                    </div>
+                    <div class="layui-col-xs3 nepadmin-grid">
+                      <span class="layui-icon layui-icon-setting-fill"></span>
+                      <p>网站设置</p>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-            <div class="layui-card">
-                <div class="layui-card-header">管理员</div>
-                <div class="layui-card-body">
-                    <a lay-href="/" class="nepadmin-avatar nepadmin-mar-r20" title="在线">
-                        <span class="layui-badge-dot layui-bg-green"></span>
-                        <img src="https://img2.woyaogexing.com/2018/09/14/11573c780bf7c4ae!480x480.jpg" />
-                    </a><a lay-href="/" class="nepadmin-avatar nepadmin-mar-r20" title="在线">
-                        <span class="layui-badge-dot layui-bg-green"></span>
-                        <img src="https://img2.woyaogexing.com/2018/09/14/3695798c082e4417857c95852513832e!400x400.jpeg" />
-                    </a><a lay-href="/" class="nepadmin-avatar nepadmin-mar-r20 nepadmin-gray" title="离线">
-                        <span class="layui-badge-dot layui-bg-green"></span>
-                        <img src="https://img2.woyaogexing.com/2018/09/14/fc5b7a0232fc49828814cf12185d2120!400x400.jpeg" />
-                    </a><a lay-href="/" class="nepadmin-avatar nepadmin-mar-r20 nepadmin-gray" title="离线">
-                        <span class="layui-badge-dot layui-bg-green"></span>
-                        <img src="https://img2.woyaogexing.com/2018/09/08/51d5631224a84167a77a9be2045f7d36!400x400.jpeg" />
-                    </a><a lay-href="/" class="nepadmin-avatar nepadmin-mar-r20 nepadmin-gray" title="离线">
-                        <span class="layui-badge-dot layui-bg-green"></span>
-                        <img src="https://img2.woyaogexing.com/2018/09/13/60d5bf6c9672463e97500bca2fbcaf18!400x400.jpeg" />
+            <div class="layui-col-sm6">
+              <div class="layui-card">
+                <div class="layui-card-header">
+                  <span class="layui-icon layui-icon-fire-fill"></span>
+                  最新评论<a
+                    href="#"
+                    class="nepadmin-c-gray nepadmin-font-12 nepadmin-fr"
+                    >查看更多</a
+                  >
+                </div>
+                <!--
+                  <div class="nepadmin-cell">
+                      <a lay-href="/" class="nepadmin-avatar" title="在线">
+                          <img src="http://tx.haiqq.com/uploads/allimg/170504/0641415410-1.jpg" />
+                      </a>
+                      <div class="nepadmin-cell-title">axsxs 说：</div>
+                      <div class="nepadmin-cell-label">非常好看，就上肚子上肉有点多了，申请换货速度很快啊。</div>
+                      <div class="nepadmin-cell-extra">112 <span class="layui-icon layui-icon-message"></span></div>
+                  </div>
+                -->
+                <div
+                  class="layui-card-body"
+                  style="height: 210px; padding:5px 0"
+                >
+                  <div class="nepadmin-cell nepadmin-cell-arrow">
+                    <a
+                      lay-href="/"
+                      class="nepadmin-avatar nepadmin-avatar-xs"
+                      title="在线"
+                    >
+                      <img
+                        src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1736487673,2633075576&fm=26&gp=0.jpg"
+                      />
                     </a>
-                </div>
-            </div>
-            <div class="layui-card">
-                <div class="layui-card-header"><i class="layui-icon layui-icon-notification-fill"></i> 公告动态</div>
-                <div class="nepadmin-cell">
-                    <div class="nepadmin-cell-title">广州商X一行将于30日莅临公司考察调研</div>
-                    <div class="nepadmin-cell-extra">09月14日 10:23:21</div>
-                </div>
-                <div class="nepadmin-cell">
-                    <div class="nepadmin-cell-title">关于公司人员的调整</div>
-                    <div class="nepadmin-cell-extra">09月14日 12:11:21</div>
-                </div>
-                <div class="nepadmin-cell">
-                    <div class="nepadmin-cell-title">10月国庆新活动~，筹备上线</div>
-                    <div class="nepadmin-cell-extra">09月14日 13:32:21</div>
-                </div>
-                <div class="nepadmin-cell">
-                    <div class="nepadmin-cell-title">转化率统计分析报告</div>
-                    <div class="nepadmin-cell-extra">08月10日 16:01:02</div>
-                </div>
-                <div class="nepadmin-cell">
-                    <div class="nepadmin-cell-title">客服工作中的话语话术分享</div>
-                    <div class="nepadmin-cell-extra">08月10日 15:53:23</div>
-                </div>
-            </div>
-            <div class="layui-card">
-                <div class="layui-card-header">服务器监控</div>
-                <div class="layui-card-body">
-                    <div class="nepadmin-pad-b20">
-                        <h2 class="nepadmin-pad-b10">85%<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr">CPU使用率</span></h2>
-                        <div class="layui-progress">
-                            <div class="layui-progress-bar layui-bg-blue" lay-percent="85%"></div>
-                        </div>
+                    <div class="nepadmin-cell-title">
+                      竹鼠是无辜的 说：<span class="nepadmin-c-gray"
+                        >大家来看看，这是有多丑。。[照片][照片]</span
+                      >
                     </div>
-                    <div class="nepadmin-pad-b20">
-                        <h2 class="nepadmin-pad-b10">58%<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr">内存占用率</span></h2>
-                        <div class="layui-progress">
-                            <div class="layui-progress-bar layui-bg-red" lay-percent="58%"></div>
-                        </div>
+                  </div>
+                  <div class="nepadmin-cell nepadmin-cell-arrow">
+                    <a
+                      lay-href="/"
+                      class="nepadmin-avatar nepadmin-avatar-xs"
+                      title="在线"
+                    >
+                      <img
+                        src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1493370524,4156203431&fm=26&gp=0.jpg"
+                      />
+                    </a>
+                    <div class="nepadmin-cell-title">
+                      Alex。 说：<span class="nepadmin-c-gray"
+                        >第一感觉就是很长，价格实惠</span
+                      >
                     </div>
-                    <div class="nepadmin-pad-b20">
-                        <h2 class="nepadmin-pad-b10">92%<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr">磁盘占用率</span></h2>
-                        <div class="layui-progress">
-                            <div class="layui-progress-bar layui-bg-cyan" lay-percent="92%"></div>
-                        </div>
+                  </div>
+                  <div class="nepadmin-cell nepadmin-cell-arrow">
+                    <a
+                      lay-href="/"
+                      class="nepadmin-avatar nepadmin-avatar-xs"
+                      title="在线"
+                    >
+                      <img
+                        src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4205845588,1460063116&fm=26&gp=0.jpg"
+                      />
+                    </a>
+                    <div class="nepadmin-cell-title">
+                      薪火 说：<span class="nepadmin-c-gray"
+                        >随着包装盒压坏了，但是鼠标垫确实不错，非常细腻的表面</span
+                      >
                     </div>
+                  </div>
+                  <div class="nepadmin-cell nepadmin-cell-arrow">
+                    <a
+                      lay-href="/"
+                      class="nepadmin-avatar nepadmin-avatar-xs"
+                      title="在线"
+                    >
+                      <img
+                        src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2085920166,1744212726&fm=26&gp=0.jpg"
+                      />
+                    </a>
+                    <div class="nepadmin-cell-title">
+                      路见不平一声吼 说：<span class="nepadmin-c-gray"
+                        >五星，好评！</span
+                      >
+                    </div>
+                  </div>
+                  <div class="nepadmin-cell nepadmin-cell-arrow">
+                    <a
+                      lay-href="/"
+                      class="nepadmin-avatar nepadmin-avatar-xs"
+                      title="在线"
+                    >
+                      <img
+                        src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3662899748,1914720251&fm=26&gp=0.jpg"
+                      />
+                    </a>
+                    <div class="nepadmin-cell-title">
+                      天泉 说：<span class="nepadmin-c-gray"
+                        >超值 超值 超值。</span
+                      >
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
 
-            <div class="layui-card">
-                <div class="layui-card-header">系统信息</div>
-                <div class="layui-card-body">
-                    <p>数据库信息：Mysql</p>
-                    <hr>
-                    <p>服务器IP：192.168.3.12</p>
-                    <hr>
-                    <p>服务器端口：80</p>
-                    <hr>
-                    <p>操作系统：WinXP</p>
-                    <hr>
-                    <p>WEB服务器：Apache</p>
+            <div class="layui-col-xs12">
+              <div class="layui-card">
+                <div class="layui-card-extra nepadmin-c-gray">
+                  <span class="nepadmin-c-blue">今日</span>&nbsp;&nbsp;
+                  <span>本周</span>&nbsp;&nbsp; <span>本月</span>&nbsp;&nbsp;
+                  <span>全年</span>&nbsp;&nbsp;
                 </div>
+                <div class="layui-tab layui-tab-brief" lay-filter="index-chart">
+                  <ul class="layui-tab-title">
+                    <li class="layui-this">销售额</li>
+                    <li>访问量</li>
+                    <li>注册量</li>
+                  </ul>
+                  <div class="layui-tab-content" style="padding:0;">
+                    <div class="layui-tab-item layui-show">
+                      <div
+                        id="index-echartLine"
+                        style="width: 100%;height:400px;"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-
+            <div class="layui-col-xs12">
+              <div class="layui-card">
+                <div class="layui-tab layui-tab-brief" lay-filter="index-order">
+                  <ul class="layui-tab-title">
+                    <li class="layui-this">全部订单</li>
+                    <li>待付款</li>
+                    <li>待发货</li>
+                    <li>待处理退款</li>
+                  </ul>
+                  <div class="layui-tab-content" style="padding:0;">
+                    <div class="layui-tab-item layui-show nepadmin-table-full">
+                      <table lay-filter="index-tableOrder"></table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <script type="text/html" id="TPL-index-params">
-        {{# layui.each(d.params,function(i,item){ }}
-        <span class="layui-badge-rim">{{ item.val }}</span>
-        {{# }) }}
-    </script>
-    <script type="text/html" id="TPL-index-status">
-        {{#
-            var status = {
-                WAIT_PAY:{title:'待付款',color:'blue'},
-                WAIT_DELIVER:{title:'待发货',color:'orange'},
-                WAIT_REFUND:{title:'待退款',color:'red'},
-            }[d.status];
-        }}
-        <span class="layui-badge layui-bg-{{status.color}}">{{ status.title }}</span>
-    </script>
+    <div class="layui-col-lg4">
+      <div class="layui-card">
+        <div class="layui-card-header">版本信息</div>
+        <div class="layui-card-body">
+          <table class="layui-table">
+            <colgroup>
+              <col width="100" />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td>当前版本</td>
+                <td>v1.0.0</td>
+              </tr>
+              <tr>
+                <td>基于框架</td>
+                <td>
+                  <script type="text/html" template>
+                    layui-v{{ layui.v }}
+                  </script>
+                </td>
+              </tr>
+              <tr>
+                <td>主要特色</td>
+                <td>单页面 / 响应式 / 简洁</td>
+              </tr>
+              <tr>
+                <td>下载源码</td>
+                <td style="padding-bottom: 0;">
+                  <div class="layui-btn-container">
+                    <a
+                      href="https://github.com/fanjyy/nep-admin"
+                      target="_blank"
+                      class="layui-btn layui-btn-danger"
+                      ><i class="layui-icon">&#xe965;</i>GITHUB</a
+                    >
+                    <a
+                      href="https://gitee.com/june000/nep-admin"
+                      target="_blank"
+                      class="layui-btn layui-btn-success"
+                      >GITEE</a
+                    >
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="layui-card">
+        <div class="layui-card-header">管理员</div>
+        <div class="layui-card-body">
+          <a lay-href="/" class="nepadmin-avatar nepadmin-mar-r20" title="在线">
+            <span class="layui-badge-dot layui-bg-green"></span>
+            <img
+              src="http://img2.imgtn.bdimg.com/it/u=3197537752,2095789724&fm=26&gp=0.jpg"
+            /> </a
+          ><a
+            lay-href="/"
+            class="nepadmin-avatar nepadmin-mar-r20"
+            title="在线"
+          >
+            <span class="layui-badge-dot layui-bg-green"></span>
+            <img
+              src="http://img2.imgtn.bdimg.com/it/u=3197537752,2095789724&fm=26&gp=0.jpg"
+            /> </a
+          ><a
+            lay-href="/"
+            class="nepadmin-avatar nepadmin-mar-r20 nepadmin-gray"
+            title="离线"
+          >
+            <span class="layui-badge-dot layui-bg-green"></span>
+            <img
+              src="http://img2.imgtn.bdimg.com/it/u=3197537752,2095789724&fm=26&gp=0.jpg"
+            /> </a
+          ><a
+            lay-href="/"
+            class="nepadmin-avatar nepadmin-mar-r20 nepadmin-gray"
+            title="离线"
+          >
+            <span class="layui-badge-dot layui-bg-green"></span>
+            <img
+              src="http://img2.imgtn.bdimg.com/it/u=3197537752,2095789724&fm=26&gp=0.jpg"
+            /> </a
+          ><a
+            lay-href="/"
+            class="nepadmin-avatar nepadmin-mar-r20 nepadmin-gray"
+            title="离线"
+          >
+            <span class="layui-badge-dot layui-bg-green"></span>
+            <img
+              src="http://img2.imgtn.bdimg.com/it/u=3197537752,2095789724&fm=26&gp=0.jpg"
+            />
+          </a>
+        </div>
+      </div>
+      <div class="layui-card">
+        <div class="layui-card-header">
+          <i class="layui-icon layui-icon-notification-fill"></i> 公告动态
+        </div>
+        <div class="nepadmin-cell">
+          <div class="nepadmin-cell-title">
+            广州商X一行将于30日莅临公司考察调研
+          </div>
+          <div class="nepadmin-cell-extra">09月14日 10:23:21</div>
+        </div>
+        <div class="nepadmin-cell">
+          <div class="nepadmin-cell-title">关于公司人员的调整</div>
+          <div class="nepadmin-cell-extra">09月14日 12:11:21</div>
+        </div>
+        <div class="nepadmin-cell">
+          <div class="nepadmin-cell-title">10月国庆新活动~，筹备上线</div>
+          <div class="nepadmin-cell-extra">09月14日 13:32:21</div>
+        </div>
+        <div class="nepadmin-cell">
+          <div class="nepadmin-cell-title">转化率统计分析报告</div>
+          <div class="nepadmin-cell-extra">08月10日 16:01:02</div>
+        </div>
+        <div class="nepadmin-cell">
+          <div class="nepadmin-cell-title">客服工作中的话语话术分享</div>
+          <div class="nepadmin-cell-extra">08月10日 15:53:23</div>
+        </div>
+      </div>
+      <div class="layui-card">
+        <div class="layui-card-header">服务器监控</div>
+        <div class="layui-card-body">
+          <div class="nepadmin-pad-b20">
+            <h2 class="nepadmin-pad-b10">
+              85%<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr"
+                >CPU使用率</span
+              >
+            </h2>
+            <div class="layui-progress">
+              <div
+                class="layui-progress-bar layui-bg-blue"
+                lay-percent="85%"
+              ></div>
+            </div>
+          </div>
+          <div class="nepadmin-pad-b20">
+            <h2 class="nepadmin-pad-b10">
+              58%<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr"
+                >内存占用率</span
+              >
+            </h2>
+            <div class="layui-progress">
+              <div
+                class="layui-progress-bar layui-bg-red"
+                lay-percent="58%"
+              ></div>
+            </div>
+          </div>
+          <div class="nepadmin-pad-b20">
+            <h2 class="nepadmin-pad-b10">
+              92%<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr"
+                >磁盘占用率</span
+              >
+            </h2>
+            <div class="layui-progress">
+              <div
+                class="layui-progress-bar layui-bg-cyan"
+                lay-percent="92%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-card">
+        <div class="layui-card-header">系统信息</div>
+        <div class="layui-card-body">
+          <p>数据库信息：Mysql</p>
+          <hr />
+          <p>服务器IP：192.168.3.12</p>
+          <hr />
+          <p>服务器端口：80</p>
+          <hr />
+          <p>操作系统：WinXP</p>
+          <hr />
+          <p>WEB服务器：Apache</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/html" id="TPL-index-params">
+    {{# layui.each(d.params,function(i,item){ }}
+    <span class="layui-badge-rim">{{ item.val }}</span>
+    {{# }) }}
+  </script>
+  <script type="text/html" id="TPL-index-status">
+    {{#
+        var status = {
+            WAIT_PAY:{title:'待付款',color:'blue'},
+            WAIT_DELIVER:{title:'待发货',color:'orange'},
+            WAIT_REFUND:{title:'待退款',color:'red'},
+        }[d.status];
+    }}
+    <span class="layui-badge layui-bg-{{status.color}}">{{ status.title }}</span>
+  </script>
 </div>
 <script>
-layui.use(['admin','echarts','element','helper','table','util'], function(admin,echarts,element,helper,table,util){
-    var $ = layui.jquery;
-    var view = $('#VIEW-chart-index');
-    element.render('progress');
+  layui.use(
+    ['admin', 'echarts', 'element', 'helper', 'table', 'util'],
+    function(admin, echarts, element, helper, table, util) {
+      var $ = layui.jquery
+      var view = $('#VIEW-chart-index')
+      element.render('progress')
 
-    createChart();
+      createChart()
 
-    var tableObj = table.render({
-        size:'nob',
-        elem:'[lay-filter="index-tableOrder"]',
-        api:'getGoods',
-        height:400,
-        cols: [[
-            {title:'状态',fixed:true,templet:'#TPL-index-status',width:80},
-            {field: 'title',title:'商品名称',minWidth:300},
-            {title:'商品参数',templet:'#TPL-index-params',minWidth:240},
-            {title:'商品单价',templet:'<p><b class="nepadmin-c-red">￥{{d.price}}</b></p>',align:'center',width:90},
-            {title:'购买数量',templet:'<p><b>{{d.buycount}}</b> <span class="nepadmin-c-gray">件</span></p>',align:'center',width:90},
-            {field:'time',title:'操作时间',templet:'<p><span title="{{d.time}}" class="nepadmin-c-gray">{{ layui.util.timeAgo(d.time)}}</span></p>',align:'center',width:170}
-        ]]
-    }); 
+      var tableObj = table.render({
+        size: 'nob',
+        elem: '[lay-filter="index-tableOrder"]',
+        api: 'getGoods',
+        height: 400,
+        cols: [
+          [
+            {
+              title: '状态',
+              fixed: true,
+              templet: '#TPL-index-status',
+              width: 80
+            },
+            { field: 'title', title: '商品名称', minWidth: 300 },
+            { title: '商品参数', templet: '#TPL-index-params', minWidth: 240 },
+            {
+              title: '商品单价',
+              templet: '<p><b class="nepadmin-c-red">￥{{d.price}}</b></p>',
+              align: 'center',
+              width: 90
+            },
+            {
+              title: '购买数量',
+              templet:
+                '<p><b>{{d.buycount}}</b> <span class="nepadmin-c-gray">件</span></p>',
+              align: 'center',
+              width: 90
+            },
+            {
+              field: 'time',
+              title: '操作时间',
+              templet:
+                '<p><span title="{{d.time}}" class="nepadmin-c-gray">{{ layui.util.timeAgo(d.time)}}</span></p>',
+              align: 'center',
+              width: 170
+            }
+          ]
+        ]
+      })
 
-    element.on('tab(index-order)', function(data){
-        tableObj.reload();
-    });
+      element.on('tab(index-order)', function(data) {
+        tableObj.reload()
+      })
 
-    element.on('tab(index-chart)', function(data){
-        createChart();
-    });
-  
-    
+      element.on('tab(index-chart)', function(data) {
+        createChart()
+      })
 
-    function createChart(){
-        var seriesData = [];
-        var xAxisData = [];
-        for(var i=1;i<=12;i++){
-            var val = helper.rand(8000,10000);
-            seriesData.push(val);
-            xAxisData.push((i < 10 ? '0'+i : i) +':00');
+      function createChart() {
+        var seriesData = []
+        var xAxisData = []
+        for (var i = 1; i <= 12; i++) {
+          var val = helper.rand(8000, 10000)
+          seriesData.push(val)
+          xAxisData.push((i < 10 ? '0' + i : i) + ':00')
         }
         var option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {type: 'cross'}
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: { type: 'cross' }
+          },
+          xAxis: {
+            type: 'category',
+            data: xAxisData
+          },
+          yAxis: {
+            max: function(val) {
+              return val.max + 400
             },
-            xAxis:  {
-                type: 'category',
-                data: xAxisData
+            min: function(val) {
+              return val.min - 400
             },
-            yAxis: {
-                max:function(val){
-                    return val.max + 400;
-                },
-                min:function(val){
-                    return val.min - 400;
-                },
-                type: 'value',
-                axisLabel: {formatter: '￥{value}'},
-                axisPointer: {snap: true}
-            },
-            series: [{
-                name:'时段销售额',
-                type:'line',
-                symbolSize: 12,
-                lineStyle: {
-                    normal: {
-                        width: 5,
-                        shadowColor: '#5a8bff',
-                        shadowBlur: 40,
-                        shadowOffsetY: 10
-                    }
-                },
-                data:seriesData
-            }]
-        };
-        echarts.init(document.getElementById('index-echartLine'),'blue').setOption(option);
+            type: 'value',
+            axisLabel: { formatter: '￥{value}' },
+            axisPointer: { snap: true }
+          },
+          series: [
+            {
+              name: '时段销售额',
+              type: 'line',
+              symbolSize: 12,
+              lineStyle: {
+                normal: {
+                  width: 5,
+                  shadowColor: '#5a8bff',
+                  shadowBlur: 40,
+                  shadowOffsetY: 10
+                }
+              },
+              data: seriesData
+            }
+          ]
+        }
+        echarts
+          .init(document.getElementById('index-echartLine'), 'blue')
+          .setOption(option)
+      }
     }
-})
+  )
 </script>
