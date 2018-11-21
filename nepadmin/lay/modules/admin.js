@@ -112,6 +112,7 @@ layui
         } else {
           if (route.fileurl != conf.loginPage) {
             self.logout()
+            return
           }
         }
       }
@@ -432,18 +433,18 @@ layui
         e.webkitRequestFullScreen
           ? e.webkitRequestFullScreen()
           : e.mozRequestFullScreen
-            ? e.mozRequestFullScreen()
-            : e.requestFullScreen && e.requestFullscreen()
+          ? e.mozRequestFullScreen()
+          : e.requestFullScreen && e.requestFullscreen()
         ico.removeClass(normalCls).addClass(activeCls)
       } else {
         var e = document
         e.webkitCancelFullScreen
           ? e.webkitCancelFullScreen()
           : e.mozCancelFullScreen
-            ? e.mozCancelFullScreen()
-            : e.cancelFullScreen
-              ? e.cancelFullScreen()
-              : e.exitFullscreen && e.exitFullscreen()
+          ? e.mozCancelFullScreen()
+          : e.cancelFullScreen
+          ? e.cancelFullScreen()
+          : e.exitFullscreen && e.exitFullscreen()
         ico.removeClass(activeCls).addClass(normalCls)
       }
     })
